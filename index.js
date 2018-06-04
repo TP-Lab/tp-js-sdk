@@ -1,0 +1,1 @@
+exports.tp = require('./src/tp');
