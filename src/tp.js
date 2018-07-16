@@ -23,7 +23,7 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '2.0.0',
+    version: '2.0.1',
     isConnected: () => {
         return window.TPJSBrigeClient || window.webkit;
     },
