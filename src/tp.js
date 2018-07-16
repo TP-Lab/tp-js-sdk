@@ -23,6 +23,10 @@ let _getCallbackName = () => {
 }
 
 let tp = {
+    version: '2.0.0',
+    isConnected: () => {
+        return window.TPJSBrigeClient || window.webkit;
+    },
     eosTokenTransfer: params => {
         // 必填项
         if (!params.from || !params.to || !params.amount || !params.tokenName) {

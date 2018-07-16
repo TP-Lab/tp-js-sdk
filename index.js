@@ -1,1 +1,1 @@
-exports.tp = require('./src/tp');
+module.exports = require('./src/tp');
