@@ -9,13 +9,13 @@ const TYPE_MAP = {
     moac: '3'
 };
 
-let web3 = new Web3(new Web3.providers.HttpProvider("https://api.myetherapi.com/eth"));
+let web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth'));
 let chain3 = new Chain3(new Chain3.providers.HttpProvider('https://chain3.mytokenpocket.vip'));
 
 
 let _getTypeByStr = typeStr => {
     typeStr = _.trim(typeStr).toLowerCase();
-    return TYPE_MAP[typeStr] || null;
+    return TYPE_MAP[typeStr] || typeStr;
 }
 
 let _getCallbackName = () => {
@@ -23,6 +23,196 @@ let _getCallbackName = () => {
 }
 
 let tp = {
+    eosTokenTransfer: params => {
+        // 必填项
+        if (!params.from || !params.to || !params.amount || !params.tokenName) {
+            throw new Error('missing params; "from", "to", "amount", "tokenName" is required ');
+        }
+
+        if (params.tokenName !== 'EOS' && (!params.contract || !params.precision)) {
+            throw new Error('missing params; "contract", "precision" is required ');
+        }
+
+        if (params.contract && params.contract !== 'eosio.token' && !params.precision) {
+            throw new Error('missing params; "precision" is required ');
+        }
+
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = result => {
+                delete window[tpCallbackFun];
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+
+                catch (e) {
+                    reject(e);
+                }
+            }
+            // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('eosTokenTransfer', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.eosTokenTransfer.postMessage({body:{'params': JSON.stringify(params), 'callback':tpCallbackFun}});
+            }
+            
+        })
+    },
+    pushEosAction: params => {
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = result => {
+                delete window[tpCallbackFun];
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+
+                catch (e) {
+                    reject(e);
+                }
+            }
+            // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('pushEosAction', JSON.stringify(params), tpCallbackFun);
+            }
+            // iOS
+            else if (window.webkit) {
+                window.webkit.messageHandlers.pushEosAction.postMessage({body:{'params': JSON.stringify(params), 'callback': tpCallbackFun}});
+            }
+        });
+    },
+    getAppInfo: () => {
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = result => {
+                delete window[tpCallbackFun];
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+
+                catch (e) {
+                    reject(e);
+                }
+            }
+            // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('getAppInfo', '', tpCallbackFun);
+            }
+            // iOS
+            else if (window.webkit) {
+                window.webkit.messageHandlers.getAppInfo.postMessage({body:{'params': '', 'callback': tpCallbackFun}});
+            }
+        });
+    },
+    getEosBalance: params => {
+
+        if (!params.account || !params.contract || !params.symbol) {
+            throw new Error('missing params; "account", "contract", "symbol" is required ');
+        }
+
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+       
+            window[tpCallbackFun] =  result => {
+                delete window[tpCallbackFun]; 
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+                catch(e) {
+                    reject(e);
+                }
+            }
+             // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('getEosBalance', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.getEosBalance.postMessage({body:{'params': JSON.stringify(params), 'callback':tpCallbackFun}});
+            }
+        });
+
+
+    },
+    getEosAccountInfo: params => {
+
+        if (!params.account) {
+            throw new Error('missing params; "account" is required ');
+        }
+
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+       
+            window[tpCallbackFun] =  result => {
+                delete window[tpCallbackFun]; 
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+                catch(e) {
+                    reject(e);
+                }
+            }
+             // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.getEosAccountInfo.postMessage({body:{'params': JSON.stringify(params), 'callback':tpCallbackFun}});
+            }
+        });
+    },
+    moacTokenTransfer: params => {
+
+        if (!params.from || !params.to || !params.amount || !params.gasLimit || !params.tokenName) {
+            throw new Error('missing params; "from", "to", "amount", "gasLimit", "tokenName" is required ');
+        }
+
+        if (params.contract && !params.decimal) {
+            throw new Error('missing params; "decimal" is required ');
+        }
+
+        return new Promise((resolve, reject) => {
+            let tpCallbackFun = _getCallbackName();
+       
+            window[tpCallbackFun] =  result => {
+                delete window[tpCallbackFun]; 
+
+                try {
+                    let res = JSON.parse(result);
+                    resolve(data);
+                }
+                catch(e) {
+                    reject(e);
+                }
+            }
+
+            // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('moacTokenTransfer', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.moacTokenTransfer.postMessage({body:{'params':JSON.stringify(params),'callback': tpCallbackFun}});
+            }
+        });
+        
+    },
     getDeviceId: () => {
         return new Promise((resolve, reject) => {
             let tpCallbackFun = _getCallbackName();
@@ -43,11 +233,11 @@ let tp = {
             }
              // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage("getDeviceId", "", tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('getDeviceId', '', tpCallbackFun);
             }
             // ios
             if (window.webkit) {
-                window.webkit.messageHandlers.getDeviceId.postMessage({body:{'params': "", 'callback':tpCallbackFun}});
+                window.webkit.messageHandlers.getDeviceId.postMessage({body:{'params': '', 'callback':tpCallbackFun}});
             }
         });
         
@@ -56,7 +246,7 @@ let tp = {
         type = _getTypeByStr(type);
 
         if (!type) {
-            throw new Error("type invalid");
+            throw new Error('type invalid');
         }
 
         let params = {type};
@@ -86,7 +276,7 @@ let tp = {
             alert(tpCallbackFun);
              // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage("getWalletList", JSON.stringify(params), tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('getWalletList', JSON.stringify(params), tpCallbackFun);
             }
             // ios
             if (window.webkit) {
@@ -98,14 +288,14 @@ let tp = {
     },
     signTransaction: params => {
         if (!params.from || !params.to || !params.gasPrice || !params.gasLimit || !params.type || params.data === undefined) {
-            throw new Error("missing params");
+            throw new Error('missing params');
         }
 
         let type = _getTypeByStr(params.type);
 
         // 暂不支持井通
         if (!type || type === '2') {
-            throw new Error("type invalid");
+            throw new Error('type invalid');
         }
 
         if (web3.utils.isAddress(params.from)) {
@@ -135,7 +325,7 @@ let tp = {
 
              // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage("signedTransaction", JSON.stringify(params), tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('signedTransaction', JSON.stringify(params), tpCallbackFun);
             }
             // ios
             if (window.webkit) {
@@ -145,12 +335,12 @@ let tp = {
     },
     makeTransaction(params) {
         if (!params.from || !params.to || !params.contractAddress || !params.gasPrice || !params.value || !params.type) {
-            throw new Error("missing params")
+            throw new Error('missing params')
         }
 
         let type = _getTypeByStr(params.type);
         if (!type) {
-            throw new Error("type invalid");
+            throw new Error('type invalid');
         }
 
         if (web3.utils.isAddress(params.from)) {
@@ -220,7 +410,7 @@ let tp = {
 
              // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage("makeTransactions", JSON.stringify(transactionObject), tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('makeTransactions', JSON.stringify(transactionObject), tpCallbackFun);
             }
             // ios
             if (window.webkit) {
@@ -246,15 +436,15 @@ let tp = {
             }
              // android
             if (window.TPJSBrigeClient) {
-                window.TPJSBrigeClient.callMessage("invokeQRScanner", "", tpCallbackFun);
+                window.TPJSBrigeClient.callMessage('invokeQRScanner', '', tpCallbackFun);
             }
             // ios
             if (window.webkit) {
-                window.webkit.messageHandlers.invokeQRScanner.postMessage({body:{'params': "", 'callback': tpCallbackFun}});
+                window.webkit.messageHandlers.invokeQRScanner.postMessage({body:{'params': '', 'callback': tpCallbackFun}});
             }
         });
     },
-    shareNewsToSNS: (params) => {
+    shareNewsToSNS: params => {
         
         let title = params.title || 'TokenPocket 你的通用数字钱包';
         let description = params.desc || ''; 
@@ -268,7 +458,7 @@ let tp = {
             window.webkit.messageHandlers.shareNewsToSNS.postMessage({body:{'params': JSON.stringify(data), 'callback':''}});
         }
         if (window.TPJSBrigeClient) {
-            window.TPJSBrigeClient.callMessage("shareNewsToSNS", JSON.stringify(data), '');
+            window.TPJSBrigeClient.callMessage('shareNewsToSNS', JSON.stringify(data), '');
         }
     }
 };
