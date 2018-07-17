@@ -23,7 +23,7 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '2.0.1',
+    version: '2.0.2',
     isConnected: () => {
         return window.TPJSBrigeClient || window.webkit;
     },
@@ -226,10 +226,10 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-
-                    let data = res.device_id || '';
-
-                    resolve(data);
+                    if (result.device_id) {
+                        result.data = result.device_id;
+                    }
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -263,13 +263,9 @@ let tp = {
                 delete window[tpCallbackFun]; 
 
                 try {
+                    
                     let res = JSON.parse(result);
-                    if (res.wallets && res.wallets[type]) {
-                        resolve(res.wallets[type]);
-                    }
-                    else {
-                        resolve([]);
-                    }
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -318,9 +314,10 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    let data = res.rawTransaction || '';
-
-                    resolve(data);
+                    if (res.rawTransaction) {
+                        res.data = res.rawTransaction;
+                    }
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -388,14 +385,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-
-                    if (res.result) {
-                        resolve(res.data);
-                    }
-                    else {
-                        // TODO
-                        reject(res.msg);
-                    }
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
