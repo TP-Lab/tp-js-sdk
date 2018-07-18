@@ -6,7 +6,9 @@ let Chian3 = require('chain3');
 const TYPE_MAP = {
     eth: '1',
     jingtum: '2',
-    moac: '3'
+    moac: '3',
+    eos: '4'
+
 };
 
 let web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth'));
@@ -25,7 +27,7 @@ let _getCallbackName = () => {
 let tp = {
     version: '2.0.2',
     isConnected: () => {
-        return window.TPJSBrigeClient || window.webkit;
+        return !!(window.TPJSBrigeClient || window.webkit);
     },
     eosTokenTransfer: params => {
         // 必填项
@@ -226,8 +228,8 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    if (result.device_id) {
-                        result.data = result.device_id;
+                    if (res.device_id) {
+                        res.data = res.device_id;
                     }
                     resolve(res);
                 }

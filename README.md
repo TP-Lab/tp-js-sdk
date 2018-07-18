@@ -382,7 +382,7 @@ tp.getWalletList(params)
 ##### Parameters
 
 `params`- `Object`:
-- `type`: `String|Number` - `1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS
+- `type`: `String|Number` - `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS
 
 ##### Returns
 
