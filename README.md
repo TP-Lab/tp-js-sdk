@@ -39,8 +39,8 @@ tp.eosTokenTransfer(params)
 - `to`: `String`
 - `amount`: `String|Number`
 - `tokenName`: `String`
-- `precision`: `Number|String`- (optional)
-- `contract`: `String`- (optional) Contract account
+- `precision`: `Number|String`
+- `contract`: `String`
 - `memo`: `String`- (optional)
 
 ##### Returns

@@ -25,22 +25,14 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '2.0.2',
+    version: '2.0.3',
     isConnected: () => {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
     eosTokenTransfer: params => {
         // 必填项
-        if (!params.from || !params.to || !params.amount || !params.tokenName) {
-            throw new Error('missing params; "from", "to", "amount", "tokenName" is required ');
-        }
-
-        if (params.tokenName !== 'EOS' && (!params.contract || !params.precision)) {
-            throw new Error('missing params; "contract", "precision" is required ');
-        }
-
-        if (params.contract && params.contract !== 'eosio.token' && !params.precision) {
-            throw new Error('missing params; "precision" is required ');
+        if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
+            throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
         }
 
         return new Promise((resolve, reject) => {
@@ -51,7 +43,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
 
                 catch (e) {
@@ -78,7 +70,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
 
                 catch (e) {
@@ -104,7 +96,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
 
                 catch (e) {
@@ -135,7 +127,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -167,7 +159,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -201,7 +193,7 @@ let tp = {
 
                 try {
                     let res = JSON.parse(result);
-                    resolve(data);
+                    resolve(res);
                 }
                 catch(e) {
                     reject(e);
@@ -274,8 +266,6 @@ let tp = {
                 }
             }
 
-            alert(JSON.stringify(params));
-            alert(tpCallbackFun);
              // android
             if (window.TPJSBrigeClient) {
                 window.TPJSBrigeClient.callMessage('getWalletList', JSON.stringify(params), tpCallbackFun);
