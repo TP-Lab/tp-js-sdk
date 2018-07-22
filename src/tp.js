@@ -25,7 +25,7 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '2.0.3',
+    version: '2.0.4',
     isConnected: () => {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -39,7 +39,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = result => {
-                delete window[tpCallbackFun];
 
                 try {
                     let res = JSON.parse(result);
@@ -66,7 +65,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = result => {
-                delete window[tpCallbackFun];
 
                 try {
                     let res = JSON.parse(result);
@@ -92,7 +90,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = result => {
-                delete window[tpCallbackFun];
 
                 try {
                     let res = JSON.parse(result);
@@ -123,7 +120,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -155,7 +151,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -189,7 +184,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -216,7 +210,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -253,8 +246,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] = result => {
-                // 删掉临时 func
-                delete window[tpCallbackFun]; 
 
                 try {
                     
@@ -302,7 +293,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
             // callback
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -373,7 +363,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
             // callback
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
@@ -409,7 +398,6 @@ let tp = {
             let tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  result => {
-                delete window[tpCallbackFun]; 
 
                 try {
                     let res = JSON.parse(result);
