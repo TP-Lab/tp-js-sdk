@@ -1,7 +1,6 @@
-let _ = require('lodash'); 
 let Promise = require('promise');
 let Web3 = require('web3');
-let Chian3 = require('chain3');
+let Chain3 = require('chain3');
 
 const TYPE_MAP = {
     eth: '1',
@@ -16,7 +15,9 @@ let chain3 = new Chain3(new Chain3.providers.HttpProvider('https://chain3.mytoke
 
 
 let _getTypeByStr = typeStr => {
-    typeStr = _.trim(typeStr).toLowerCase();
+    let reTrim = /^\s+|\s+$/g;
+    typeStr += '';
+    typeStr = typeStr.replace(reTrim, '').toLowerCase();
     return TYPE_MAP[typeStr] || typeStr;
 }
 
@@ -25,7 +26,7 @@ let _getCallbackName = () => {
 }
 
 let tp = {
-    version: '2.0.4',
+    version: '2.0.5',
     isConnected: () => {
         return !!(window.TPJSBrigeClient || window.webkit);
     },

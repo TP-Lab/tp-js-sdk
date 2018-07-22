@@ -1,12 +1,19 @@
 # tp-js-sdk
 
-Javascript SDK for TokenPocket Dapp
+Javascript SDK for TokenPocket Dapp.
 
 * [Github](https://github.com/TP-Lab/tp-js-sdk)
 
 * [TokenPocket Website](https://www.mytokenpocket.vip/)
 
-![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h.png)
+![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
+
+
+
+
+## tp-eosjs
+
+If your Dapp is only build for EOS, please use this: [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
 
 
 ## Installation
