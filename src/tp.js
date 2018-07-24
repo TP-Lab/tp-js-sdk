@@ -1,8 +1,8 @@
-let Promise = require('promise');
-let Web3 = require('web3');
-let Chain3 = require('chain3');
+var Promise = require('promise');
+var Web3 = require('web3');
+var Chain3 = require('chain3');
 
-const TYPE_MAP = {
+var TYPE_MAP = {
     eth: '1',
     jingtum: '2',
     moac: '3',
@@ -10,42 +10,40 @@ const TYPE_MAP = {
 
 };
 
-let web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth'));
-let chain3 = new Chain3(new Chain3.providers.HttpProvider('https://chain3.mytokenpocket.vip'));
+var web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth'));
+var chain3 = new Chain3(new Chain3.providers.HttpProvider('https://chain3.mytokenpocket.vip'));
 
 
-let _getTypeByStr = typeStr => {
-    let reTrim = /^\s+|\s+$/g;
+var _getTypeByStr = function (typeStr) {
+    var reTrim = /^\s+|\s+$/g;
     typeStr += '';
     typeStr = typeStr.replace(reTrim, '').toLowerCase();
     return TYPE_MAP[typeStr] || typeStr;
 }
 
-let _getCallbackName = () => {
+var _getCallbackName = function () {
     return 'tp_callback_' + (new Date).getTime();
 }
 
-let tp = {
-    version: '2.0.5',
-    isConnected: () => {
+var tp = {
+    version: '2.0.6',
+    isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
-    eosTokenTransfer: params => {
+    eosTokenTransfer: function (params) {
         // 必填项
         if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
             throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = result => {
-
+            window[tpCallbackFun] = function (result) {
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
-
                 catch (e) {
                     reject(e);
                 }
@@ -61,14 +59,14 @@ let tp = {
             
         })
     },
-    pushEosAction: params => {
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+    pushEosAction: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = result => {
+            window[tpCallbackFun] = function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
 
@@ -86,14 +84,14 @@ let tp = {
             }
         });
     },
-    getAppInfo: () => {
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+    getAppInfo: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = result => {
+            window[tpCallbackFun] = function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
 
@@ -111,19 +109,19 @@ let tp = {
             }
         });
     },
-    getEosBalance: params => {
+    getEosBalance: function (params) {
 
         if (!params.account || !params.contract || !params.symbol) {
             throw new Error('missing params; "account", "contract", "symbol" is required ');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
                 catch(e) {
@@ -142,19 +140,19 @@ let tp = {
 
 
     },
-    getEosAccountInfo: params => {
+    getEosAccountInfo: function (params) {
 
         if (!params.account) {
             throw new Error('missing params; "account" is required ');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
                 catch(e) {
@@ -171,7 +169,7 @@ let tp = {
             }
         });
     },
-    moacTokenTransfer: params => {
+    moacTokenTransfer: function (params) {
 
         if (!params.from || !params.to || !params.amount || !params.gasLimit || !params.tokenName) {
             throw new Error('missing params; "from", "to", "amount", "gasLimit", "tokenName" is required ');
@@ -181,13 +179,13 @@ let tp = {
             throw new Error('missing params; "decimal" is required ');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
                 catch(e) {
@@ -206,14 +204,14 @@ let tp = {
         });
         
     },
-    getDeviceId: () => {
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+    getDeviceId: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     if (res.device_id) {
                         res.data = res.device_id;
                     }
@@ -234,23 +232,23 @@ let tp = {
         });
         
     },
-    getWalletList: type => {
+    getWalletList: function (type) {
         type = _getTypeByStr(type);
 
         if (!type) {
             throw new Error('type invalid');
         }
 
-        let params = {type};
+        var params = {type: type};
         
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] = result => {
+            window[tpCallbackFun] = function (result) {
 
                 try {
                     
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
                 catch(e) {
@@ -270,12 +268,12 @@ let tp = {
 
        
     },
-    signTransaction: params => {
+    signTransaction: function (params) {
         if (!params.from || !params.to || !params.gasPrice || !params.gasLimit || !params.type || params.data === undefined) {
             throw new Error('missing params');
         }
 
-        let type = _getTypeByStr(params.type);
+        var type = _getTypeByStr(params.type);
 
         // 暂不支持井通
         if (!type || type === '2') {
@@ -290,13 +288,13 @@ let tp = {
             throw new Error('to address is invalid');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
             // callback
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     if (res.rawTransaction) {
                         res.data = res.rawTransaction;
                     }
@@ -322,7 +320,7 @@ let tp = {
             throw new Error('missing params')
         }
 
-        let type = _getTypeByStr(params.type);
+        var type = _getTypeByStr(params.type);
         if (!type) {
             throw new Error('type invalid');
         }
@@ -339,34 +337,34 @@ let tp = {
             throw new Error('contractAddress address is invalid');
         }
 
-        let inputData = '';
-        // let gas = params.gasPrice || '';
-        const abi = [{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}];
+        var inputData = '';
+        // var gas = params.gasPrice || '';
+        var abi = [{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}];
         
 
         // 以太坊
         if (params.type === '1') {
             
-            let contractInstance = new web3.eth.Contract(abi, this.contractAddress);
+            var contractInstance = new web3.eth.Contract(abi, this.contractAddress);
             inputData = contractInstance.methods.transfer(params.to, params.value).encodeABI();
         }
         // 墨客
         else if (params.type === '3') {
-            let contract = new chain3.mc.contract(abi);
-            let contractInstance = contract.at(this.contractAddress);
+            var contract = new chain3.mc.contract(abi);
+            var contractInstance = contract.at(this.contractAddress);
             inputData = contractInstance.transfer.getData(params.to, params.value);
         }
         else {
             throw new Error('the type is not supported yet');
         }
 
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
             // callback
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
+                    var res = JSON.parse(result);
                     resolve(res);
                 }
                 catch(e) {
@@ -374,7 +372,7 @@ let tp = {
                 }
             }
 
-            let transactionObject = {
+            var transactionObject = {
                 from: params.from,
                 to: params.to,
                 gasPrice: params.gasPrice,
@@ -394,15 +392,15 @@ let tp = {
             }
         });
     },
-    invokeQRScanner: () => {
-        return new Promise((resolve, reject) => {
-            let tpCallbackFun = _getCallbackName();
+    invokeQRScanner: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-            window[tpCallbackFun] =  result => {
+            window[tpCallbackFun] =  function (result) {
 
                 try {
-                    let res = JSON.parse(result);
-                    let data = res.qrResult || '';
+                    var res = JSON.parse(result);
+                    var data = res.qrResult || '';
                     resolve(data);
                 }
                 catch(e) {
@@ -419,15 +417,15 @@ let tp = {
             }
         });
     },
-    shareNewsToSNS: params => {
+    shareNewsToSNS: function (params) {
         
-        let title = params.title || 'TokenPocket 你的通用数字钱包';
-        let description = params.desc || ''; 
-        let url = params.url || 'https://www.mytokenpocket.vip/';
-        let previewImage = params.previewImage || '';
+        var title = params.title || 'TokenPocket 你的通用数字钱包';
+        var description = params.desc || ''; 
+        var url = params.url || 'https://www.mytokenpocket.vip/';
+        var previewImage = params.previewImage || '';
 
 
-        let data = {title, description, url, previewImage};
+        var data = {title: title, description: description, url: url, previewImage: previewImage};
 
         if (window.webkit) {
             window.webkit.messageHandlers.shareNewsToSNS.postMessage({body:{'params': JSON.stringify(data), 'callback':''}});
