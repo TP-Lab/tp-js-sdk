@@ -13,7 +13,7 @@ Javascript SDK for TokenPocket Dapp.
 
 ## tp-eosjs
 
-如果你的DApp只运行再EOS底层，请用EOS版本的SDK，体积更小 [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
+如果你的DApp只运行在EOS底层，请用EOS版本的SDK，体积更小 [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
 
 If your Dapp is only build for EOS, please use this: [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
 
