@@ -13,6 +13,8 @@ Javascript SDK for TokenPocket Dapp.
 
 ## tp-eosjs
 
+如果你的DApp只运行再EOS底层，请用EOS版本的SDK，体积更小 [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
+
 If your Dapp is only build for EOS, please use this: [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
 
 
@@ -24,7 +26,12 @@ npm install tp-js-sdk
 
 ## Usage
 
+请在TokenPocket中使用该SDK。
+通过 APP中 关于我们->点击logo 8次开启 开发者模式，开启后可以在 发现-> Dapp Store 添加自定义URL
+
 Open your site in TokenPocket as a Dapp.
+In About Page, click the logo 8 times to open the develop mode. Then you can add your url in Dapp Store.
+
 
 ```javascript
 var tp = require('tp-js-sdk')
@@ -183,34 +190,51 @@ tp.getEosBalance({
 }
 ```
 
-#### 1.4 tp.getEosAccountInfo
+#### 1.4 tp.getTableRows
+
+获取合约内table数据
 
 ```javascript
-tp.getEosAccountInfo(params)
+tp.getTableRows(params)
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `account`: `String`
+
+- `json`: `Boolean`
+- `code`: `String`
+- `scope`: `String`
+- `table`: `String`
+- `table_key`: `Stirng`
+- `lower_bound`: `String`
+- `upper_bound`: `String`
+- `limit`: `Number`
+
 
 ##### Returns
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `Object`- Standard account object
+- `data`: `Object`
+    - `rows`: `Array`
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getEosAccountInfo({
-    account: 'itokenpocket'
+tp.getTableRows({
+    json: true,
+    code: 'abcabcabcabc',
+    scope: 'abcabcabcabc',
+    table: 'table1',
+    lower_bound: '10',
+    limit: 20
 }).then(console.log)
 
 > {
     result: true,
-    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    data:{rows: [{a: 1, b: 'name' }, ...]},
     msg: 'success'
 }
 ```
