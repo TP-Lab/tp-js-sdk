@@ -63,7 +63,8 @@ tp.eosTokenTransfer(params)
 
 - `result`: `Boolean`
 
-- `data`: `String`- txhash
+- `data`: `Object`
+    - `transactionId` : `Stirng`
 
 ##### Example
 
@@ -80,7 +81,7 @@ tp.eosTokenTransfer({
 
 > {
     result: true,
-    data: '7a505551a56fb1bbd2619d9e323772ee9d9ed12c54a8e19c381c559c949fed23'
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
 }
 ```
 
@@ -101,8 +102,8 @@ tp.pushEosAction(params)
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `String`- txhash
-- `msg`: `String`
+- `data`: `Object`
+    - `transactionId` : `Stirng`
 
 ##### Example
 
@@ -145,7 +146,7 @@ tp.pushEosAction({
 
 > {
     result: true,
-    data: '7a505551a56fb1bbd2619d9e323772ee9d9ed12c54a8e19c381c559c949fed23'
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
 }
 ```
 
@@ -263,7 +264,8 @@ tp.moacTokenTransfer(params)
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `String`- txhash
+- `data`: `Object`
+    - `transactionId` : `Stirng`
 
 ##### Example
 
@@ -280,8 +282,7 @@ tp.moacTokenTransfer({
 
 > {
     result: true,
-    data: '0xe1063e225d4365b79c30132077e82777c0966844f545ddecc017965c0b551f7e',
-    msg: 'success'
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
 }
 ```
 

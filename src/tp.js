@@ -26,7 +26,7 @@ var _getCallbackName = function () {
 }
 
 var tp = {
-    version: '2.1.1',
+    version: '2.1.2',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
