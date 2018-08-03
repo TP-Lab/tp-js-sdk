@@ -26,7 +26,7 @@ var _getCallbackName = function () {
 }
 
 var tp = {
-    version: '2.1.2',
+    version: '2.1.3',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -36,12 +36,19 @@ var tp = {
             throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
         }
 
+        params.amount = '' + params.amount;
+
         return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
                 try {
                     var res = JSON.parse(result);
+
+                    if (res.result && !res.data.transactionId) {
+                        res.data = {transactionId: res.data};
+                    }
+
                     resolve(res);
                 }
                 catch (e) {
@@ -67,6 +74,9 @@ var tp = {
 
                 try {
                     var res = JSON.parse(result);
+                    if (res.result && !res.data.transactionId) {
+                        res.data = {transactionId: res.data};
+                    }
                     resolve(res);
                 }
 
