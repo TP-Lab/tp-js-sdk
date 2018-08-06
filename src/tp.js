@@ -22,11 +22,12 @@ var _getTypeByStr = function (typeStr) {
 }
 
 var _getCallbackName = function () {
-    return 'tp_callback_' + (new Date).getTime();
+    var ramdom = parseInt(Math.random()*100000);
+    return 'tp_callback_' + new Date().getTime() + ramdom;
 }
 
 var tp = {
-    version: '2.1.3',
+    version: '2.1.4',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
