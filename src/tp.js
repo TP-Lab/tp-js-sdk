@@ -7,7 +7,6 @@ var TYPE_MAP = {
     jingtum: '2',
     moac: '3',
     eos: '4'
-
 };
 
 var web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/eth'));
@@ -27,7 +26,7 @@ var _getCallbackName = function () {
 }
 
 var tp = {
-    version: '2.1.4',
+    version: '2.1.5',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -43,6 +42,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
 
@@ -72,7 +72,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     if (res.result && !res.data.transactionId) {
@@ -100,7 +100,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -130,7 +130,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -156,7 +156,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
 
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -218,7 +218,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -244,7 +244,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     if (res.device_id) {
@@ -280,7 +280,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] = function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     
                     var res = JSON.parse(result);
@@ -327,7 +327,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
             // callback
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     if (res.rawTransaction) {
@@ -397,7 +397,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
             // callback
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     resolve(res);
@@ -432,7 +432,7 @@ var tp = {
             var tpCallbackFun = _getCallbackName();
        
             window[tpCallbackFun] =  function (result) {
-
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
                 try {
                     var res = JSON.parse(result);
                     var data = res.qrResult || '';
