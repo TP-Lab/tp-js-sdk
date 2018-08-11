@@ -26,7 +26,7 @@ var _getCallbackName = function () {
 }
 
 var tp = {
-    version: '2.1.5',
+    version: '2.1.6',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || window.webkit);
     },
@@ -175,35 +175,34 @@ var tp = {
             }
         });
     },
-    // getEosAccountInfo: function (params) {
+    getEosAccountInfo: function (params) {
+        if (!params.account) {
+            throw new Error('missing params; "account" is required ');
+        }
 
-    //     if (!params.account) {
-    //         throw new Error('missing params; "account" is required ');
-    //     }
-
-    //     return new Promise(function (resolve, reject) {
-    //         var tpCallbackFun = _getCallbackName();
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
        
-    //         window[tpCallbackFun] =  function (result) {
-
-    //             try {
-    //                 var res = JSON.parse(result);
-    //                 resolve(res);
-    //             }
-    //             catch(e) {
-    //                 reject(e);
-    //             }
-    //         }
-    //          // android
-    //         if (window.TPJSBrigeClient) {
-    //             window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
-    //         }
-    //         // ios
-    //         if (window.webkit) {
-    //             window.webkit.messageHandlers.getEosAccountInfo.postMessage({body:{'params': JSON.stringify(params), 'callback':tpCallbackFun}});
-    //         }
-    //     });
-    // },
+            window[tpCallbackFun] =  function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig,"");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                }
+                catch(e) {
+                    reject(e);
+                }
+            }
+             // android
+            if (window.TPJSBrigeClient) {
+                window.TPJSBrigeClient.callMessage('getEosAccountInfo', JSON.stringify(params), tpCallbackFun);
+            }
+            // ios
+            if (window.webkit) {
+                window.webkit.messageHandlers.getEosAccountInfo.postMessage({body:{'params': JSON.stringify(params), 'callback':tpCallbackFun}});
+            }
+        });
+    },
     moacTokenTransfer: function (params) {
 
         if (!params.from || !params.to || !params.amount || !params.gasLimit || !params.tokenName) {
