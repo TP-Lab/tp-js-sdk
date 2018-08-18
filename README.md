@@ -288,9 +288,9 @@ tp.getEosTransactionRecord(params)
 ##### Parameters
 
 `params`- `Object`:
+- `account`: `String`
 - `start`: `Number` - default: 0
 - `count`: `Number` - default: 10
-- `account`: `String`
 - `sort`: `String` - 'desc | asc'  default: desc
 - `token`: `String` - optional
 - `contract`: `String` - optional
@@ -517,7 +517,7 @@ tp.getWalletList(params)
 
 ##### Parameters
 
-`params`- `String|Number` - `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS
+`params`- `String|Number` - `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS , `enu|5` for ENU
 
 ##### Returns
 
@@ -591,7 +591,7 @@ tp.shareNewsToSNS({
 ```
 
 
-#### 3.4 invokeQRScanner
+#### 3.5 invokeQRScanner
 ```javascript
 tp.invokeQRScanner()
 ```
@@ -607,6 +607,90 @@ tp.invokeQRScanner().then(console.log)
 
 > "abcdefg"
 ```
+
+#### 3.6 getCurrentWallet
+
+获取用户当前钱包
+
+`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU
+
+```javascript
+tp.getCurrentWallet()
+```
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `wallet`: `Object`
+        - `name`: `String`
+        - `address`: `String`
+        - `blockchain_id`: `Number`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getCurrentWallet().then(console.log)
+
+> {
+    result: true,
+    data: {
+        wallet: {
+            name: 'itokenpocket',
+            address: 'EOSaaaaaaaaabbbbbbbb',
+            blockchain_id: 4
+        }
+    },
+    msg: 'success'
+}
+```
+
+
+#### 3.7 getWallets
+
+获取用户钱包列表
+
+`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU
+
+```javascript
+tp.getWallets()
+```
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Array`
+    - `address`: `String`
+    - `name`: `String`
+    - `blockchain_id`: `Number`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getWallets().then(console.log)
+
+> {
+    result: true,
+    data: [
+        {
+            name: 'itokenpocket',
+            address: 'EOSaaaaaaaaabbbbbbbb',
+            blockchain_id: 4
+        },
+        {
+            name: 'ethwallet11',
+            address: '0x40e5A542087FA4b966209707177b103d158Fd3A4',
+            blockchain_id: 1
+        }
+    ],
+    msg: 'success'
+}
+```
+
 
 
 ### 4.ENU
@@ -858,9 +942,9 @@ tp.getEnuTransactionRecord(params)
 ##### Parameters
 
 `params`- `Object`:
+- `account`: `String`
 - `start`: `Number` - default: 0
 - `count`: `Number` - default: 10
-- `account`: `String`
 - `sort`: `String` - 'desc | asc'  default: desc
 - `token`: `String` - optional
 - `contract`: `String` - optional
