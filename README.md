@@ -55,7 +55,8 @@ tp.eosTokenTransfer(params)
 - `tokenName`: `String`
 - `precision`: `Number|String`
 - `contract`: `String`
-- `memo`: `String`- (optional)
+- `memo`: `String`- (optional),
+- `address`: `String` - public key for current account
 
 ##### Returns
 
@@ -76,7 +77,8 @@ tp.eosTokenTransfer({
     tokenName: 'EOS',
     precision: 4,
     contract: 'eosio.token',
-    memo: 'test'
+    memo: 'test',
+    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa'
 }).then(console.log)
 
 > {
@@ -97,6 +99,8 @@ tp.pushEosAction(params)
 
 `params`- `Object`:
 - `actions`: `Array`- Standard eos actions
+- `account`: `String` - current account
+- `address`: `String` - public key for current account
 
 ##### Returns
 
@@ -141,7 +145,9 @@ tp.pushEosAction({
                 transfer: 0
             }
         }
-    ]
+    ],
+    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa',
+    account: 'aaaabbbbcccc'
 }).then(console.log)
 
 > {
@@ -191,12 +197,14 @@ tp.getEosBalance({
 }
 ```
 
-#### 1.4 tp.getTableRows
+#### 1.4 tp.getTableRows (Deprecated)
+
+#### 1.5 tp.getEosTableRows
 
 获取合约内table数据
 
 ```javascript
-tp.getTableRows(params)
+tp.getEosTableRows(params)
 ```
 
 ##### Parameters
@@ -239,6 +247,102 @@ tp.getTableRows({
     msg: 'success'
 }
 ```
+
+#### 1.6 tp.getEosAccountInfo
+```javascript
+tp.getEosAccountInfo(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `account`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEosAccountInfo({
+    account: 'itokenpocket'
+}).then(console.log)
+
+> {
+    result: true,
+    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    msg: 'success'
+}
+```
+
+#### 1.7 tp.getEosTransactionRecord
+
+```javascript
+tp.getEosTransactionRecord(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `start`: `Number` - default: 0
+- `count`: `Number` - default: 10
+- `account`: `String`
+- `sort`: `String` - 'desc | asc'  default: desc
+- `token`: `String` - optional
+- `contract`: `String` - optional
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEosTransactionRecord({
+    start: 10,
+    count: 20,
+    account: 'itokenpocket',
+    token: 'EOS',
+    sort: 'desc',
+    contract: 'eosio.token'
+}).then(console.log)
+
+> {
+    result: true,
+    data: [{
+        "title": "",
+        "comment": "",
+        "hid": "4bd63a191a1e3e00f13fe6df55d0c08803800a5e7cd0d0b15c92d52b3c42285e",
+        "producer": "bp4",
+        "timestamp": 1531578890,
+        "action_index": 2,
+        "account": "eosio",
+        "name": "delegatebw",
+        "from": "tokenpocket1",
+        "to": "clementtes43",
+        "blockNum": 4390980,
+        "quantity": "0.2000000000 EOS",
+        "count": "0.2000000000",
+        "symbol": "EOS",
+        "memo": "",
+        "maximum_upply": "",
+        "ram_price": "",
+        "bytes": "",
+        "status": 1,
+        "data": ""，
+        real_value:"0.2000000000"
+        }, ...],
+    msg: 'success'
+}
+```
+
 
 
 ### 2. ETH & MOAC
@@ -504,4 +608,308 @@ tp.invokeQRScanner().then(console.log)
 > "abcdefg"
 ```
 
+
+### 4.ENU
+
+#### 4.1 tp.enuTokenTransfer
+
+```javascript
+tp.enuTokenTransfer(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `amount`: `String|Number`
+- `tokenName`: `String`
+- `precision`: `Number|String`
+- `contract`: `String`
+- `memo`: `String`- (optional),
+- `address`: `String` - public key for current account
+
+##### Returns
+
+`Object`:
+
+- `result`: `Boolean`
+
+- `data`: `Object`
+    - `transactionId` : `Stirng`
+
+##### Example
+
+```javascript
+tp.enuTokenTransfer({
+    from: 'abcabcabcabc',
+    to: 'itokenpocket',
+    amount: '0.0100',
+    tokenName: 'ENU',
+    precision: 4,
+    contract: 'enu.token',
+    memo: 'test',
+    address: 'E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
+}
+```
+
+
+
+#### 4.2 tp.pushEnuAction
+
+```javascript
+tp.pushEnuAction(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `actions`: `Array`- Standard enu actions
+- `account`: `String` - current account
+- `address`: `String` - public key for current account
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `transactionId` : `Stirng`
+
+##### Example
+
+```javascript
+tp.pushEnuAction({
+    actions: [
+        {
+            account: 'enu.token',
+            name: 'transfer',
+            authorization: [{
+                actor: 'aaaabbbbcccc',
+                permission: 'active'
+            }],
+            data: {
+                from: 'aaaabbbbcccc',
+                to: 'itokenpocket',
+                quantity: '1.3000 ENU',
+                memo: 'something to say'
+            }
+         },
+         {
+            account: "enumivo",
+            name: "delegatebw",
+            authorization: [
+                {
+                actor: 'aaaabbbbcccc',
+                permission: "active"
+                }
+            ],
+            data: {
+                from: 'aaaabbbbcccc',
+                receiver: 'itokenpocket',
+                stake_net_quantity: "0.0100 ENU",
+                stake_cpu_quantity: "0.0100 ENU",
+                transfer: 0
+            }
+        }
+    ],
+    address: 'E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa',
+    account: 'aaaabbbbcccc'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
+}
+```
+
+
+#### 4.3 tp.getEnuBalance
+
+```javascript
+tp.getEnuBalance(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `account`: `String`
+- `contract`: `String`
+- `symbol`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `symbol`: `String`
+    - `balance`: `String`
+    - `contract`: `String`
+    - `account`: `String`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEnuBalance({
+    account: 'itokenpocket',
+    contract: 'enu.token',
+    tokenName: 'ENU'
+}).then(console.log)
+
+> {
+    result: true,
+    data:{"symbol":"ENU","balance":"["142.2648 ENU"]","contract":"enu.token","account":"itokenpocket"},
+    msg: 'success'
+}
+```
+
+
+#### 4.4 tp.getEnuTableRows
+
+获取合约内table数据
+
+```javascript
+tp.getEnuTableRows(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+
+- `json`: `Boolean`
+- `code`: `String`
+- `scope`: `String`
+- `table`: `String`
+- `table_key`: `Stirng`
+- `lower_bound`: `String`
+- `upper_bound`: `String`
+- `limit`: `Number`
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `rows`: `Array`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getTableRows({
+    json: true,
+    code: 'abcabcabcabc',
+    scope: 'abcabcabcabc',
+    table: 'table1',
+    lower_bound: '10',
+    limit: 20
+}).then(console.log)
+
+> {
+    result: true,
+    data:{rows: [{a: 1, b: 'name' }, ...]},
+    msg: 'success'
+}
+```
+
+#### 4.5 tp.getEnuAccountInfo
+```javascript
+tp.getEnuAccountInfo(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `account`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEnuAccountInfo({
+    account: 'itokenpocket'
+}).then(console.log)
+
+> {
+    result: true,
+    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    msg: 'success'
+}
+```
+
+#### 4.6 tp.getEnuTransactionRecord
+
+```javascript
+tp.getEnuTransactionRecord(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `start`: `Number` - default: 0
+- `count`: `Number` - default: 10
+- `account`: `String`
+- `sort`: `String` - 'desc | asc'  default: desc
+- `token`: `String` - optional
+- `contract`: `String` - optional
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`- Standard account object
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.getEnuTransactionRecord({
+    start: 10,
+    count: 20,
+    account: 'itokenpocket',
+    token: 'ENU',
+    sort: 'desc',
+    contract: 'enu.token'
+}).then(console.log)
+
+> {
+    result: true,
+    data: [{
+        "title": "",
+        "comment": "",
+        "hid": "4bd63a191a1e3e00f13fe6df55d0c08803800a5e7cd0d0b15c92d52b3c42285e",
+        "producer": "bp4",
+        "timestamp": 1531578890,
+        "action_index": 2,
+        "account": "enumivo",
+        "name": "delegatebw",
+        "from": "tokenpocket1",
+        "to": "clementtes43",
+        "blockNum": 4390980,
+        "quantity": "0.2000000000 ENU",
+        "count": "0.2000000000",
+        "symbol": "ENU",
+        "memo": "",
+        "maximum_upply": "",
+        "ram_price": "",
+        "bytes": "",
+        "status": 1,
+        "data": ""，
+        real_value:"0.2000000000"
+        }, ...],
+    msg: 'success'
+}
+```
 
