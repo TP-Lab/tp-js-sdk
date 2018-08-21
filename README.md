@@ -63,6 +63,7 @@ console.log(tp.isConnected());
     - [3.5 tp.invokeQRScanner](#35-tpinvokeqrscanner)
     - [3.6 tp.getCurrentWallet](#36-tpgetcurrentwallet)
     - [3.7 tp.getWallets](#37-tpgetwallets)
+    - [3.8 tp.sign](#38-tpsign)
 - [4.ENU](#4enu)
     - [4.1 tp.enuTokenTransfer](#41-tpenutokentransfer)
     - [4.2 tp.pushEnuAction](#42-tppushenuaction)
@@ -722,6 +723,48 @@ tp.getWallets().then(console.log)
             blockchain_id: 1
         }
     ],
+    msg: 'success'
+}
+```
+
+#### 3.8 tp.sign
+
+```javascript
+tp.sign(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `appid`: `String`
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `deviceId` : `Stirng`
+    - `appid` : `String`
+    - `timestamp` : `Number`
+    - `sign` : `String`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.sign({
+    appid: 'swEmwEQ666'
+}).then(console.log)
+
+> {
+    result: true,
+    data: {
+        deviceId: 'EBEFWA-AFEBEf-eeee-aaaaa-eeeeea23d',
+        appid: 'swEmwEQ666',
+        timestamp: 1534735280,
+        sign: '713efewwfegwohvnqooyge38h4n421ll3fwzib9e3q00'
+    },
     msg: 'success'
 }
 ```

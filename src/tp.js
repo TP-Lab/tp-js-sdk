@@ -38,7 +38,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '2.1.6',
+    version: '2.2.1',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -173,6 +173,24 @@ var tp = {
                 }
             }
             _sendTpRequest('getCurrentWallet', '', tpCallbackFun);
+        });
+    },
+    sign: function(params) {
+
+        return new Promise(function(resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function(result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('sign', JSON.stringify(params), tpCallbackFun);
         });
     },
     // eos
@@ -473,7 +491,7 @@ var tp = {
         })
     },
 
-    // moac
+    // eth moac
     moacTokenTransfer: function(params) {
 
         if (!params.from || !params.to || !params.amount || !params.gasLimit || !params.tokenName) {
@@ -502,7 +520,6 @@ var tp = {
         });
 
     },
-
     signTransaction: function(params) {
         if (!params.from || !params.to || !params.gasPrice || !params.gasLimit || !params.type || params.data === undefined) {
             throw new Error('missing params');
@@ -543,7 +560,7 @@ var tp = {
 
         });
     },
-    makeTransaction(params) {
+    makeTransaction: function(params) {
         if (!params.from || !params.to || !params.contractAddress || !params.gasPrice || !params.value || !params.type) {
             throw new Error('missing params')
         }
