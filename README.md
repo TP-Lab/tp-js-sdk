@@ -9,13 +9,14 @@ Javascript SDK for TokenPocket Dapp.
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
 
+基于 EOS 或 ENU 底层的 DApp 请使用:
+If your Dapp is build for EOS or ENU, please use this:
 
+ [tp-eosjs](https://github.com/TP-Lab/tp-eosjs) 
 
-## tp-eosjs
+ [tp-enujs](https://github.com/TP-Lab/tp-enujs)
 
-如果你的DApp只运行在EOS底层，请用EOS版本的SDK，体积更小 [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
-
-If your Dapp is only build for EOS, please use this: [tp-eosjs](https://github.com/TP-Lab/tp-eosjs)
+体积更小，支持browser 直接引入
 
 
 ## Installation
@@ -31,8 +32,6 @@ npm install tp-js-sdk
 
 Open your site in TokenPocket as a Dapp.
 In About Page, click the logo 8 times to open the develop mode. Then you can add your url in Dapp Store.
-
-
 
 
 
