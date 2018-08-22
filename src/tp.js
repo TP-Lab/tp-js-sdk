@@ -38,7 +38,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '2.2.0',
+    version: '2.2.1',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },

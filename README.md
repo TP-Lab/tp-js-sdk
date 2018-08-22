@@ -658,10 +658,9 @@ tp.getCurrentWallet()
 `Object`:
 - `result`: `Boolean`
 - `data`: `Object`
-    - `wallet`: `Object`
-        - `name`: `String`
-        - `address`: `String`
-        - `blockchain_id`: `Number`
+    - `name`: `String`
+    - `address`: `String`
+    - `blockchain_id`: `Number`
 - `msg`: `String`
 
 ##### Example
@@ -672,11 +671,9 @@ tp.getCurrentWallet().then(console.log)
 > {
     result: true,
     data: {
-        wallet: {
-            name: 'itokenpocket',
-            address: 'EOSaaaaaaaaabbbbbbbb',
-            blockchain_id: 4
-        }
+        name: 'itokenpocket',
+        address: 'EOSaaaaaaaaabbbbbbbb',
+        blockchain_id: 4
     },
     msg: 'success'
 }
