@@ -61,6 +61,9 @@ console.log(tp.isConnected());
     - [3.6 tp.getCurrentWallet](#36-tpgetcurrentwallet)
     - [3.7 tp.getWallets](#37-tpgetwallets)
     - [3.8 tp.sign](#38-tpsign)
+    - [3.9 tp.back](#39-tpback)
+    - [3.11 tp.close](#311-tpclose)
+    - [3.10 tp.fullScreen](#310-tpfullscreen)
 - [4.ENU](#4enu)
     - [4.1 tp.enuTokenTransfer](#41-tpenutokentransfer)
     - [4.2 tp.pushEnuAction](#42-tppushenuaction)
@@ -763,6 +766,53 @@ tp.sign({
 }
 ```
 
+
+#### 3.9 tp.back
+
+```javascript
+tp.back()
+```
+
+##### Example
+
+```javascript
+tp.back()
+
+```
+
+#### 3.11 tp.close
+
+```javascript
+tp.close()
+```
+
+##### Example
+
+```javascript
+tp.close()
+
+```
+
+
+#### 3.10 tp.fullScreen
+
+```javascript
+tp.fullScreen(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `fullScreen`: `Number` 1 - fullScreen,  0 - cancel
+
+
+##### Example
+
+```javascript
+tp.fullScreen({
+    fullScreen: 0
+})
+```
 
 
 ### 4.ENU

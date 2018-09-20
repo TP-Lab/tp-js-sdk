@@ -38,7 +38,7 @@ var _sendTpRequest = function(methodName, params, callback) {
 }
 
 var tp = {
-    version: '2.3.0',
+    version: '2.4.0',
     isConnected: function() {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -192,6 +192,15 @@ var tp = {
 
             _sendTpRequest('sign', JSON.stringify(params), tpCallbackFun);
         });
+    },
+    back: function() {
+        _sendTpRequest('back', '', '');
+    },
+    fullScreen: function(params) {
+        _sendTpRequest('fullScreen', JSON.stringify(params), '');
+    },
+    close: function() {
+        _sendTpRequest('close', '', '');
     },
     // eos
     eosTokenTransfer: function(params) {
