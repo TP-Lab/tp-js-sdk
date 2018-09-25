@@ -6,7 +6,7 @@ Javascript SDK for TokenPocket Dapp.
 
 * [TokenPocket Website](https://www.mytokenpocket.vip/)
 
-* [提交你的DApp (Submit your DApp)] (http://tokenpocket.mikecrm.com/v5QSKjj)
+* [提交你的DApp (Submit your DApp)](http://tokenpocket.mikecrm.com/v5QSKjj)
 
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
