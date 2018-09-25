@@ -1,5 +1,8 @@
 # tp-js-sdk
 
+* TokenPocket 已经兼容 Scatter，直接在钱包内 Dapp浏览器 内输入URL即可使用。
+* TokenPocket is already compatible with Scatter. You can input your URL in the Dapp browser inside the TP Wallet. 
+
 Javascript SDK for TokenPocket Dapp.
 
 * [Github](https://github.com/TP-Lab/tp-js-sdk)
