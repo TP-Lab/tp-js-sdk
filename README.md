@@ -14,14 +14,19 @@ Javascript SDK for TokenPocket Dapp.
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
 
+## EOS or ENU
+
 基于 EOS 或 ENU 底层的 DApp 请使用:
 If your Dapp is build for EOS or ENU, please use this:
 
+### EOS:
  [tp-eosjs](https://github.com/TP-Lab/tp-eosjs) 
 
+### ENU:
  [tp-enujs](https://github.com/TP-Lab/tp-enujs)
 
 体积更小，支持browser 直接引入
+With smaller size and browser supported.
 
 
 ## Installation
