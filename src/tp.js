@@ -14,39 +14,44 @@ var web3 = new Web3(new Web3.providers.HttpProvider('https://api.myetherapi.com/
 var chain3 = new Chain3(new Chain3.providers.HttpProvider('https://chain3.mytokenpocket.vip'));
 
 
-var _getTypeByStr = function(typeStr) {
+var _getTypeByStr = function (typeStr) {
     var reTrim = /^\s+|\s+$/g;
     typeStr += '';
     typeStr = typeStr.replace(reTrim, '').toLowerCase();
     return TYPE_MAP[typeStr] || typeStr;
 }
 
-var _getCallbackName = function() {
+var _getCallbackName = function () {
     var ramdom = parseInt(Math.random() * 100000);
     return 'tp_callback_' + new Date().getTime() + ramdom;
 }
 
 
-var _sendTpRequest = function(methodName, params, callback) {
+var _sendTpRequest = function (methodName, params, callback) {
     if (window.TPJSBrigeClient) {
         window.TPJSBrigeClient.callMessage(methodName, params, callback);
     }
     // ios
     if (window.webkit) {
-        window.webkit.messageHandlers[methodName].postMessage({ body: { 'params': params, 'callback': callback } });
+        window.webkit.messageHandlers[methodName].postMessage({
+            body: {
+                'params': params,
+                'callback': callback
+            }
+        });
     }
 }
 
 var tp = {
-    version: '2.4.0',
-    isConnected: function() {
+    version: '2.4.1',
+    isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
-    invokeQRScanner: function() {
-        return new Promise(function(resolve, reject) {
+    invokeQRScanner: function () {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -61,23 +66,28 @@ var tp = {
 
         });
     },
-    shareNewsToSNS: function(params) {
+    shareNewsToSNS: function (params) {
         var title = params.title || 'TokenPocket 你的通用数字钱包';
         var description = params.desc || '';
         var url = params.url || 'https://www.mytokenpocket.vip/';
         var previewImage = params.previewImage || '';
 
 
-        var data = { title: title, description: description, url: url, previewImage: previewImage };
+        var data = {
+            title: title,
+            description: description,
+            url: url,
+            previewImage: previewImage
+        };
 
         _sendTpRequest('shareNewsToSNS', JSON.stringify(data), '');
 
     },
-    getAppInfo: function() {
-        return new Promise(function(resolve, reject) {
+    getAppInfo: function () {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -90,11 +100,11 @@ var tp = {
 
         });
     },
-    getDeviceId: function() {
-        return new Promise(function(resolve, reject) {
+    getDeviceId: function () {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -112,19 +122,21 @@ var tp = {
         });
 
     },
-    getWalletList: function(type) {
+    getWalletList: function (type) {
         type = _getTypeByStr(type);
 
         if (!type) {
             throw new Error('type invalid');
         }
 
-        var params = { type: type };
+        var params = {
+            type: type
+        };
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
 
@@ -138,11 +150,11 @@ var tp = {
 
         });
     },
-    getWallets: function() {
-        return new Promise(function(resolve, reject) {
+    getWallets: function () {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -156,11 +168,11 @@ var tp = {
 
         });
     },
-    getCurrentWallet: function() {
-        return new Promise(function(resolve, reject) {
+    getCurrentWallet: function () {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
             // callback
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -175,12 +187,12 @@ var tp = {
             _sendTpRequest('getCurrentWallet', '', tpCallbackFun);
         });
     },
-    sign: function(params) {
+    sign: function (params) {
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -193,17 +205,17 @@ var tp = {
             _sendTpRequest('sign', JSON.stringify(params), tpCallbackFun);
         });
     },
-    back: function() {
+    back: function () {
         _sendTpRequest('back', '', '');
     },
-    fullScreen: function(params) {
+    fullScreen: function (params) {
         _sendTpRequest('fullScreen', JSON.stringify(params), '');
     },
-    close: function() {
+    close: function () {
         _sendTpRequest('close', '', '');
     },
     // eos
-    eosTokenTransfer: function(params) {
+    eosTokenTransfer: function (params) {
         // 必填项
         if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
             throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
@@ -211,16 +223,18 @@ var tp = {
 
         params.amount = '' + params.amount;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
 
                     if (res.result && !res.data.transactionId) {
-                        res.data = { transactionId: res.data };
+                        res.data = {
+                            transactionId: res.data
+                        };
                     }
 
                     resolve(res);
@@ -232,16 +246,18 @@ var tp = {
             _sendTpRequest('eosTokenTransfer', JSON.stringify(params), tpCallbackFun);
         })
     },
-    pushEosAction: function(params) {
-        return new Promise(function(resolve, reject) {
+    pushEosAction: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
                     if (res.result && !res.data.transactionId) {
-                        res.data = { transactionId: res.data };
+                        res.data = {
+                            transactionId: res.data
+                        };
                     }
                     resolve(res);
                 } catch (e) {
@@ -253,16 +269,16 @@ var tp = {
 
         });
     },
-    getEosBalance: function(params) {
+    getEosBalance: function (params) {
 
         if (!params.account || !params.contract || !params.symbol) {
             throw new Error('missing params; "account", "contract", "symbol" is required ');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -278,11 +294,11 @@ var tp = {
 
 
     },
-    getTableRows: function(params) {
-        return new Promise(function(resolve, reject) {
+    getTableRows: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -295,11 +311,11 @@ var tp = {
             _sendTpRequest('getTableRows', JSON.stringify(params), tpCallbackFun);
         });
     },
-    getEosTableRows: function(params) {
-        return new Promise(function(resolve, reject) {
+    getEosTableRows: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -312,15 +328,15 @@ var tp = {
             _sendTpRequest('getEosTableRows', JSON.stringify(params), tpCallbackFun);
         });
     },
-    getEosAccountInfo: function(params) {
+    getEosAccountInfo: function (params) {
         if (!params.account) {
             throw new Error('missing params; "account" is required ');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -334,7 +350,7 @@ var tp = {
 
         });
     },
-    getEosTransactionRecord: function(params) {
+    getEosTransactionRecord: function (params) {
         // 必填项
         if (!params.account) {
             throw new Error('missing params; "account" is required ');
@@ -343,10 +359,10 @@ var tp = {
         params.count = params.count ? +params.count : 10;
         params.start = params.start ? +params.start : 0;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -360,11 +376,11 @@ var tp = {
 
         })
     },
-    eosAuthSign: function(params) {
-        return new Promise(function(resolve, reject) {
+    eosAuthSign: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -379,7 +395,7 @@ var tp = {
     },
 
     // enu
-    enuTokenTransfer: function(params) {
+    enuTokenTransfer: function (params) {
         // 必填项
         if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
             throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
@@ -387,16 +403,18 @@ var tp = {
 
         params.amount = '' + params.amount;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
 
                     if (res.result && !res.data.transactionId) {
-                        res.data = { transactionId: res.data };
+                        res.data = {
+                            transactionId: res.data
+                        };
                     }
 
                     resolve(res);
@@ -409,16 +427,18 @@ var tp = {
 
         })
     },
-    pushEnuAction: function(params) {
-        return new Promise(function(resolve, reject) {
+    pushEnuAction: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
                     if (res.result && !res.data.transactionId) {
-                        res.data = { transactionId: res.data };
+                        res.data = {
+                            transactionId: res.data
+                        };
                     }
                     resolve(res);
                 } catch (e) {
@@ -430,16 +450,16 @@ var tp = {
 
         });
     },
-    getEnuBalance: function(params) {
+    getEnuBalance: function (params) {
 
         if (!params.account || !params.contract || !params.symbol) {
             throw new Error('missing params; "account", "contract", "symbol" is required ');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -453,11 +473,11 @@ var tp = {
 
 
     },
-    getEnuTableRows: function(params) {
-        return new Promise(function(resolve, reject) {
+    getEnuTableRows: function (params) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -470,15 +490,15 @@ var tp = {
             _sendTpRequest('getEnuTableRows', JSON.stringify(params), tpCallbackFun);
         });
     },
-    getEnuAccountInfo: function(params) {
+    getEnuAccountInfo: function (params) {
         if (!params.account) {
             throw new Error('missing params; "account" is required ');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -490,7 +510,7 @@ var tp = {
             _sendTpRequest('getEnuAccountInfo', JSON.stringify(params), tpCallbackFun);
         });
     },
-    getEnuTransactionRecord: function(params) {
+    getEnuTransactionRecord: function (params) {
         // 必填项
         if (!params.account) {
             throw new Error('missing params; "account" is required ');
@@ -499,10 +519,10 @@ var tp = {
         params.count = params.count ? +params.count : 10;
         params.start = params.start ? +params.start : 0;
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -518,7 +538,24 @@ var tp = {
     },
 
     // eth moac
-    moacTokenTransfer: function(params) {
+    pushMoacTransaction: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('pushMoacTransaction', JSON.stringify(params), tpCallbackFun);
+        });
+    },
+    moacTokenTransfer: function (params) {
 
         if (!params.from || !params.to || !params.amount || !params.gasLimit || !params.tokenName) {
             throw new Error('missing params; "from", "to", "amount", "gasLimit", "tokenName" is required ');
@@ -528,10 +565,10 @@ var tp = {
             throw new Error('missing params; "decimal" is required ');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
 
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -546,7 +583,7 @@ var tp = {
         });
 
     },
-    signTransaction: function(params) {
+    signTransaction: function (params) {
         if (!params.from || !params.to || !params.gasPrice || !params.gasLimit || !params.type || params.data === undefined) {
             throw new Error('missing params');
         }
@@ -566,10 +603,10 @@ var tp = {
             throw new Error('to address is invalid');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
             // callback
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
@@ -586,7 +623,7 @@ var tp = {
 
         });
     },
-    makeTransaction: function(params) {
+    makeTransaction: function (params) {
         if (!params.from || !params.to || !params.contractAddress || !params.gasPrice || !params.value || !params.type) {
             throw new Error('missing params')
         }
@@ -610,7 +647,137 @@ var tp = {
 
         var inputData = '';
         // var gas = params.gasPrice || '';
-        var abi = [{ "constant": false, "inputs": [{ "name": "_spender", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "approve", "outputs": [{ "name": "success", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "totalSupply", "outputs": [{ "name": "", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_from", "type": "address" }, { "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transferFrom", "outputs": [{ "name": "success", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }], "name": "balanceOf", "outputs": [{ "name": "balance", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [{ "name": "_to", "type": "address" }, { "name": "_value", "type": "uint256" }], "name": "transfer", "outputs": [{ "name": "success", "type": "bool" }], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [{ "name": "_owner", "type": "address" }, { "name": "_spender", "type": "address" }], "name": "allowance", "outputs": [{ "name": "remaining", "type": "uint256" }], "payable": false, "stateMutability": "view", "type": "function" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_from", "type": "address" }, { "indexed": true, "name": "_to", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "name": "_owner", "type": "address" }, { "indexed": true, "name": "_spender", "type": "address" }, { "indexed": false, "name": "_value", "type": "uint256" }], "name": "Approval", "type": "event" }];
+        var abi = [{
+            "constant": false,
+            "inputs": [{
+                "name": "_spender",
+                "type": "address"
+            }, {
+                "name": "_value",
+                "type": "uint256"
+            }],
+            "name": "approve",
+            "outputs": [{
+                "name": "success",
+                "type": "bool"
+            }],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [{
+                "name": "",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [{
+                "name": "_from",
+                "type": "address"
+            }, {
+                "name": "_to",
+                "type": "address"
+            }, {
+                "name": "_value",
+                "type": "uint256"
+            }],
+            "name": "transferFrom",
+            "outputs": [{
+                "name": "success",
+                "type": "bool"
+            }],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [{
+                "name": "_owner",
+                "type": "address"
+            }],
+            "name": "balanceOf",
+            "outputs": [{
+                "name": "balance",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [{
+                "name": "_to",
+                "type": "address"
+            }, {
+                "name": "_value",
+                "type": "uint256"
+            }],
+            "name": "transfer",
+            "outputs": [{
+                "name": "success",
+                "type": "bool"
+            }],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [{
+                "name": "_owner",
+                "type": "address"
+            }, {
+                "name": "_spender",
+                "type": "address"
+            }],
+            "name": "allowance",
+            "outputs": [{
+                "name": "remaining",
+                "type": "uint256"
+            }],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "anonymous": false,
+            "inputs": [{
+                "indexed": true,
+                "name": "_from",
+                "type": "address"
+            }, {
+                "indexed": true,
+                "name": "_to",
+                "type": "address"
+            }, {
+                "indexed": false,
+                "name": "_value",
+                "type": "uint256"
+            }],
+            "name": "Transfer",
+            "type": "event"
+        }, {
+            "anonymous": false,
+            "inputs": [{
+                "indexed": true,
+                "name": "_owner",
+                "type": "address"
+            }, {
+                "indexed": true,
+                "name": "_spender",
+                "type": "address"
+            }, {
+                "indexed": false,
+                "name": "_value",
+                "type": "uint256"
+            }],
+            "name": "Approval",
+            "type": "event"
+        }];
 
 
         // 以太坊
@@ -628,10 +795,10 @@ var tp = {
             throw new Error('the type is not supported yet');
         }
 
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
             // callback
-            window[tpCallbackFun] = function(result) {
+            window[tpCallbackFun] = function (result) {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);

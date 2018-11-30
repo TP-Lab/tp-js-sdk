@@ -42,47 +42,11 @@ npm install tp-js-sdk
 Open your site in TokenPocket as a Dapp. Develope and test in Discover -> DappBrowser.
 
 
-
 ```javascript
 var tp = require('tp-js-sdk')
 console.log(tp.isConnected());
 ```
 
-<!-- TOC -->
-
-- [1.EOS](#1eos)
-    - [1.1 tp.eosTokenTransfer](#11-tpeostokentransfer)
-    - [1.2 tp.pushEosAction](#12-tppusheosaction)
-    - [1.3 tp.getEosBalance](#13-tpgeteosbalance)
-    - [1.4 tp.getTableRows (Deprecated)](#14-tpgettablerows-deprecated)
-    - [1.5 tp.getEosTableRows](#15-tpgeteostablerows)
-    - [1.6 tp.getEosAccountInfo](#16-tpgeteosaccountinfo)
-    - [1.7 tp.getEosTransactionRecord](#17-tpgeteostransactionrecord)
-- [2. ETH & MOAC](#2-eth--moac)
-    - [2.1 tp.moacTokenTransfer](#21-tpmoactokentransfer)
-    - [2.2 tp.makeTransaction (Deprecated)](#22-tpmaketransaction-deprecated)
-    - [2.3 tp.signTransaction(Deprecated)](#23-tpsigntransactiondeprecated)
-- [3. COMMON](#3-common)
-    - [3.1 tp.getAppInfo](#31-tpgetappinfo)
-    - [3.2 tp.getWalletList](#32-tpgetwalletlist)
-    - [3.3 tp.getDeviceId](#33-tpgetdeviceid)
-    - [3.4 tp.shareNewsToSNS](#34-tpsharenewstosns)
-    - [3.5 tp.invokeQRScanner](#35-tpinvokeqrscanner)
-    - [3.6 tp.getCurrentWallet](#36-tpgetcurrentwallet)
-    - [3.7 tp.getWallets](#37-tpgetwallets)
-    - [3.8 tp.sign](#38-tpsign)
-    - [3.9 tp.back](#39-tpback)
-    - [3.11 tp.close](#311-tpclose)
-    - [3.10 tp.fullScreen](#310-tpfullscreen)
-- [4.ENU](#4enu)
-    - [4.1 tp.enuTokenTransfer](#41-tpenutokentransfer)
-    - [4.2 tp.pushEnuAction](#42-tppushenuaction)
-    - [4.3 tp.getEnuBalance](#43-tpgetenubalance)
-    - [4.4 tp.getEnuTableRows](#44-tpgetenutablerows)
-    - [4.5 tp.getEnuAccountInfo](#45-tpgetenuaccountinfo)
-    - [4.6 tp.getEnuTransactionRecord](#46-tpgetenutransactionrecord)
-
-<!-- /TOC -->
 
 ### 1.EOS
 
@@ -295,6 +259,7 @@ tp.getTableRows({
 ```
 
 #### 1.6 tp.getEosAccountInfo
+
 ```javascript
 tp.getEosAccountInfo(params)
 ```
@@ -320,7 +285,7 @@ tp.getEosAccountInfo({
 
 > {
     result: true,
-    data:{"account_name":"itokenpocket",..., "is_proxy":0}},
+    data:{"account_name":"itokenpocket",..., "is_proxy":0},
     msg: 'success'
 }
 ```
@@ -510,6 +475,52 @@ tp.signTransaction({
     gasLimit: 60000,
     type: 'eth',
     data: '0xaawefwefwefwefwefef'
+}).then(console.log)
+
+> {
+    result: true,
+    data: '0xe1063e225d4365b79c30132077e82777c0966844f545ddecc017965c0b551f7e'
+}
+```
+
+#### 2.4 tp.pushMoacTransaction
+
+```javascript
+tp.pushMoacTransaction(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `gasPrice`: `String|Number`
+- `gasLimit`: `String|Number`
+- `data`: `String`
+- `value`: `String|Number`- (optional)
+- `chainId`: `Number` - (optional)
+- `via`: `String` - (optional)
+- `shardingFlag`: `Number` - (optional)
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`- txhash
+
+##### Example
+
+```javascript
+tp.pushMoacTransaction({
+    from: '0xaaaaaaa',
+    to: '0xaaaaaab',
+    gasPrice: 100000000,
+    gasLimit: 60000,
+    data: '0xaawefwefwefwefwefef',
+    value: '0.002',
+    chainId: 99,
+    via: '',
+    shardingFlag: 0,
 }).then(console.log)
 
 > {
