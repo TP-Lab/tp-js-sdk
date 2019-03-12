@@ -1,3 +1,62 @@
+# tp-js-sdk
+
+* TokenPocket 已经兼容 Scatter，直接在钱包内 Dapp浏览器 内输入URL即可使用。
+* TokenPocket is already compatible with Scatter. You can input your URL in the Dapp browser inside the TP Wallet. 
+
+Javascript SDK for TokenPocket Dapp.
+
+* [Github](https://github.com/TP-Lab/tp-js-sdk)
+
+* [TokenPocket Website](https://www.mytokenpocket.vip/)
+
+* [提交你的DApp (Submit your DApp)](http://tokenpocket.mikecrm.com/v5QSKjj)
+
+![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
+
+
+## <a name='EOSorENU'></a>EOS or ENU
+
+基于 EOS系 或 ENU 的 DApp 请使用:
+If your Dapp is build for EOS or ENU, please use this:
+
+### <a name='EOS:'></a>EOS:
+ [tp-eosjs](https://github.com/TP-Lab/tp-eosjs) 
+
+### <a name='ENU:'></a>ENU:
+ [tp-enujs](https://github.com/TP-Lab/tp-enujs)
+
+体积更小，支持browser 直接引入
+With smaller size and browser supported.
+
+
+## <a name='Installation'></a>Installation
+
+```bash
+npm install tp-js-sdk
+```
+
+## <a name='Usage'></a>Usage
+
+请在TokenPocket中使用该SDK。 请在发现 -> DApp浏览器中 开发调试
+
+Open your site in TokenPocket as a Dapp. Develope and test in Discover -> DappBrowser.
+
+
+Npm
+```javascript
+var tp = require('tp-js-sdk')
+console.log(tp.isConnected());
+```
+
+Browser
+```html
+<script src="./dist/tp.js"></script>
+<script>
+    console.log(tp.isConnected());
+</script>
+```
+
+
 <!-- vscode-markdown-toc -->
 
 * [Installation](#Installation)
@@ -43,55 +102,6 @@
 	autoSave=true
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
-
-# tp-js-sdk
-
-* TokenPocket 已经兼容 Scatter，直接在钱包内 Dapp浏览器 内输入URL即可使用。
-* TokenPocket is already compatible with Scatter. You can input your URL in the Dapp browser inside the TP Wallet. 
-
-Javascript SDK for TokenPocket Dapp.
-
-* [Github](https://github.com/TP-Lab/tp-js-sdk)
-
-* [TokenPocket Website](https://www.mytokenpocket.vip/)
-
-* [提交你的DApp (Submit your DApp)](http://tokenpocket.mikecrm.com/v5QSKjj)
-
-![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
-
-
-## <a name='EOSorENU'></a>EOS or ENU
-
-基于 EOS 或 ENU 底层的 DApp 请使用:
-If your Dapp is build for EOS or ENU, please use this:
-
-### <a name='EOS:'></a>EOS:
- [tp-eosjs](https://github.com/TP-Lab/tp-eosjs) 
-
-### <a name='ENU:'></a>ENU:
- [tp-enujs](https://github.com/TP-Lab/tp-enujs)
-
-体积更小，支持browser 直接引入
-With smaller size and browser supported.
-
-
-## <a name='Installation'></a>Installation
-
-```bash
-npm install tp-js-sdk
-```
-
-## <a name='Usage'></a>Usage
-
-请在TokenPocket中使用该SDK。 请在发现 -> DApp浏览器中 开发调试
-
-Open your site in TokenPocket as a Dapp. Develope and test in Discover -> DappBrowser.
-
-
-```javascript
-var tp = require('tp-js-sdk')
-console.log(tp.isConnected());
-```
 
 
 
