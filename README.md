@@ -1,3 +1,49 @@
+<!-- vscode-markdown-toc -->
+
+* [Installation](#Installation)
+* [Usage](#Usage)
+	* [1.EOS](#EOS)
+		* [1.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
+		* [1.2 tp.pushEosAction](#tp.pushEosAction)
+		* [1.3 tp.getEosBalance](#tp.getEosBalance)
+		* [1.4 tp.getTableRows (Deprecated)](#tp.getTableRowsDeprecated)
+		* [1.5 tp.getEosTableRows](#tp.getEosTableRows)
+		* [1.6 tp.getEosAccountInfo](#tp.getEosAccountInfo)
+		* [1.7 tp.getEosTransactionRecord](#tp.getEosTransactionRecord)
+	* [2. ETH & MOAC](#ETHMOAC)
+		* [2.1 sendEthTransaction](#sendEthTransaction)
+		* [2.2 signEthTransaction](#signEthTransaction)
+		* [2.3 sendMoacTransaction](#sendMoacTransaction)
+		* [2.4 signMoacTransaction](#signMoacTransaction)
+		* [2.5 tp.pushMoacTransaction (Deprecated)](#tp.pushMoacTransactionDeprecated)
+		* [2.6 tp.moacTokenTransfer](#tp.moacTokenTransfer)
+	* [3. COMMON](#COMMON)
+		* [3.1 tp.getAppInfo](#tp.getAppInfo)
+		* [3.2 tp.getWalletList](#tp.getWalletList)
+		* [3.3 tp.getDeviceId](#tp.getDeviceId)
+		* [3.4 tp.shareNewsToSNS](#tp.shareNewsToSNS)
+		* [3.5 tp.invokeQRScanner](#tp.invokeQRScanner)
+		* [3.6 tp.getCurrentWallet](#tp.getCurrentWallet)
+		* [3.7 tp.getWallets](#tp.getWallets)
+		* [3.8 tp.sign](#tp.sign)
+		* [3.9 tp.back](#tp.back)
+		* [3.11 tp.close](#tp.close)
+		* [3.10 tp.fullScreen](#tp.fullScreen)
+	* [4.ENU](#ENU)
+		* [4.1 tp.enuTokenTransfer](#tp.enuTokenTransfer)
+		* [4.2 tp.pushEnuAction](#tp.pushEnuAction)
+		* [4.3 tp.getEnuBalance](#tp.getEnuBalance)
+		* [4.4 tp.getEnuTableRows](#tp.getEnuTableRows)
+		* [4.5 tp.getEnuAccountInfo](#tp.getEnuAccountInfo)
+		* [4.6 tp.getEnuTransactionRecord](#tp.getEnuTransactionRecord)
+	* [5.MOAC](#MOAC)
+
+<!-- vscode-markdown-toc-config
+	numbering=false
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 # tp-js-sdk
 
 * TokenPocket 已经兼容 Scatter，直接在钱包内 Dapp浏览器 内输入URL即可使用。
@@ -14,28 +60,28 @@ Javascript SDK for TokenPocket Dapp.
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
 
-## EOS or ENU
+## <a name='EOSorENU'></a>EOS or ENU
 
 基于 EOS 或 ENU 底层的 DApp 请使用:
 If your Dapp is build for EOS or ENU, please use this:
 
-### EOS:
+### <a name='EOS:'></a>EOS:
  [tp-eosjs](https://github.com/TP-Lab/tp-eosjs) 
 
-### ENU:
+### <a name='ENU:'></a>ENU:
  [tp-enujs](https://github.com/TP-Lab/tp-enujs)
 
 体积更小，支持browser 直接引入
 With smaller size and browser supported.
 
 
-## Installation
+## <a name='Installation'></a>Installation
 
 ```bash
 npm install tp-js-sdk
 ```
 
-## Usage
+## <a name='Usage'></a>Usage
 
 请在TokenPocket中使用该SDK。 请在发现 -> DApp浏览器中 开发调试
 
@@ -48,9 +94,10 @@ console.log(tp.isConnected());
 ```
 
 
-### 1.EOS
 
-#### 1.1 tp.eosTokenTransfer
+### <a name='EOS'></a>1.EOS
+
+#### <a name='tp.eosTokenTransfer'></a>1.1 tp.eosTokenTransfer
 
 ```javascript
 tp.eosTokenTransfer(params)
@@ -99,7 +146,7 @@ tp.eosTokenTransfer({
 
 
 
-#### 1.2 tp.pushEosAction
+#### <a name='tp.pushEosAction'></a>1.2 tp.pushEosAction
 
 ```javascript
 tp.pushEosAction(params)
@@ -167,7 +214,7 @@ tp.pushEosAction({
 ```
 
 
-#### 1.3 tp.getEosBalance
+#### <a name='tp.getEosBalance'></a>1.3 tp.getEosBalance
 
 ```javascript
 tp.getEosBalance(params)
@@ -207,9 +254,9 @@ tp.getEosBalance({
 }
 ```
 
-#### 1.4 tp.getTableRows (Deprecated)
+#### <a name='tp.getTableRowsDeprecated'></a>1.4 tp.getTableRows (Deprecated)
 
-#### 1.5 tp.getEosTableRows
+#### <a name='tp.getEosTableRows'></a>1.5 tp.getEosTableRows
 
 获取合约内table数据
 
@@ -258,7 +305,7 @@ tp.getTableRows({
 }
 ```
 
-#### 1.6 tp.getEosAccountInfo
+#### <a name='tp.getEosAccountInfo'></a>1.6 tp.getEosAccountInfo
 
 ```javascript
 tp.getEosAccountInfo(params)
@@ -290,7 +337,7 @@ tp.getEosAccountInfo({
 }
 ```
 
-#### 1.7 tp.getEosTransactionRecord
+#### <a name='tp.getEosTransactionRecord'></a>1.7 tp.getEosTransactionRecord
 
 ```javascript
 tp.getEosTransactionRecord(params)
@@ -356,12 +403,11 @@ tp.getEosTransactionRecord({
 
 
 
-### 2. ETH & MOAC
+### <a name='ETHMOAC'></a>2. ETH & MOAC 
 
-#### 2.1 tp.moacTokenTransfer
-
+#### <a name='sendEthTransaction'></a>2.1 sendEthTransaction
 ```javascript
-tp.moacTokenTransfer(params)
+tp.sendEthTransaction(params)
 ```
 
 ##### Parameters
@@ -369,54 +415,10 @@ tp.moacTokenTransfer(params)
 `params`- `Object`:
 - `from`: `String`
 - `to`: `String`
-- `amount`: `String|Number`
-- `gasLimit`: `String|Number`
-- `tokenName`: `String`
-- `decimal`: `String|Number`
-- `contract`: `String`
-
-##### Returns
-
-`Object`:
-- `result`: `Boolean`
-- `data`: `Object`
-    - `transactionId` : `Stirng`
-
-##### Example
-
-```javascript
-tp.moacTokenTransfer({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
-    amount: '100',
-    gasLimit: 60000,
-    tokenName: 'MOAC',
-    decimal: 18,
-    contract: ''
-}).then(console.log)
-
-> {
-    result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
-```
-
-
-#### 2.2 tp.makeTransaction (Deprecated)
-
-```javascript
-tp.makeTransaction(params)
-```
-
-##### Parameters
-
-`params`- `Object`:
-- `from`: `String`
-- `to`: `String`
-- `value`: `String|Number`
 - `gasPrice`: `String|Number`
-- `type`: `String|Number` - `1|'eth'` for ETH, `3|'moac'` for MOAC
-- `contractAddress`: `String`
+- `gasLimit`: `String|Number`
+- `data`: `String`
+- `value`: `String|Number`- (optional)
 
 ##### Returns
 
@@ -427,13 +429,13 @@ tp.makeTransaction(params)
 ##### Example
 
 ```javascript
-tp.makeTransaction({
+tp.sendEthTransaction({
     from: '0xaaaaaaa',
     to: '0xaaaaaab',
-    value: '1000000000000000',
-    gasPrice: 1234000,
-    type: 'eth',
-    contractAddress: '0xssssssssss'
+    gasPrice: 100000000,
+    gasLimit: 60000,
+    data: '0xaawefwefwefwefwefef',
+    value: 1000000000
 }).then(console.log)
 
 > {
@@ -442,11 +444,10 @@ tp.makeTransaction({
 }
 ```
 
-
-#### 2.3 tp.signTransaction(Deprecated)
+#### <a name='signEthTransaction'></a>2.2 signEthTransaction
 
 ```javascript
-tp.signTransaction(params)
+tp.signEthTransaction(params)
 ```
 
 ##### Parameters
@@ -455,26 +456,72 @@ tp.signTransaction(params)
 - `from`: `String`
 - `to`: `String`
 - `gasPrice`: `String|Number`
-- `gasLimit`: `Stirng|Number`
-- `type`: `String|Number` - `1|'eth'` for ETH, `3|'moac'` for MOAC
+- `gasLimit`: `String|Number`
 - `data`: `String`
+- `value`: `String|Number`- (optional)
 
 ##### Returns
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `String`- rawTransaction
+- `data`: `String`- signed data
 
 ##### Example
 
 ```javascript
-tp.signTransaction({
+tp.signEthTransaction({
     from: '0xaaaaaaa',
     to: '0xaaaaaab',
     gasPrice: 100000000,
     gasLimit: 60000,
-    type: 'eth',
-    data: '0xaawefwefwefwefwefef'
+    data: '0xaawefwefwefwefwefef',
+    value: 1000000000
+}).then(console.log)
+
+> {
+    result: true,
+    data: '0xf8ef8201598504a817c800830298109490cb7b42a9cb3accbe665e7d6cdde4ab346eca1483030d40b88402ef9b6b0000000000000000'
+}
+```
+
+
+#### <a name='sendMoacTransaction'></a>2.3 sendMoacTransaction
+```javascript
+tp.sendMoacTransaction(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `gasPrice`: `String|Number`
+- `gasLimit`: `String|Number`
+- `data`: `String`
+- `value`: `String|Number`- (optional)
+- `chainId`: `Number` - (optional)
+- `via`: `String` - (optional)
+- `shardingFlag`: `Number` - (optional)
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`- txhash
+
+##### Example
+
+```javascript
+tp.sendMoacTransaction({
+    from: '0xaaaaaaa',
+    to: '0xaaaaaab',
+    gasPrice: 100000000,
+    gasLimit: 60000,
+    data: '0xaawefwefwefwefwefef',
+    value: 1000000000,
+    chainId: 99,
+    via: '',
+    shardingFlag: 0,
 }).then(console.log)
 
 > {
@@ -483,7 +530,54 @@ tp.signTransaction({
 }
 ```
 
-#### 2.4 tp.pushMoacTransaction
+#### <a name='signMoacTransaction'></a>2.4 signMoacTransaction
+
+```javascript
+tp.signMoacTransaction(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `gasPrice`: `String|Number`
+- `gasLimit`: `String|Number`
+- `data`: `String`
+- `value`: `String|Number`- (optional)
+- `chainId`: `Number` - (optional)
+- `via`: `String` - (optional)
+- `shardingFlag`: `Number` - (optional)
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`- signed data
+
+##### Example
+
+```javascript
+tp.signMoacTransaction({
+    from: '0xaaaaaaa',
+    to: '0xaaaaaab',
+    gasPrice: 100000000,
+    gasLimit: 60000,
+    data: '0xaawefwefwefwefwefef',
+    value: 1000000000,
+    chainId: 99,
+    via: '',
+    shardingFlag: 0,
+}).then(console.log)
+
+> {
+    result: true,
+    data: '0xf8ef8201598504a817c800830298109490cb7b42a9cb3accbe665e7d6cdde4ab346eca1483030d40b88402ef9b6b0000000000000000'
+}
+```
+
+
+#### <a name='tp.pushMoacTransactionDeprecated'></a>2.5 tp.pushMoacTransaction (Deprecated)
 
 ```javascript
 tp.pushMoacTransaction(params)
@@ -530,9 +624,60 @@ tp.pushMoacTransaction({
 ```
 
 
-### 3. COMMON
 
-#### 3.1 tp.getAppInfo
+#### <a name='tp.moacTokenTransfer'></a>2.6 tp.moacTokenTransfer
+
+```javascript
+tp.moacTokenTransfer(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `amount`: `String|Number`
+- `gasLimit`: `String|Number`
+- `tokenName`: `String`
+- `decimal`: `String|Number`
+- `contract`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    - `transactionId` : `Stirng`
+
+##### Example
+
+```javascript
+tp.moacTokenTransfer({
+    from: '0xaaaaaaa',
+    to: '0xaaaaaab',
+    amount: '100',
+    gasLimit: 60000,
+    tokenName: 'MOAC',
+    decimal: 18,
+    contract: ''
+}).then(console.log)
+
+> {
+    result: true,
+    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
+}
+```
+
+
+
+
+
+
+
+
+### <a name='COMMON'></a>3. COMMON
+
+#### <a name='tp.getAppInfo'></a>3.1 tp.getAppInfo
 
 ```javascript
 tp.getAppInfo()
@@ -566,7 +711,7 @@ tp.getAppInfo().then(console.log)
 }
 ```
 
-#### 3.2 tp.getWalletList
+#### <a name='tp.getWalletList'></a>3.2 tp.getWalletList
 
 ```javascript
 tp.getWalletList(params)
@@ -601,7 +746,7 @@ tp.getWalletList('eth').then(console.log)
 }
 ```
 
-#### 3.3 tp.getDeviceId
+#### <a name='tp.getDeviceId'></a>3.3 tp.getDeviceId
 
 ```javascript
 tp.getDeviceId()
@@ -622,7 +767,7 @@ tp.getDeviceId().then(console.log)
 }
 ```
 
-#### 3.4 tp.shareNewsToSNS
+#### <a name='tp.shareNewsToSNS'></a>3.4 tp.shareNewsToSNS
 ```javascript
 tp.shareNewsToSNS(params)
 ```
@@ -648,7 +793,7 @@ tp.shareNewsToSNS({
 ```
 
 
-#### 3.5 tp.invokeQRScanner
+#### <a name='tp.invokeQRScanner'></a>3.5 tp.invokeQRScanner
 ```javascript
 tp.invokeQRScanner()
 ```
@@ -665,7 +810,7 @@ tp.invokeQRScanner().then(console.log)
 > "abcdefg"
 ```
 
-#### 3.6 tp.getCurrentWallet
+#### <a name='tp.getCurrentWallet'></a>3.6 tp.getCurrentWallet
 
 获取用户当前钱包
 
@@ -702,7 +847,7 @@ tp.getCurrentWallet().then(console.log)
 ```
 
 
-#### 3.7 tp.getWallets
+#### <a name='tp.getWallets'></a>3.7 tp.getWallets
 
 获取用户钱包列表
 
@@ -745,7 +890,7 @@ tp.getWallets().then(console.log)
 }
 ```
 
-#### 3.8 tp.sign
+#### <a name='tp.sign'></a>3.8 tp.sign
 
 ```javascript
 tp.sign(params)
@@ -788,7 +933,7 @@ tp.sign({
 ```
 
 
-#### 3.9 tp.back
+#### <a name='tp.back'></a>3.9 tp.back
 
 ```javascript
 tp.back()
@@ -801,7 +946,7 @@ tp.back()
 
 ```
 
-#### 3.11 tp.close
+#### <a name='tp.close'></a>3.11 tp.close
 
 ```javascript
 tp.close()
@@ -815,7 +960,7 @@ tp.close()
 ```
 
 
-#### 3.10 tp.fullScreen
+#### <a name='tp.fullScreen'></a>3.10 tp.fullScreen
 
 ```javascript
 tp.fullScreen(params)
@@ -836,9 +981,9 @@ tp.fullScreen({
 ```
 
 
-### 4.ENU
+### <a name='ENU'></a>4.ENU
 
-#### 4.1 tp.enuTokenTransfer
+#### <a name='tp.enuTokenTransfer'></a>4.1 tp.enuTokenTransfer
 
 ```javascript
 tp.enuTokenTransfer(params)
@@ -887,7 +1032,7 @@ tp.enuTokenTransfer({
 
 
 
-#### 4.2 tp.pushEnuAction
+#### <a name='tp.pushEnuAction'></a>4.2 tp.pushEnuAction
 
 ```javascript
 tp.pushEnuAction(params)
@@ -955,7 +1100,7 @@ tp.pushEnuAction({
 ```
 
 
-#### 4.3 tp.getEnuBalance
+#### <a name='tp.getEnuBalance'></a>4.3 tp.getEnuBalance
 
 ```javascript
 tp.getEnuBalance(params)
@@ -996,7 +1141,7 @@ tp.getEnuBalance({
 ```
 
 
-#### 4.4 tp.getEnuTableRows
+#### <a name='tp.getEnuTableRows'></a>4.4 tp.getEnuTableRows
 
 获取合约内table数据
 
@@ -1045,7 +1190,7 @@ tp.getTableRows({
 }
 ```
 
-#### 4.5 tp.getEnuAccountInfo
+#### <a name='tp.getEnuAccountInfo'></a>4.5 tp.getEnuAccountInfo
 ```javascript
 tp.getEnuAccountInfo(params)
 ```
@@ -1076,7 +1221,7 @@ tp.getEnuAccountInfo({
 }
 ```
 
-#### 4.6 tp.getEnuTransactionRecord
+#### <a name='tp.getEnuTransactionRecord'></a>4.6 tp.getEnuTransactionRecord
 
 ```javascript
 tp.getEnuTransactionRecord(params)
@@ -1139,4 +1284,8 @@ tp.getEnuTransactionRecord({
     msg: 'success'
 }
 ```
+
+
+
+### <a name='MOAC'></a>5.MOAC
 
