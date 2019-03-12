@@ -6,7 +6,8 @@ var TYPE_MAP = {
     moac: '3',
     eos: '4',
     enu: '5',
-    bos: '6'
+    bos: '6',
+    iost: '7'
 };
 
 var _getTypeByStr = function (typeStr) {
