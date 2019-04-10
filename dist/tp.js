@@ -368,16 +368,16 @@ function Promise(fn) {
   if (typeof fn !== 'function') {
     throw new TypeError('Promise constructor\'s argument is not a function');
   }
-  this._75 = 0;
-  this._83 = 0;
-  this._18 = null;
-  this._38 = null;
+  this._h = 0;
+  this._i = 0;
+  this._j = null;
+  this._k = null;
   if (fn === noop) return;
   doResolve(fn, this);
 }
-Promise._47 = null;
-Promise._71 = null;
-Promise._44 = noop;
+Promise._l = null;
+Promise._m = null;
+Promise._n = noop;
 
 Promise.prototype.then = function(onFulfilled, onRejected) {
   if (this.constructor !== Promise) {
@@ -396,24 +396,24 @@ function safeThen(self, onFulfilled, onRejected) {
   });
 }
 function handle(self, deferred) {
-  while (self._83 === 3) {
-    self = self._18;
+  while (self._i === 3) {
+    self = self._j;
   }
-  if (Promise._47) {
-    Promise._47(self);
+  if (Promise._l) {
+    Promise._l(self);
   }
-  if (self._83 === 0) {
-    if (self._75 === 0) {
-      self._75 = 1;
-      self._38 = deferred;
+  if (self._i === 0) {
+    if (self._h === 0) {
+      self._h = 1;
+      self._k = deferred;
       return;
     }
-    if (self._75 === 1) {
-      self._75 = 2;
-      self._38 = [self._38, deferred];
+    if (self._h === 1) {
+      self._h = 2;
+      self._k = [self._k, deferred];
       return;
     }
-    self._38.push(deferred);
+    self._k.push(deferred);
     return;
   }
   handleResolved(self, deferred);
@@ -421,16 +421,16 @@ function handle(self, deferred) {
 
 function handleResolved(self, deferred) {
   asap(function() {
-    var cb = self._83 === 1 ? deferred.onFulfilled : deferred.onRejected;
+    var cb = self._i === 1 ? deferred.onFulfilled : deferred.onRejected;
     if (cb === null) {
-      if (self._83 === 1) {
-        resolve(deferred.promise, self._18);
+      if (self._i === 1) {
+        resolve(deferred.promise, self._j);
       } else {
-        reject(deferred.promise, self._18);
+        reject(deferred.promise, self._j);
       }
       return;
     }
-    var ret = tryCallOne(cb, self._18);
+    var ret = tryCallOne(cb, self._j);
     if (ret === IS_ERROR) {
       reject(deferred.promise, LAST_ERROR);
     } else {
@@ -458,8 +458,8 @@ function resolve(self, newValue) {
       then === self.then &&
       newValue instanceof Promise
     ) {
-      self._83 = 3;
-      self._18 = newValue;
+      self._i = 3;
+      self._j = newValue;
       finale(self);
       return;
     } else if (typeof then === 'function') {
@@ -467,29 +467,29 @@ function resolve(self, newValue) {
       return;
     }
   }
-  self._83 = 1;
-  self._18 = newValue;
+  self._i = 1;
+  self._j = newValue;
   finale(self);
 }
 
 function reject(self, newValue) {
-  self._83 = 2;
-  self._18 = newValue;
-  if (Promise._71) {
-    Promise._71(self, newValue);
+  self._i = 2;
+  self._j = newValue;
+  if (Promise._m) {
+    Promise._m(self, newValue);
   }
   finale(self);
 }
 function finale(self) {
-  if (self._75 === 1) {
-    handle(self, self._38);
-    self._38 = null;
+  if (self._h === 1) {
+    handle(self, self._k);
+    self._k = null;
   }
-  if (self._75 === 2) {
-    for (var i = 0; i < self._38.length; i++) {
-      handle(self, self._38[i]);
+  if (self._h === 2) {
+    for (var i = 0; i < self._k.length; i++) {
+      handle(self, self._k[i]);
     }
-    self._38 = null;
+    self._k = null;
   }
 }
 
@@ -556,9 +556,9 @@ var ZERO = valuePromise(0);
 var EMPTYSTRING = valuePromise('');
 
 function valuePromise(value) {
-  var p = new Promise(Promise._44);
-  p._83 = 1;
-  p._18 = value;
+  var p = new Promise(Promise._n);
+  p._i = 1;
+  p._j = value;
   return p;
 }
 Promise.resolve = function (value) {
@@ -595,11 +595,11 @@ Promise.all = function (arr) {
     function res(i, val) {
       if (val && (typeof val === 'object' || typeof val === 'function')) {
         if (val instanceof Promise && val.then === Promise.prototype.then) {
-          while (val._83 === 3) {
-            val = val._18;
+          while (val._i === 3) {
+            val = val._j;
           }
-          if (val._83 === 1) return res(i, val._18);
-          if (val._83 === 2) reject(val._18);
+          if (val._i === 1) return res(i, val._j);
+          if (val._i === 2) reject(val._j);
           val.then(function (val) {
             res(i, val);
           }, reject);
@@ -652,7 +652,7 @@ Promise.prototype['catch'] = function (onRejected) {
 var Promise = require('./core.js');
 
 module.exports = Promise;
-Promise.prototype['finally'] = function (f) {
+Promise.prototype.finally = function (f) {
   return this.then(function (value) {
     return Promise.resolve(f()).then(function () {
       return value;
@@ -826,38 +826,38 @@ Promise.enableSynchronous = function () {
   };
 
   Promise.prototype.getValue = function () {
-    if (this._83 === 3) {
-      return this._18.getValue();
+    if (this._i === 3) {
+      return this._j.getValue();
     }
 
     if (!this.isFulfilled()) {
       throw new Error('Cannot get a value of an unfulfilled promise.');
     }
 
-    return this._18;
+    return this._j;
   };
 
   Promise.prototype.getReason = function () {
-    if (this._83 === 3) {
-      return this._18.getReason();
+    if (this._i === 3) {
+      return this._j.getReason();
     }
 
     if (!this.isRejected()) {
       throw new Error('Cannot get a rejection reason of a non-rejected promise.');
     }
 
-    return this._18;
+    return this._j;
   };
 
   Promise.prototype.getState = function () {
-    if (this._83 === 3) {
-      return this._18.getState();
+    if (this._i === 3) {
+      return this._j.getState();
     }
-    if (this._83 === -1 || this._83 === -2) {
+    if (this._i === -1 || this._i === -2) {
       return 0;
     }
 
-    return this._83;
+    return this._i;
   };
 };
 
@@ -912,7 +912,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.0.1',
+    version: '3.1.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -1082,6 +1082,31 @@ var tp = {
     },
     close: function () {
         _sendTpRequest('close', '', '');
+    },
+    importWallet: function (type) {
+        type = _getTypeByStr(type);
+
+        if (!type) {
+            throw new Error('type invalid');
+        }
+
+        var params = {
+            blockChainId: type
+        };
+
+        _sendTpRequest('importWallet', JSON.stringify(params), '');
+    },
+    startChat: function (params) {
+        _sendTpRequest('startChat', JSON.stringify(params), '');
+    },
+    saveImage: function (params) {
+        _sendTpRequest('saveImage', JSON.stringify(params), '');
+    },
+    rollHorizontal: function (params) {
+        _sendTpRequest('rollHorizontal', JSON.stringify(params), '');
+    },
+    popGestureRecognizerEnable: function (params) {
+        _sendTpRequest('popGestureRecognizerEnable', JSON.stringify(params), '');
     },
     // eos
     eosTokenTransfer: function (params) {

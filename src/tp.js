@@ -39,7 +39,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.0.1',
+    version: '3.1.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -209,6 +209,31 @@ var tp = {
     },
     close: function () {
         _sendTpRequest('close', '', '');
+    },
+    importWallet: function (type) {
+        type = _getTypeByStr(type);
+
+        if (!type) {
+            throw new Error('type invalid');
+        }
+
+        var params = {
+            blockChainId: type
+        };
+
+        _sendTpRequest('importWallet', JSON.stringify(params), '');
+    },
+    startChat: function (params) {
+        _sendTpRequest('startChat', JSON.stringify(params), '');
+    },
+    saveImage: function (params) {
+        _sendTpRequest('saveImage', JSON.stringify(params), '');
+    },
+    rollHorizontal: function (params) {
+        _sendTpRequest('rollHorizontal', JSON.stringify(params), '');
+    },
+    popGestureRecognizerEnable: function (params) {
+        _sendTpRequest('popGestureRecognizerEnable', JSON.stringify(params), '');
     },
     // eos
     eosTokenTransfer: function (params) {

@@ -956,7 +956,7 @@ tp.back()
 
 ```
 
-#### <a name='tp.close'></a>3.11 tp.close
+#### <a name='tp.close'></a>3.10 tp.close
 
 ```javascript
 tp.close()
@@ -970,7 +970,7 @@ tp.close()
 ```
 
 
-#### <a name='tp.fullScreen'></a>3.10 tp.fullScreen
+#### <a name='tp.fullScreen'></a>3.11 tp.fullScreen
 
 ```javascript
 tp.fullScreen(params)
@@ -989,6 +989,163 @@ tp.fullScreen({
     fullScreen: 0
 })
 ```
+
+
+#### 3.12 tp.importWallet
+
+钱包导入界面 
+
+Invoke the wallet importing window
+
+```javascript
+tp.importWallet(blockchain)
+```
+
+##### Parameters
+
+`blockchain`- `String`: 'eos' | 'eth' | 'enu' | 'moac'
+
+
+##### Example
+
+```javascript
+tp.importWallet('eos');
+```
+
+
+#### 3.13 tp.setMenubar
+
+全屏时 设置dapp浏览器导航条可见性
+
+When the `fullscreen` is on, set the dapp browser's navbar visiblity
+
+```javascript
+tp.setMenubar(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `flag`: `Number` 1 - open,  0 - close(default)
+
+
+
+##### Example
+
+```javascript
+tp.setMenubar({
+    flag: 1
+});
+```
+
+
+#### 3.14 tp.startChat
+
+跳到TP聊天
+
+Open TP IM
+
+```javascript
+tp.startChat(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+
+- `sessionType`: `Number` 私聊是0  群聊是1
+- `account`: `String` 私聊是目标用户的账号(eos,iost等)或地址(eth,moac等)， 群聊是群的id
+- `blockChainId`: `Number` 只有私聊需要填， 私聊时目标用户的底层 1 for ETH, 2 for Jingtum, 3 MOAC, 4 for EOS , 5 for ENU, 6 for BOS, 7 for IOST
+
+##### Example
+
+```javascript
+tp.startChat({
+    account: 'itokenpocket', 
+    sessionType: 0,
+    blockChainId: 4
+});
+```
+
+
+#### 3.15 tp.saveImage
+
+保存图片
+
+Save image
+
+```javascript
+tp.saveImage(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `url`: `String` image's url
+
+
+##### Example
+
+```javascript
+tp.saveImage({
+    url: 'https://dapp.mytokenpocket.vip/tokenpocket_logo.png'
+});
+
+
+```
+#### 3.16 tp.rollHorizontal
+
+横屏
+
+rotate the screen horizontal
+
+```javascript
+tp.rollHorizontal(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `horizontal`: `Boolean`
+
+
+
+##### Example
+
+```javascript
+tp.rollHorizontal({
+    horizontal: true
+});
+```
+
+
+
+#### 3.17 tp.popGestureRecognizerEnable
+
+禁用iOS默认右滑后退的手势操作，对安卓无影响
+
+Disable the iOS default gesture operation: right sliding backward. There is no effect on Android
+
+
+```javascript
+tp.popGestureRecognizerEnable(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `enable`: `Boolean` - default: `true`
+
+
+
+##### Example
+
+```javascript
+tp.popGestureRecognizerEnable({
+    enable: false
+});
+```
+
 
 
 ### <a name='ENU'></a>4.ENU
