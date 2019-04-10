@@ -1,6 +1,6 @@
 {
   "name": "tp-js-sdk",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Javascript SDK for TokenPocket Dapp",
   "main": "index.js",
   "scripts": {
