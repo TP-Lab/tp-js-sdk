@@ -58,7 +58,9 @@ Browser
 
 
 <!-- vscode-markdown-toc -->
-
+* [EOS or ENU](#EOSorENU)
+	* [EOS:](#EOS:)
+	* [ENU:](#ENU:)
 * [Installation](#Installation)
 * [Usage](#Usage)
 	* [1.EOS](#EOS)
@@ -86,8 +88,14 @@ Browser
 		* [3.7 tp.getWallets](#tp.getWallets)
 		* [3.8 tp.sign](#tp.sign)
 		* [3.9 tp.back](#tp.back)
-		* [3.11 tp.close](#tp.close)
-		* [3.10 tp.fullScreen](#tp.fullScreen)
+		* [3.10 tp.close](#tp.close)
+		* [3.11 tp.fullScreen](#tp.fullScreen)
+		* [3.12 tp.importWallet](#tp.importWallet)
+		* [3.13 tp.setMenubar](#tp.setMenubar)
+		* [3.14 tp.startChat](#tp.startChat)
+		* [3.15 tp.saveImage](#tp.saveImage)
+		* [3.16 tp.rollHorizontal](#tp.rollHorizontal)
+		* [3.17 tp.popGestureRecognizerEnable](#tp.popGestureRecognizerEnable)
 	* [4.ENU](#ENU)
 		* [4.1 tp.enuTokenTransfer](#tp.enuTokenTransfer)
 		* [4.2 tp.pushEnuAction](#tp.pushEnuAction)
@@ -991,7 +999,7 @@ tp.fullScreen({
 ```
 
 
-#### 3.12 tp.importWallet
+#### <a name='tp.importWallet'></a>3.12 tp.importWallet
 
 钱包导入界面 
 
@@ -1013,7 +1021,7 @@ tp.importWallet('eos');
 ```
 
 
-#### 3.13 tp.setMenubar
+#### <a name='tp.setMenubar'></a>3.13 tp.setMenubar
 
 全屏时 设置dapp浏览器导航条可见性
 
@@ -1039,7 +1047,7 @@ tp.setMenubar({
 ```
 
 
-#### 3.14 tp.startChat
+#### <a name='tp.startChat'></a>3.14 tp.startChat
 
 跳到TP聊天
 
@@ -1068,7 +1076,7 @@ tp.startChat({
 ```
 
 
-#### 3.15 tp.saveImage
+#### <a name='tp.saveImage'></a>3.15 tp.saveImage
 
 保存图片
 
@@ -1093,7 +1101,7 @@ tp.saveImage({
 
 
 ```
-#### 3.16 tp.rollHorizontal
+#### <a name='tp.rollHorizontal'></a>3.16 tp.rollHorizontal
 
 横屏
 
@@ -1120,7 +1128,7 @@ tp.rollHorizontal({
 
 
 
-#### 3.17 tp.popGestureRecognizerEnable
+#### <a name='tp.popGestureRecognizerEnable'></a>3.17 tp.popGestureRecognizerEnable
 
 禁用iOS默认右滑后退的手势操作，对安卓无影响
 
