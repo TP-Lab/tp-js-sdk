@@ -58,10 +58,7 @@ Browser
 
 
 <!-- vscode-markdown-toc -->
-* [EOS or ENU](#EOSorENU)
-	* [EOS:](#EOS:)
-	* [ENU:](#ENU:)
-* [Installation](#Installation)
+
 * [Usage](#Usage)
 	* [1.EOS](#EOS)
 		* [1.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
@@ -96,6 +93,7 @@ Browser
 		* [3.15 tp.saveImage](#tp.saveImage)
 		* [3.16 tp.rollHorizontal](#tp.rollHorizontal)
 		* [3.17 tp.popGestureRecognizerEnable](#tp.popGestureRecognizerEnable)
+		* [3.18 tp.forwardNavigationGesturesEnable](#tp.forwardNavigationGesturesEnable)
 	* [4.ENU](#ENU)
 		* [4.1 tp.enuTokenTransfer](#tp.enuTokenTransfer)
 		* [4.2 tp.pushEnuAction](#tp.pushEnuAction)
@@ -103,7 +101,6 @@ Browser
 		* [4.4 tp.getEnuTableRows](#tp.getEnuTableRows)
 		* [4.5 tp.getEnuAccountInfo](#tp.getEnuAccountInfo)
 		* [4.6 tp.getEnuTransactionRecord](#tp.getEnuTransactionRecord)
-	* [5.MOAC](#MOAC)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -1130,9 +1127,9 @@ tp.rollHorizontal({
 
 #### <a name='tp.popGestureRecognizerEnable'></a>3.17 tp.popGestureRecognizerEnable
 
-禁用iOS默认右滑后退的手势操作，对安卓无影响
+禁止iOS自带的左滑手势返回，对安卓无影响
 
-Disable the iOS default gesture operation: right sliding backward. There is no effect on Android
+Disable iOS's left-sliding gesture to return. There is no effect on Android
 
 
 ```javascript
@@ -1154,6 +1151,30 @@ tp.popGestureRecognizerEnable({
 });
 ```
 
+#### <a name='tp.forwardNavigationGesturesEnable'></a>3.18 tp.forwardNavigationGesturesEnable
+
+禁止webview自带的左滑手势触发goback
+
+Disable the left sliding gesture by WebView to trigger goback
+
+```javascript
+tp.forwardNavigationGesturesEnable(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `enable`: `Boolean` - default: `true`
+
+
+
+##### Example
+
+```javascript
+tp.forwardNavigationGesturesEnable({
+    enable: false
+});
+```
 
 
 ### <a name='ENU'></a>4.ENU
@@ -1459,8 +1480,4 @@ tp.getEnuTransactionRecord({
     msg: 'success'
 }
 ```
-
-
-
-### <a name='MOAC'></a>5.MOAC
 

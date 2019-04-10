@@ -235,6 +235,9 @@ var tp = {
     popGestureRecognizerEnable: function (params) {
         _sendTpRequest('popGestureRecognizerEnable', JSON.stringify(params), '');
     },
+    forwardNavigationGesturesEnable: function (params) {
+        _sendTpRequest('forwardNavigationGesturesEnable', JSON.stringify(params), '');
+    },
     // eos
     eosTokenTransfer: function (params) {
         // 必填项
