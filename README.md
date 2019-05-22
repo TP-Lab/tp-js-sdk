@@ -1176,7 +1176,6 @@ tp.forwardNavigationGesturesEnable({
 });
 ```
 
-
 ### <a name='ENU'></a>4.ENU
 
 #### <a name='tp.enuTokenTransfer'></a>4.1 tp.enuTokenTransfer

@@ -912,7 +912,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.1.0',
+    version: '3.1.1',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -1079,6 +1079,9 @@ var tp = {
     },
     fullScreen: function (params) {
         _sendTpRequest('fullScreen', JSON.stringify(params), '');
+    },
+    setMenubar: function (params) {
+        _sendTpRequest('setMenubar', JSON.stringify(params), '');
     },
     close: function () {
         _sendTpRequest('close', '', '');
