@@ -58,7 +58,6 @@ Browser
 
 
 <!-- vscode-markdown-toc -->
-
 * [Usage](#Usage)
 	* [1.EOS](#EOS)
 		* [1.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
@@ -101,6 +100,9 @@ Browser
 		* [4.4 tp.getEnuTableRows](#tp.getEnuTableRows)
 		* [4.5 tp.getEnuAccountInfo](#tp.getEnuAccountInfo)
 		* [4.6 tp.getEnuTransactionRecord](#tp.getEnuTransactionRecord)
+	* [5.COSMOS](#COSMOS)
+		* [5.1 tp.signCosmosTransaction](#tp.signCosmosTransaction)
+		* [5.2 tp.cosmosArbitrarySignature](#tp.cosmosArbitrarySignature)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -1480,3 +1482,150 @@ tp.getEnuTransactionRecord({
 }
 ```
 
+
+### <a name='COSMOS'></a>5.COSMOS
+
+#### <a name='tp.signCosmosTransaction'></a>5.1 tp.signCosmosTransaction
+
+```javascript
+tp.signCosmosTransaction(stdTx)
+```
+
+##### Parameters
+
+`stdTx`- `Object`:
+- `from`: `String`
+- `chain_id`: `String`
+- `account_number`: `String | Number`
+- `sequence`: `String | Number`
+- `fees`: `Object`
+- `gas`: `String`
+- `memo`: `String`
+- `type`: `String`
+- `msg`: `Object`
+
+##### Returns
+
+`Object`:
+
+- `result`: `Boolean`
+
+- `data`: `Object`
+
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.signCosmosTransaction({
+	"from": "cosmos1njg8uq4ek9y9yourfromaddress",
+	"chain_id": "cosmoshub-2",
+	"account_number": 1756,
+	"sequence": 3,
+	"fees": {
+		"denom": "uatom",
+		"amount": 500
+	},
+	"gas": 20000,
+	"memo": "",
+	"type": "transfer",
+	"msg": {
+		"to": "cosmos1njg8uq4ek9y9yourfromaddress",
+		"coins": [{
+			"denom": "uatom",
+			"amount": 100000
+		}]
+	}
+}).then(console.log)
+
+> {
+	"result": true,
+	"data": {
+		"tx": {
+			"signatures": [{
+				"pub_key": {
+					"type": "tendermint/PubKeySecp256k1",
+					"value": "AkG3bCO5p9MO8a1ABGYtyS8ed4aZuBKEY+"
+				},
+				"signature": "K7XCuz/ucESBZnQS94uOHZnJCUbFuWH2x659/3O04ihZaZT99cx+aaaaaaaaaaa=="
+			}],
+			"memo": "",
+			"msg": [{
+				"type": "cosmos-sdk/MsgSend",
+				"value": {
+					"amount": [{
+						"amount": "100000",
+						"denom": "uatom"
+					}],
+					"from_address": "cosmos1njg8uq4ek9y9yourfromaddress",
+					"to_address": "cosmos1njg8uq4ek9y9yourtoaddress"
+				}
+			}],
+			"fee": {
+				"amount": [{
+					"denom": "uatom",
+					"amount": "500"
+				}],
+				"gas": "20000"
+			}
+		},
+		"mode": "sync"
+	},
+	"msg": "success"
+}
+```
+
+
+
+#### <a name='tp.cosmosArbitrarySignature'></a>5.2 tp.cosmosArbitrarySignature
+
+```javascript
+tp.cosmosArbitrarySignature(stdTx)
+```
+
+##### Parameters
+
+`stdTx`- `Object`:
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.cosmosArbitrarySignature({
+	"account_number": "0",
+	"chain_id": "testing",
+	"fee": {
+		"amount": [{
+			"amount": "0",
+			"denom": "stake"
+		}],
+		"gas": "500000"
+	},
+	"memo": "",
+	"msgs": [{
+		"amount": {
+			"amount": "50000000",
+			"denom": "stake"
+		},
+		"from_address": "cosmos1gw8w...l48gl5",
+		"type": "normal"
+	}],
+	"sequence": "0"
+}).then(console.log)
+
+> {
+	"result": true,
+	"data": {
+		"pub_key": [235, 90, 233, 135, 33, 2, 65, 183, 108, 35, 185, 167, 211, 14, 241, 173, 64, 4, 102, 45, 201, 47, 30, 119, 134, 153, 184, 26, 4, 32, 123, 216, 219, 95, 19, 140, 84, 254],
+		"signature": [19, 225, 27, 122, 188, 73, 69, 101, 136, 152, 100, 35, 2, 205, 66, 220, 20, 237, 160, 171, 36, 178, 195, 45, 161, 14, 86, 41, 21, 143, 222, 27, 40, 139, 233, 48, 48, 117, 251, 105, 144, 119, 187, 181, 124, 113, 167, 138, 15, 201, 98, 71, 116, 184, 114, 98, 240, 140, 224, 4, 251, 93, 60, 15]
+	},
+	"msg": "success"
+}
+```

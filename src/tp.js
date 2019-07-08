@@ -7,7 +7,8 @@ var TYPE_MAP = {
     eos: '4',
     enu: '5',
     bos: '6',
-    iost: '7'
+    iost: '7',
+    cosmos: '8'
 };
 
 var _getTypeByStr = function (typeStr) {
@@ -39,7 +40,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.1.1',
+    version: '3.2.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -676,7 +677,46 @@ var tp = {
 
             _sendTpRequest('signEthTransaction', JSON.stringify(params), tpCallbackFun);
         });
+    },
+    signCosmosTransaction: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('signCosmosTransaction', JSON.stringify(params), tpCallbackFun);
+        });
+    },
+    cosmosArbitrarySignature: function (pb, data) {
+        var params = {
+            address: pb,
+            data: data
+        }
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('cosmosArbitrarySignature', JSON.stringify(params), tpCallbackFun);
+        });
     }
+
 };
 
 
