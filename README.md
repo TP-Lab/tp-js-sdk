@@ -728,7 +728,7 @@ tp.getAppInfo().then(console.log)
 }
 ```
 
-#### <a name='tp.getWalletList'></a>3.2 tp.getWalletList
+#### <a name='tp.getWalletList'></a>3.2 tp.getWalletList 
 
 ```javascript
 tp.getWalletList(params)
@@ -736,7 +736,7 @@ tp.getWalletList(params)
 
 ##### Parameters
 
-`params`- `String|Number` - `eth|1` for ETH, `jingtum|2` for Jingtum, `moac|3` for MOAC, `eos|4` for EOS , `enu|5` for ENU
+`params`- `String|Number` - `eth|1` ETH, `jingtum|2` Jingtum, `moac|3` MOAC, `eos|4`  EOS , `enu|5` ENU,  `bos|6` BOS, `iost|7` IOST , `cosmos|8` COSMOS  
 
 ##### Returns
 
@@ -831,7 +831,7 @@ tp.invokeQRScanner().then(console.log)
 
 获取用户当前钱包
 
-`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU
+`1` for ETH, `2` for Jingtum, `3` for MOAC, `4` for EOS , `5` for ENU,  `6` BOS, `7` IOST , `8` COSMOS  
 
 ```javascript
 tp.getCurrentWallet()
