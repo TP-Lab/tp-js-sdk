@@ -1580,12 +1580,13 @@ tp.signCosmosTransaction({
 #### <a name='tp.cosmosArbitrarySignature'></a>5.2 tp.cosmosArbitrarySignature
 
 ```javascript
-tp.cosmosArbitrarySignature(stdTx)
+tp.cosmosArbitrarySignature(from, stdTx)
 ```
 
 ##### Parameters
 
-`stdTx`- `Object`:
+`from`- `String`:  your address
+`stdTx`- `String`: stdTx string
 
 
 ##### Returns
@@ -1598,7 +1599,8 @@ tp.cosmosArbitrarySignature(stdTx)
 ##### Example
 
 ```javascript
-tp.cosmosArbitrarySignature({
+
+var stdTx = {
 	"account_number": "0",
 	"chain_id": "testing",
 	"fee": {
@@ -1618,7 +1620,9 @@ tp.cosmosArbitrarySignature({
 		"type": "normal"
 	}],
 	"sequence": "0"
-}).then(console.log)
+}
+
+tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(console.log)
 
 > {
 	"result": true,
