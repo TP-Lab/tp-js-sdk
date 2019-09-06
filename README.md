@@ -2,8 +2,8 @@
 
 
 
-* TokenPocket 已经兼容 Scatter，直接在钱包内 Dapp浏览器 内输入URL即可使用。
-* TokenPocket is already compatible with Scatter. You can input your URL in the Dapp browser inside the TP Wallet. 
+* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议 直接在钱包内 Dapp浏览器 内输入URL即可使用。
+* TokenPocket is already compatible with Scatter, Metamask,TronLink and IWallet. You can input your URL in the Dapp browser inside the TP Wallet. 
 
 
 
