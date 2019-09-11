@@ -268,7 +268,7 @@ tp.getEosBalance(params)
 tp.getEosBalance({
     account: 'itokenpocket',
     contract: 'eosio.token',
-    tokenName: 'EOS'
+    symbol: 'EOS'
 }).then(console.log)
 
 > {
