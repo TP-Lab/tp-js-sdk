@@ -8,8 +8,23 @@ var TYPE_MAP = {
     enu: '5',
     bos: '6',
     iost: '7',
-    cosmos: '8'
+    cosmos: '8',
+    binance: '9',
+    tron: '10'
 };
+
+var BLOCKCHAIN_ID_MAP = {
+    '1': 'eth',
+    '2': 'jingtum',
+    '3': 'moac',
+    '4': 'eos',
+    '5': 'enu',
+    '6': 'bos',
+    '7': 'iost',
+    '8': 'cosmos',
+    '9': 'binance',
+    '10': 'tron'
+}
 
 var _getTypeByStr = function (typeStr) {
     var reTrim = /^\s+|\s+$/g;
@@ -40,7 +55,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.2.0',
+    version: '3.3.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -119,6 +134,7 @@ var tp = {
         });
 
     },
+    // Deprecated
     getWalletList: function (type) {
         type = _getTypeByStr(type);
 
@@ -155,6 +171,13 @@ var tp = {
                 result = result.replace(/\r/ig, "").replace(/\n/ig, "");
                 try {
                     var res = JSON.parse(result);
+
+                    if (res.data && res.data.length) {
+                        for (var i = 0; i < res.data.length; i++) {
+                            res.data[i].blockchain = BLOCKCHAIN_ID_MAP[res.data[i].blockchain_id + ''] || res.data[i].blockchain_id;
+                        }
+                    }
+
                     resolve(res);
                 } catch (e) {
                     reject(e);
@@ -176,6 +199,11 @@ var tp = {
                     if (res.rawTransaction) {
                         res.data = res.rawTransaction;
                     }
+
+                    if (res.data && res.data.blockchain_id) {
+                        res.data.blockchain = BLOCKCHAIN_ID_MAP[res.data.blockchain_id + ''] || res.data.blockchain_id;
+                    }
+
                     resolve(res);
                 } catch (e) {
                     reject(e);
@@ -228,7 +256,43 @@ var tp = {
         _sendTpRequest('importWallet', JSON.stringify(params), '');
     },
     startChat: function (params) {
+        if (params.blockchain) {
+            params.blockChainId = _getTypeByStr(params.blockchain);
+            delete params.blockchain;
+        }
         _sendTpRequest('startChat', JSON.stringify(params), '');
+    },
+    getNodeUrl: function (params) {
+
+        if (params.blockchain) {
+            params.blockChainId = _getTypeByStr(params.blockchain);
+            delete params.blockchain;
+        }
+
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+
+                    var res = JSON.parse(result);
+
+                    if (res.data && res.data.blockChainId) {
+                        res.blockchain = BLOCKCHAIN_ID_MAP[res.data.blockChainId + ''] || res.data.blockChainId;
+                    }
+
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('getNodeUrl', JSON.stringify(params), tpCallbackFun);
+
+        });
+
+
+
     },
     saveImage: function (params) {
         _sendTpRequest('saveImage', JSON.stringify(params), '');
@@ -245,8 +309,8 @@ var tp = {
     // eos
     eosTokenTransfer: function (params) {
         // 必填项
-        if (!params.from || !params.to || !params.amount || !params.tokenName || !params.contract || !params.precision) {
-            throw new Error('missing params; "from", "to", "amount", "tokenName","contract", "precision" is required ');
+        if (!params.from || !params.to || !params.amount || !params.contract || !params.precision) {
+            throw new Error('missing params; "from", "to", "amount", "contract", "precision" is required ');
         }
 
         params.amount = '' + params.amount;
@@ -319,8 +383,6 @@ var tp = {
             _sendTpRequest('getEosBalance', JSON.stringify(params), tpCallbackFun);
 
         });
-
-
     },
     getTableRows: function (params) {
         return new Promise(function (resolve, reject) {
@@ -716,7 +778,6 @@ var tp = {
             _sendTpRequest('cosmosArbitrarySignature', JSON.stringify(params), tpCallbackFun);
         });
     }
-
 };
 
 
