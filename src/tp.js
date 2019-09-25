@@ -777,6 +777,23 @@ var tp = {
 
             _sendTpRequest('cosmosArbitrarySignature', JSON.stringify(params), tpCallbackFun);
         });
+    },
+    signJingtumTransaction: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('signJingtumTransaction', JSON.stringify(params), tpCallbackFun);
+        });
     }
 };
 

@@ -52,6 +52,7 @@ Browser
 ## <a name='Contents'></a>Contents
 
 <!-- vscode-markdown-toc -->
+* [Javascript SDK for TokenPocket Dapp.](#JavascriptSDKforTokenPocketDapp.)
 * [Installation](#Installation)
 * [Usage](#Usage)
 * [Contents](#Contents)
@@ -86,8 +87,8 @@ Browser
 		* [2.7 tp.getEosTransactionRecord](#tp.getEosTransactionRecord)
 	* [3. ETH](#ETH)
 		* [3.0 兼容Metamask (Compatible with Metamask)](#MetamaskCompatiblewithMetamask)
-		* [3.1 sendEthTransaction](#sendEthTransaction)
-		* [3.2 signEthTransaction](#signEthTransaction)
+		* [3.1 tp.sendEthTransaction](#tp.sendEthTransaction)
+		* [3.2 tp.signEthTransaction](#tp.signEthTransaction)
 	* [4.ENU](#ENU)
 		* [4.0 兼容Ironman (Compatible with Ironman)](#IronmanCompatiblewithIronman)
 		* [4.1 tp.enuTokenTransfer](#tp.enuTokenTransfer)
@@ -102,11 +103,13 @@ Browser
 	* [6.IOST](#IOST)
 		* [6.0 兼容IWalletJS (Compatible with IWalletJS)](#IWalletJSCompatiblewithIWalletJS)
 	* [7.TRON](#TRON)
-		* [6.0 兼容TRONLINK (Compatible with TRONLINK)](#TRONLINKCompatiblewithTRONLINK)
+		* [7.0 兼容TRONLINK (Compatible with TRONLINK)](#TRONLINKCompatiblewithTRONLINK)
 	* [8.MOAC](#MOAC)
-		* [8.1 sendMoacTransaction](#sendMoacTransaction)
-		* [8.2 signMoacTransaction](#signMoacTransaction)
+		* [8.1 tp.sendMoacTransaction](#tp.sendMoacTransaction)
+		* [8.2 tp.signMoacTransaction](#tp.signMoacTransaction)
 		* [8.3 tp.moacTokenTransfer](#tp.moacTokenTransfer)
+	* [9.Jingtum](#Jingtum)
+		* [9.1 tp.signJingtumTransaction](#tp.signJingtumTransaction)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -969,7 +972,7 @@ tp.getEosTransactionRecord({
 - Webview 内有注入 `web3` 对象.
 - Webview injected a `web3` object.
 
-#### <a name='sendEthTransaction'></a>3.1 sendEthTransaction
+#### <a name='tp.sendEthTransaction'></a>3.1 tp.sendEthTransaction
 ```javascript
 tp.sendEthTransaction(params)
 ```
@@ -1008,7 +1011,7 @@ tp.sendEthTransaction({
 }
 ```
 
-#### <a name='signEthTransaction'></a>3.2 signEthTransaction
+#### <a name='tp.signEthTransaction'></a>3.2 tp.signEthTransaction
 
 ```javascript
 tp.signEthTransaction(params)
@@ -1534,7 +1537,7 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 
 ### <a name='MOAC'></a>8.MOAC
 
-#### <a name='sendMoacTransaction'></a>8.1 sendMoacTransaction
+#### <a name='tp.sendMoacTransaction'></a>8.1 tp.sendMoacTransaction
 ```javascript
 tp.sendMoacTransaction(params)
 ```
@@ -1579,7 +1582,7 @@ tp.sendMoacTransaction({
 }
 ```
 
-#### <a name='signMoacTransaction'></a>8.2 signMoacTransaction
+#### <a name='tp.signMoacTransaction'></a>8.2 tp.signMoacTransaction
 
 ```javascript
 tp.signMoacTransaction(params)
@@ -1669,3 +1672,56 @@ tp.moacTokenTransfer({
 }
 ```
 
+
+
+### <a name='Jingtum'></a>9.Jingtum
+
+#### <a name='tp.signJingtumTransaction'></a>9.1 tp.signJingtumTransaction
+```javascript
+tp.signJingtumTransaction(params)
+```
+
+##### Parameters
+
+`params`- `Object`: tx object
+- `Account`: `String`
+- `Fee`: `Float` 
+- `TakerGets`: `String|Object`
+- `TakerPays`: `String|Object`
+- `TransactionType`: `String`
+- `Sequence`: `Number`
+- `OfferSequence`: `Number`
+- `Amount`: `String`
+- `Destination`: `String`
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`- signedData
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.signJingtumTransaction({
+    "Account":"j47J1UriYXXXXXXXXXXXX",
+    "Fee": 0.00001,
+    "Flags": 524288,
+    "TakerGets":"111",
+    "TakerPays":{
+        "currency":"CNY",
+        "issuer":"jGa9J9TkqtBcUoHe2zqhVFFbgUVED6o9or",
+        "value":"1.2321"
+        },
+    "TransactionType":"OfferCreate",
+    "Sequence":4368
+}).then(console.log)
+
+> {
+    result: true,
+    data: 'e1063e225d43650000000111...',
+    msg: ''
+
+}
+```
