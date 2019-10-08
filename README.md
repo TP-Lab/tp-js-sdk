@@ -4,11 +4,11 @@
 
 ## <a name='JavascriptSDKforTokenPocketDapp.'></a>Javascript SDK for TokenPocket Dapp.
 
-* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议 直接在钱包内 Dapp浏览器 内输入URL即可使用。
+* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
 * 这个sdk 只针对移动端 TokenPocket
 
 
-* TokenPocket is already compatible with Scatter, Metamask,TronLink and IWallet. You can input your URL in the Dapp browser inside the TP Wallet. 
+* TokenPocket is already compatible with Scatter, Metamask,TronLink and IWallet. You can input your URL in the Dapp browser inside the TP Wallet without any additional development. 
 * This sdk is only for mobile TokenPocket
 
 
