@@ -974,8 +974,10 @@ tp.getEosTransactionRecord({
 - TokenPocket 兼容基于 Metamask 的应用.
 - About [Metamask](https://metamask.io/)
 
-- Webview 内有注入 `web3` 对象.
-- Webview injected a `web3` object.
+- Demo: https://github.com/metamask/test-dapp 
+
+- Webview 内有注入 `web3` 和 `ethereum` 对象.
+- Webview injected a `web3` and `ethereum` object.
 
 #### <a name='tp.sendEthTransaction'></a>3.1 tp.sendEthTransaction
 ```javascript
@@ -1537,6 +1539,8 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 
 - Webview 内有注入 `tronweb` 对象.
 - Webview injected a `tronweb` object.
+
+- `tronweb` https://developers.tron.network/docs/tron-web-intro
 
 
 
