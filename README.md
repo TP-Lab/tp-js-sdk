@@ -115,6 +115,8 @@ Browser
 		* [8.3 tp.moacTokenTransfer](#tp.moacTokenTransfer)
 	* [9.Jingtum](#Jingtum)
 		* [9.1 tp.signJingtumTransaction](#tp.signJingtumTransaction)
+    * [10.OKExChanin](#OKExChanin)
+		* [10.1 tp.signOkexchainTransaction](#tp.signOkexchainTransaction) 
 
 <!-- vscode-markdown-toc-config
 	numbering=false
