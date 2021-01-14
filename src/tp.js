@@ -1,4 +1,5 @@
 var Promise = require('promise');
+var Buffer = require('buffer');
 
 var TYPE_MAP = {
     eth: '1',
@@ -10,7 +11,13 @@ var TYPE_MAP = {
     iost: '7',
     cosmos: '8',
     binance: '9',
-    tron: '10'
+    tron: '10',
+    btc: '11',
+    bsc: '12',
+    dot: '13',
+    kusama: '14',
+    heco: '15',
+    okexchain: '16'
 };
 
 var BLOCKCHAIN_ID_MAP = {
@@ -23,7 +30,13 @@ var BLOCKCHAIN_ID_MAP = {
     '7': 'iost',
     '8': 'cosmos',
     '9': 'binance',
-    '10': 'tron'
+    '10': 'tron',
+    '11': 'btc',
+    '12': 'bsc',
+    '13': 'dot',
+    '14': 'kusama',
+    '15': 'heco',
+    '16': 'okexchain'
 }
 
 var _getTypeByStr = function (typeStr) {
@@ -55,7 +68,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.3.0',
+    version: '3.4.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -793,6 +806,37 @@ var tp = {
             }
 
             _sendTpRequest('signJingtumTransaction', JSON.stringify(params), tpCallbackFun);
+        });
+    },
+    signOkexchainTransaction: function (tx, address) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+
+                    // turn array into buffer 
+                    if (res.result && res.data && res.data.signatures) {
+                        es.data.signatures.forEach(function (item) {
+                            item.signature = item.signature && Buffer.from(item.signature);
+                            item.pub_key.value = item.pub_key.value && Buffer.from(item.pub_key.value);
+                        });
+                    }
+
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            var params = {
+                tx: tx,
+                from: address
+            }
+
+            _sendTpRequest('signOkexchainTransaction', JSON.stringify(params), tpCallbackFun);
         });
     }
 };

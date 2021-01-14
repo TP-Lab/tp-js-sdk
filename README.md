@@ -1734,3 +1734,70 @@ tp.signJingtumTransaction({
 
 }
 ```
+
+
+### <a name='OKExChanin'></a>10.OKExChanin
+
+#### <a name='tp.signOkexchainTransaction'></a>10.1 tp.signOkexchainTransaction
+
+```javascript
+tp.signOkexchainTransaction(tx, address)
+```
+
+##### Parameters
+
+`tx`- `Object`:
+- `chain_id`: `String`
+- `account_number`: `String | Number`
+- `sequence`: `String | Number`
+- `fees`: `Object`
+- `memo`: `String`
+- `msgs`: `Array`
+
+`address`- `String` : from address
+
+##### Returns
+
+`Object`:
+
+- `result`: `Boolean`
+
+- `data`: `Object`
+
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.signOkexchainTransaction({
+    "account_number":"222",
+    "chain_id":"okexchain-65",
+    "fee": {"amount": [{"amount":"0.020000000000000000","denom":"okt"}],"gas":"200000"},
+    "memo":"ahah",
+    "msgs":[
+        {
+            "type": "okexchain/token/MsgTransfer",
+            "value": {
+                "amount": [{"amount":"1.000000000000000000","denom":"okt"}],
+                "from_address":  "okexchainxxxxxxxxfrom",
+                "to_address": "okexchainxxxxxxxxto"
+            }
+        }
+    ],
+    "sequence":"15"
+}, 'okexchainxxxxxxxxfrom').then(console.log)
+
+> {
+	"result": true,
+	"data": {
+        "signatures": [{
+            "pub_key": {
+                "type": "tendermint/PubKeySecp256k1",
+                "value": [buffer]
+            },
+            "signature": [buffer]
+        }],
+	},
+	"msg": "success"
+}
+```
