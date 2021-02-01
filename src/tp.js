@@ -68,7 +68,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.4.0',
+    version: '3.4.1',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -837,6 +837,120 @@ var tp = {
             }
 
             _sendTpRequest('signOkexchainTransaction', JSON.stringify(params), tpCallbackFun);
+        });
+    },
+    getCurrentBalance: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+
+            _sendTpRequest('getCurrentBalance', '', tpCallbackFun);
+        });
+    },
+    btcTokenTransfer: function (params) {
+        if (!params.from || !params.to || !params.amount) {
+            throw new Error('missing params; "from", "to", "amount" is required ');
+        }
+
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('btcTokenTransfer', JSON.stringify(params), tpCallbackFun);
+
+
+        });
+    },
+    usdtTokenTransfer: function (params) {
+        if (!params.from || !params.to || !params.amount) {
+            throw new Error('missing params; "from", "to", "amount" is required ');
+        }
+
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('usdtTokenTransfer', JSON.stringify(params), tpCallbackFun);
+
+
+        });
+    },
+    getUsdtAddress: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('getUsdtAddress', '', tpCallbackFun);
+
+
+        });
+    },
+    getWallet: function (params) {
+        if (params.walletTypes && params.walletTypes.length) {
+            params.walletTypes = params.walletTypes.map(function (item) {
+                return TYPE_MAP[item.toLowerCase()] || item;
+            })
+        }
+        else {
+            params.walletTypes = [];
+        }
+
+        // default
+        if (undefined === params.switch) {
+            params.switch = true
+        }
+
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+
+                    if (res.data && res.data.blockchain_id) {
+                        res.data.blockchain = BLOCKCHAIN_ID_MAP[res.data.blockchain_id + ''] || res.data.blockchain_id;
+                    }
+
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('getWallet', JSON.stringify(params), tpCallbackFun);
         });
     }
 };
