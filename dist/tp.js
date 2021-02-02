@@ -885,6 +885,7 @@ var TYPE_MAP = {
     cosmos: '8',
     binance: '9',
     tron: '10',
+    trx: '10',
     btc: '11',
     bsc: '12',
     dot: '13',
@@ -941,7 +942,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.4.1',
+    version: '3.4.2',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
