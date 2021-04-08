@@ -2,7 +2,7 @@
 
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
-## <a name='JavascriptSDKforTokenPocketDapp.'></a>Javascript SDK for TokenPocket Dapp.
+## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for TokenPocket Dapp.
 
 * TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
 * 这个sdk 只针对移动端 TokenPocket
@@ -26,13 +26,13 @@
 * We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK) for interact with TokenPocket 
 
 
-## <a name='Installation'></a>Installation
+## <a name='installation'></a>Installation
 
 ```bash
 npm install tp-js-sdk
 ```
 
-## <a name='Usage'></a>Usage
+## <a name='usage'></a>Usage
 
 请在TokenPocket中使用该SDK。 请在发现 -> DApp浏览器中 开发调试
 
@@ -54,69 +54,71 @@ Browser
 ```
 
 
-## <a name='Contents'></a>Contents
+## <a name='contents'></a>Contents
 
 <!-- vscode-markdown-toc -->
-* [Javascript SDK for TokenPocket Dapp.](#JavascriptSDKforTokenPocketDapp.)
-* [Installation](#Installation)
-* [Usage](#Usage)
-* [Contents](#Contents)
-	* [1. COMMON](#COMMON)
-		* [1.1 tp.getAppInfo](#tp.getAppInfo)
-		* [1.2 tp.getWalletList (Deprecated)](#tp.getWalletListDeprecated)
-		* [1.3 tp.getDeviceId](#tp.getDeviceId)
-		* [1.4 tp.shareNewsToSNS](#tp.shareNewsToSNS)
-		* [1.5 tp.invokeQRScanner](#tp.invokeQRScanner)
-		* [1.6 tp.getCurrentWallet](#tp.getCurrentWallet)
-		* [1.7 tp.getWallets (Deprecated)](#tp.getWalletsDeprecated)
-		* [1.8 tp.sign](#tp.sign)
-		* [1.9 tp.back](#tp.back)
-		* [1.10 tp.close](#tp.close)
-		* [1.11 tp.fullScreen](#tp.fullScreen)
-		* [1.12 tp.importWallet](#tp.importWallet)
-		* [1.13 tp.setMenubar](#tp.setMenubar)
-		* [1.14 tp.startChat](#tp.startChat)
-		* [1.15 tp.saveImage](#tp.saveImage)
-		* [1.16 tp.rollHorizontal](#tp.rollHorizontal)
-		* [1.17 tp.popGestureRecognizerEnable](#tp.popGestureRecognizerEnable)
-		* [1.18 tp.forwardNavigationGesturesEnable](#tp.forwardNavigationGesturesEnable)
-		* [1.19 tp.getNodeUrl](#tp.getNodeUrl)
-	* [2.EOS](#EOS)
-		* [2.0 兼容Scatter (Compatible with Scatter)](#ScatterCompatiblewithScatter)
-		* [2.1 tp.eosTokenTransfer](#tp.eosTokenTransfer)
-		* [2.2 tp.pushEosAction](#tp.pushEosAction)
-		* [2.3 tp.getEosBalance](#tp.getEosBalance)
-		* [2.4 tp.getTableRows (Deprecated)](#tp.getTableRowsDeprecated)
-		* [2.5 tp.getEosTableRows](#tp.getEosTableRows)
-		* [2.6 tp.getEosAccountInfo](#tp.getEosAccountInfo)
-		* [2.7 tp.getEosTransactionRecord](#tp.getEosTransactionRecord)
-	* [3. ETH](#ETH)
-		* [3.0 兼容Metamask (Compatible with Metamask)](#MetamaskCompatiblewithMetamask)
-		* [3.1 tp.sendEthTransaction](#tp.sendEthTransaction)
-		* [3.2 tp.signEthTransaction](#tp.signEthTransaction)
-	* [4.ENU](#ENU)
-		* [4.0 兼容Ironman (Compatible with Ironman)](#IronmanCompatiblewithIronman)
-		* [4.1 tp.enuTokenTransfer](#tp.enuTokenTransfer)
-		* [4.2 tp.pushEnuAction](#tp.pushEnuAction)
-		* [4.3 tp.getEnuBalance](#tp.getEnuBalance)
-		* [4.4 tp.getEnuTableRows](#tp.getEnuTableRows)
-		* [4.5 tp.getEnuAccountInfo](#tp.getEnuAccountInfo)
-		* [4.6 tp.getEnuTransactionRecord](#tp.getEnuTransactionRecord)
-	* [5.COSMOS](#COSMOS)
-		* [5.1 tp.signCosmosTransaction](#tp.signCosmosTransaction)
-		* [5.2 tp.cosmosArbitrarySignature](#tp.cosmosArbitrarySignature)
-	* [6.IOST](#IOST)
-		* [6.0 兼容IWalletJS (Compatible with IWalletJS)](#IWalletJSCompatiblewithIWalletJS)
-	* [7.TRON](#TRON)
-		* [7.0 兼容TRONLINK (Compatible with TRONLINK)](#TRONLINKCompatiblewithTRONLINK)
-	* [8.MOAC](#MOAC)
-		* [8.1 tp.sendMoacTransaction](#tp.sendMoacTransaction)
-		* [8.2 tp.signMoacTransaction](#tp.signMoacTransaction)
-		* [8.3 tp.moacTokenTransfer](#tp.moacTokenTransfer)
-	* [9.Jingtum](#Jingtum)
-		* [9.1 tp.signJingtumTransaction](#tp.signJingtumTransaction)
-    * [10.OKExChanin](#OKExChanin)
-		* [10.1 tp.signOkexchainTransaction](#tp.signOkexchainTransaction) 
+* [Javascript SDK for TokenPocket Dapp.](#javascript-sdk-for-tokenpocket-dapp.)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contents](#contents)
+    * [1. COMMON](#1.-common)
+        * [1.1 tp.getAppInfo](#1.1-tp.getappinfo)
+        * [1.2 tp.getWalletList (Deprecated)](#1.2-tp.getwalletlist-(deprecated))
+        * [1.3 tp.getDeviceId](#1.3-tp.getdeviceid)
+        * [1.4 tp.shareNewsToSNS](#1.4-tp.sharenewstosns)
+        * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
+        * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
+        * [1.7 tp.getWallets (Deprecated)](#1.7-tp.getwallets-(deprecated))
+        * [1.8 tp.sign](#1.8-tp.sign)
+        * [1.9 tp.back](#1.9-tp.back)
+        * [1.10 tp.close](#1.10-tp.close)
+        * [1.11 tp.fullScreen](#1.11-tp.fullscreen)
+        * [1.12 tp.importWallet](#1.12-tp.importwallet)
+        * [1.13 tp.setMenubar](#1.13-tp.setmenubar)
+        * [1.14 tp.startChat](#1.14-tp.startchat)
+        * [1.15 tp.saveImage](#1.15-tp.saveimage)
+        * [1.16 tp.rollHorizontal](#1.16-tp.rollhorizontal)
+        * [1.17 tp.popGestureRecognizerEnable](#1.17-tp.popgesturerecognizerenable)
+        * [1.18 tp.forwardNavigationGesturesEnable](#1.18-tp.forwardnavigationgesturesenable)
+        * [1.19 tp.getNodeUrl](#1.19-tp.getnodeurl)
+    * [2.EOS](#2.eos)
+        * [2.0 兼容Scatter (Compatible with Scatter)](#2.0-兼容scatter-(compatible-with-scatter))
+        * [2.1 tp.eosTokenTransfer](#2.1-tp.eostokentransfer)
+        * [2.2 tp.pushEosAction](#2.2-tp.pusheosaction)
+        * [2.3 tp.getEosBalance](#2.3-tp.geteosbalance)
+        * [2.4 tp.getTableRows (Deprecated)](#2.4-tp.gettablerows-(deprecated))
+        * [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
+        * [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
+        * [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
+    * [3. ETH](#3.-eth)
+        * [3.0 兼容Metamask (Compatible with Metamask)](#3.0-兼容metamask-(compatible-with-metamask))
+        * [3.1 tp.sendEthTransaction](#3.1-tp.sendethtransaction)
+        * [3.2 tp.signEthTransaction](#3.2-tp.signethtransaction)
+    * [4.ENU](#4.enu)
+        * [4.0 兼容Ironman (Compatible with Ironman)](#4.0-兼容ironman-(compatible-with-ironman))
+        * [4.1 tp.enuTokenTransfer](#4.1-tp.enutokentransfer)
+        * [4.2 tp.pushEnuAction](#4.2-tp.pushenuaction)
+        * [4.3 tp.getEnuBalance](#4.3-tp.getenubalance)
+        * [4.4 tp.getEnuTableRows](#4.4-tp.getenutablerows)
+        * [4.5 tp.getEnuAccountInfo](#4.5-tp.getenuaccountinfo)
+        * [4.6 tp.getEnuTransactionRecord](#4.6-tp.getenutransactionrecord)
+    * [5.COSMOS](#5.cosmos)
+        * [5.1 tp.signCosmosTransaction](#5.1-tp.signcosmostransaction)
+        * [5.2 tp.cosmosArbitrarySignature](#5.2-tp.cosmosarbitrarysignature)
+    * [6.IOST](#6.iost)
+        * [6.0 兼容IWalletJS (Compatible with IWalletJS)](#6.0-兼容iwalletjs-(compatible-with-iwalletjs))
+    * [7.TRON](#7.tron)
+        * [7.0 兼容TRONLINK (Compatible with TRONLINK)](#7.0-兼容tronlink-(compatible-with-tronlink))
+    * [8.MOAC](#8.moac)
+        * [8.1 tp.sendMoacTransaction](#8.1-tp.sendmoactransaction)
+        * [8.2 tp.signMoacTransaction](#8.2-tp.signmoactransaction)
+        * [8.3 tp.moacTokenTransfer](#8.3-tp.moactokentransfer)
+    * [9.Jingtum](#9.jingtum)
+        * [9.1 tp.signJingtumTransaction](#9.1-tp.signjingtumtransaction)
+    * [10.OKExChanin](#10.okexchanin)
+        * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
+    * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
+    * [12.HECO BSC OKT](#12.heco-bsc-okt)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -127,9 +129,9 @@ Browser
 
 
 
-### <a name='COMMON'></a>1. COMMON
+### <a name='1.-common'></a>1. COMMON
 
-#### <a name='tp.getAppInfo'></a>1.1 tp.getAppInfo
+#### <a name='1.1-tp.getappinfo'></a>1.1 tp.getAppInfo
 
 
 ```javascript
@@ -164,10 +166,10 @@ tp.getAppInfo().then(console.log)
 }
 ```
 
-#### <a name='tp.getWalletListDeprecated'></a>1.2 tp.getWalletList (Deprecated)
+#### <a name='1.2-tp.getwalletlist-(deprecated)'></a>1.2 tp.getWalletList (Deprecated)
 
 
-#### <a name='tp.getDeviceId'></a>1.3 tp.getDeviceId
+#### <a name='1.3-tp.getdeviceid'></a>1.3 tp.getDeviceId
 
 ```javascript
 tp.getDeviceId()
@@ -188,7 +190,7 @@ tp.getDeviceId().then(console.log)
 }
 ```
 
-#### <a name='tp.shareNewsToSNS'></a>1.4 tp.shareNewsToSNS
+#### <a name='1.4-tp.sharenewstosns'></a>1.4 tp.shareNewsToSNS
 
 分享到各个社交媒体
 
@@ -219,7 +221,7 @@ tp.shareNewsToSNS({
 ```
 
 
-#### <a name='tp.invokeQRScanner'></a>1.5 tp.invokeQRScanner
+#### <a name='1.5-tp.invokeqrscanner'></a>1.5 tp.invokeQRScanner
 
 扫码
 
@@ -241,7 +243,7 @@ tp.invokeQRScanner().then(console.log)
 > "abcdefg"
 ```
 
-#### <a name='tp.getCurrentWallet'></a>1.6 tp.getCurrentWallet
+#### <a name='1.6-tp.getcurrentwallet'></a>1.6 tp.getCurrentWallet
 
 获取用户当前钱包信息
 
@@ -278,7 +280,7 @@ tp.getCurrentWallet().then(console.log)
 ```
 
 
-#### <a name='tp.getWalletsDeprecated'></a>1.7 tp.getWallets (Deprecated)
+#### <a name='1.7-tp.getwallets-(deprecated)'></a>1.7 tp.getWallets (Deprecated)
 
 获取用户钱包列表
 
@@ -321,7 +323,7 @@ tp.getWallets().then(console.log)
 }
 ```
 
-#### <a name='tp.sign'></a>1.8 tp.sign
+#### <a name='1.8-tp.sign'></a>1.8 tp.sign
 
 ```javascript
 tp.sign(params)
@@ -364,7 +366,7 @@ tp.sign({
 ```
 
 
-#### <a name='tp.back'></a>1.9 tp.back
+#### <a name='1.9-tp.back'></a>1.9 tp.back
 
 ```javascript
 tp.back()
@@ -377,7 +379,7 @@ tp.back()
 
 ```
 
-#### <a name='tp.close'></a>1.10 tp.close
+#### <a name='1.10-tp.close'></a>1.10 tp.close
 
 关闭页面
 
@@ -395,7 +397,7 @@ tp.close()
 ```
 
 
-#### <a name='tp.fullScreen'></a>1.11 tp.fullScreen
+#### <a name='1.11-tp.fullscreen'></a>1.11 tp.fullScreen
 
 全屏页面
 
@@ -420,7 +422,7 @@ tp.fullScreen({
 ```
 
 
-#### <a name='tp.importWallet'></a>1.12 tp.importWallet
+#### <a name='1.12-tp.importwallet'></a>1.12 tp.importWallet
 
 钱包导入界面 
 
@@ -442,7 +444,7 @@ tp.importWallet('eos');
 ```
 
 
-#### <a name='tp.setMenubar'></a>1.13 tp.setMenubar
+#### <a name='1.13-tp.setmenubar'></a>1.13 tp.setMenubar
 
 全屏时 设置dapp浏览器导航条可见性
 
@@ -468,7 +470,7 @@ tp.setMenubar({
 ```
 
 
-#### <a name='tp.startChat'></a>1.14 tp.startChat
+#### <a name='1.14-tp.startchat'></a>1.14 tp.startChat
 
 跳到TP聊天
 
@@ -497,7 +499,7 @@ tp.startChat({
 ```
 
 
-#### <a name='tp.saveImage'></a>1.15 tp.saveImage
+#### <a name='1.15-tp.saveimage'></a>1.15 tp.saveImage
 
 保存图片
 
@@ -522,7 +524,7 @@ tp.saveImage({
 
 
 ```
-#### <a name='tp.rollHorizontal'></a>1.16 tp.rollHorizontal
+#### <a name='1.16-tp.rollhorizontal'></a>1.16 tp.rollHorizontal
 
 横屏
 
@@ -549,7 +551,7 @@ tp.rollHorizontal({
 
 
 
-#### <a name='tp.popGestureRecognizerEnable'></a>1.17 tp.popGestureRecognizerEnable
+#### <a name='1.17-tp.popgesturerecognizerenable'></a>1.17 tp.popGestureRecognizerEnable
 
 禁止iOS自带的左滑手势返回，对安卓无影响
 
@@ -575,7 +577,7 @@ tp.popGestureRecognizerEnable({
 });
 ```
 
-#### <a name='tp.forwardNavigationGesturesEnable'></a>1.18 tp.forwardNavigationGesturesEnable
+#### <a name='1.18-tp.forwardnavigationgesturesenable'></a>1.18 tp.forwardNavigationGesturesEnable
 
 禁止webview自带的左滑手势触发goback
 
@@ -601,7 +603,7 @@ tp.forwardNavigationGesturesEnable({
 ```
 
 
-#### <a name='tp.getNodeUrl'></a>1.19 tp.getNodeUrl
+#### <a name='1.19-tp.getnodeurl'></a>1.19 tp.getNodeUrl
 
 获取用户某个底层选择的节点信息
 
@@ -646,9 +648,9 @@ tp.getNodeUrl({
 ```
 
 
-### <a name='EOS'></a>2.EOS
+### <a name='2.eos'></a>2.EOS
 
-#### <a name='ScatterCompatiblewithScatter'></a>2.0 兼容Scatter (Compatible with Scatter)
+#### <a name='2.0-兼容scatter-(compatible-with-scatter)'></a>2.0 兼容Scatter (Compatible with Scatter)
 
 - TokenPocket is Compatible with Scatter-js both 1.0 and 2.0.
 - TokenPocket 兼容基于 Scatter-js 1.0 和 2.0 的应用
@@ -661,7 +663,7 @@ tp.getNodeUrl({
 - [scatter-js2-demo](https://github.com/TP-Lab/scatter-demo-eosjs2)
 
 
-#### <a name='tp.eosTokenTransfer'></a>2.1 tp.eosTokenTransfer
+#### <a name='2.1-tp.eostokentransfer'></a>2.1 tp.eosTokenTransfer
 
 ```javascript
 tp.eosTokenTransfer(params)
@@ -710,7 +712,7 @@ tp.eosTokenTransfer({
 
 
 
-#### <a name='tp.pushEosAction'></a>2.2 tp.pushEosAction
+#### <a name='2.2-tp.pusheosaction'></a>2.2 tp.pushEosAction
 
 ```javascript
 tp.pushEosAction(params)
@@ -778,7 +780,7 @@ tp.pushEosAction({
 ```
 
 
-#### <a name='tp.getEosBalance'></a>2.3 tp.getEosBalance
+#### <a name='2.3-tp.geteosbalance'></a>2.3 tp.getEosBalance
 
 ```javascript
 tp.getEosBalance(params)
@@ -818,9 +820,9 @@ tp.getEosBalance({
 }
 ```
 
-#### <a name='tp.getTableRowsDeprecated'></a>2.4 tp.getTableRows (Deprecated)
+#### <a name='2.4-tp.gettablerows-(deprecated)'></a>2.4 tp.getTableRows (Deprecated)
 
-#### <a name='tp.getEosTableRows'></a>2.5 tp.getEosTableRows
+#### <a name='2.5-tp.geteostablerows'></a>2.5 tp.getEosTableRows
 
 获取合约内table数据
 
@@ -869,7 +871,7 @@ tp.getTableRows({
 }
 ```
 
-#### <a name='tp.getEosAccountInfo'></a>2.6 tp.getEosAccountInfo
+#### <a name='2.6-tp.geteosaccountinfo'></a>2.6 tp.getEosAccountInfo
 
 ```javascript
 tp.getEosAccountInfo(params)
@@ -901,7 +903,7 @@ tp.getEosAccountInfo({
 }
 ```
 
-#### <a name='tp.getEosTransactionRecord'></a>2.7 tp.getEosTransactionRecord
+#### <a name='2.7-tp.geteostransactionrecord'></a>2.7 tp.getEosTransactionRecord
 
 ```javascript
 tp.getEosTransactionRecord(params)
@@ -967,10 +969,10 @@ tp.getEosTransactionRecord({
 
 
 
-### <a name='ETH'></a>3. ETH
+### <a name='3.-eth'></a>3. ETH
 
 
-#### <a name='MetamaskCompatiblewithMetamask'></a>3.0 兼容Metamask (Compatible with Metamask) 
+#### <a name='3.0-兼容metamask-(compatible-with-metamask)'></a>3.0 兼容Metamask (Compatible with Metamask) 
 
 - TokenPocket is Compatible with Metamask.
 - TokenPocket 兼容基于 Metamask 的应用.
@@ -981,7 +983,7 @@ tp.getEosTransactionRecord({
 - Webview 内有注入 `web3` 和 `ethereum` 对象.
 - Webview injected a `web3` and `ethereum` object.
 
-#### <a name='tp.sendEthTransaction'></a>3.1 tp.sendEthTransaction
+#### <a name='3.1-tp.sendethtransaction'></a>3.1 tp.sendEthTransaction
 ```javascript
 tp.sendEthTransaction(params)
 ```
@@ -1020,7 +1022,7 @@ tp.sendEthTransaction({
 }
 ```
 
-#### <a name='tp.signEthTransaction'></a>3.2 tp.signEthTransaction
+#### <a name='3.2-tp.signethtransaction'></a>3.2 tp.signEthTransaction
 
 ```javascript
 tp.signEthTransaction(params)
@@ -1062,13 +1064,13 @@ tp.signEthTransaction({
 
 
 
-### <a name='ENU'></a>4.ENU
+### <a name='4.enu'></a>4.ENU
 
-#### <a name='IronmanCompatiblewithIronman'></a>4.0 兼容Ironman (Compatible with Ironman)
+#### <a name='4.0-兼容ironman-(compatible-with-ironman)'></a>4.0 兼容Ironman (Compatible with Ironman)
 
 - About [Ironman](http://enuironman.com/)
 
-#### <a name='tp.enuTokenTransfer'></a>4.1 tp.enuTokenTransfer
+#### <a name='4.1-tp.enutokentransfer'></a>4.1 tp.enuTokenTransfer
 
 ```javascript
 tp.enuTokenTransfer(params)
@@ -1117,7 +1119,7 @@ tp.enuTokenTransfer({
 
 
 
-#### <a name='tp.pushEnuAction'></a>4.2 tp.pushEnuAction
+#### <a name='4.2-tp.pushenuaction'></a>4.2 tp.pushEnuAction
 
 ```javascript
 tp.pushEnuAction(params)
@@ -1185,7 +1187,7 @@ tp.pushEnuAction({
 ```
 
 
-#### <a name='tp.getEnuBalance'></a>4.3 tp.getEnuBalance
+#### <a name='4.3-tp.getenubalance'></a>4.3 tp.getEnuBalance
 
 ```javascript
 tp.getEnuBalance(params)
@@ -1226,7 +1228,7 @@ tp.getEnuBalance({
 ```
 
 
-#### <a name='tp.getEnuTableRows'></a>4.4 tp.getEnuTableRows
+#### <a name='4.4-tp.getenutablerows'></a>4.4 tp.getEnuTableRows
 
 获取合约内table数据
 
@@ -1275,7 +1277,7 @@ tp.getTableRows({
 }
 ```
 
-#### <a name='tp.getEnuAccountInfo'></a>4.5 tp.getEnuAccountInfo
+#### <a name='4.5-tp.getenuaccountinfo'></a>4.5 tp.getEnuAccountInfo
 ```javascript
 tp.getEnuAccountInfo(params)
 ```
@@ -1306,7 +1308,7 @@ tp.getEnuAccountInfo({
 }
 ```
 
-#### <a name='tp.getEnuTransactionRecord'></a>4.6 tp.getEnuTransactionRecord
+#### <a name='4.6-tp.getenutransactionrecord'></a>4.6 tp.getEnuTransactionRecord
 
 ```javascript
 tp.getEnuTransactionRecord(params)
@@ -1371,9 +1373,9 @@ tp.getEnuTransactionRecord({
 ```
 
 
-### <a name='COSMOS'></a>5.COSMOS
+### <a name='5.cosmos'></a>5.COSMOS
 
-#### <a name='tp.signCosmosTransaction'></a>5.1 tp.signCosmosTransaction
+#### <a name='5.1-tp.signcosmostransaction'></a>5.1 tp.signCosmosTransaction
 
 ```javascript
 tp.signCosmosTransaction(stdTx)
@@ -1465,7 +1467,7 @@ tp.signCosmosTransaction({
 
 
 
-#### <a name='tp.cosmosArbitrarySignature'></a>5.2 tp.cosmosArbitrarySignature
+#### <a name='5.2-tp.cosmosarbitrarysignature'></a>5.2 tp.cosmosArbitrarySignature
 
 ```javascript
 tp.cosmosArbitrarySignature(from, stdTx)
@@ -1523,18 +1525,18 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 ```
 
 
-### <a name='IOST'></a>6.IOST
+### <a name='6.iost'></a>6.IOST
 
-#### <a name='IWalletJSCompatiblewithIWalletJS'></a>6.0 兼容IWalletJS (Compatible with IWalletJS)
+#### <a name='6.0-兼容iwalletjs-(compatible-with-iwalletjs)'></a>6.0 兼容IWalletJS (Compatible with IWalletJS)
 
 - TokenPocket is Compatible with IWalletJS.
 - TokenPocket 兼容基于 IWalletJS 的应用.
 - IWalletJS API: [IWalletJS](https://github.com/TP-Lab/IOST-JS-API)
 
 
-### <a name='TRON'></a>7.TRON
+### <a name='7.tron'></a>7.TRON
 
-#### <a name='TRONLINKCompatiblewithTRONLINK'></a>7.0 兼容TRONLINK (Compatible with TRONLINK)
+#### <a name='7.0-兼容tronlink-(compatible-with-tronlink)'></a>7.0 兼容TRONLINK (Compatible with TRONLINK)
 
 - TokenPocket is Compatible with TronLink.
 - TokenPocket 兼容基于 TronLink 的应用.
@@ -1546,9 +1548,9 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 
 
 
-### <a name='MOAC'></a>8.MOAC
+### <a name='8.moac'></a>8.MOAC
 
-#### <a name='tp.sendMoacTransaction'></a>8.1 tp.sendMoacTransaction
+#### <a name='8.1-tp.sendmoactransaction'></a>8.1 tp.sendMoacTransaction
 ```javascript
 tp.sendMoacTransaction(params)
 ```
@@ -1593,7 +1595,7 @@ tp.sendMoacTransaction({
 }
 ```
 
-#### <a name='tp.signMoacTransaction'></a>8.2 tp.signMoacTransaction
+#### <a name='8.2-tp.signmoactransaction'></a>8.2 tp.signMoacTransaction
 
 ```javascript
 tp.signMoacTransaction(params)
@@ -1640,7 +1642,7 @@ tp.signMoacTransaction({
 ```
 
 
-#### <a name='tp.moacTokenTransfer'></a>8.3 tp.moacTokenTransfer
+#### <a name='8.3-tp.moactokentransfer'></a>8.3 tp.moacTokenTransfer
 
 ```javascript
 tp.moacTokenTransfer(params)
@@ -1685,9 +1687,9 @@ tp.moacTokenTransfer({
 
 
 
-### <a name='Jingtum'></a>9.Jingtum
+### <a name='9.jingtum'></a>9.Jingtum
 
-#### <a name='tp.signJingtumTransaction'></a>9.1 tp.signJingtumTransaction
+#### <a name='9.1-tp.signjingtumtransaction'></a>9.1 tp.signJingtumTransaction
 ```javascript
 tp.signJingtumTransaction(params)
 ```
@@ -1738,9 +1740,9 @@ tp.signJingtumTransaction({
 ```
 
 
-### <a name='OKExChanin'></a>10.OKExChanin
+### <a name='10.okexchanin'></a>10.OKExChanin
 
-#### <a name='tp.signOkexchainTransaction'></a>10.1 tp.signOkexchainTransaction
+#### <a name='10.1-tp.signokexchaintransaction'></a>10.1 tp.signOkexchainTransaction
 
 ```javascript
 tp.signOkexchainTransaction(tx, address)
@@ -1803,3 +1805,20 @@ tp.signOkexchainTransaction({
 	"msg": "success"
 }
 ```
+
+
+
+
+### <a name='11.polkadot-kusama-etc.'></a>11.Polkadot Kusama etc.
+
+TokenPocket is compatible with Polkadot{.js} extension please check the offical doc: 
+- https://polkadot.js.org/docs/extension/ 
+- https://github.com/polkadot-js/apps 
+
+
+### <a name='12.heco-bsc-okt'></a>12.HECO BSC OKT 
+
+TokenPocket is compatible with metamask, please check the offiacl doc: 
+
+- https://docs.metamask.io/guide/ 
+- https://github.com/metamask/test-dapp 
