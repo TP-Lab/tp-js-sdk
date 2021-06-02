@@ -1541,8 +1541,8 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 - TokenPocket is Compatible with TronLink.
 - TokenPocket 兼容基于 TronLink 的应用.
 
-- Webview 内有注入 `tronweb` 对象.
-- Webview injected a `tronweb` object.
+- Webview 内有注入 `tronWeb` 对象.
+- Webview injected a `tronWeb` object.
 
 - `tronweb` https://developers.tron.network/docs/tron-web-intro
 
