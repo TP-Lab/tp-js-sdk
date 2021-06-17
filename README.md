@@ -62,13 +62,14 @@ Browser
 * [Usage](#usage)
 * [Contents](#contents)
     * [1. COMMON](#1.-common)
+        * [1.0 Enum Blockchains](#1.0-enum-blockchains)
         * [1.1 tp.getAppInfo](#1.1-tp.getappinfo)
         * [1.2 tp.getWalletList (Deprecated)](#1.2-tp.getwalletlist-(deprecated))
         * [1.3 tp.getDeviceId](#1.3-tp.getdeviceid)
         * [1.4 tp.shareNewsToSNS](#1.4-tp.sharenewstosns)
         * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
         * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
-        * [1.7 tp.getWallets (Deprecated)](#1.7-tp.getwallets-(deprecated))
+        * [1.7 tp.getWallet](#1.7-tp.getwallet)
         * [1.8 tp.sign](#1.8-tp.sign)
         * [1.9 tp.back](#1.9-tp.back)
         * [1.10 tp.close](#1.10-tp.close)
@@ -129,7 +130,16 @@ Browser
 
 
 
+
 ### <a name='1.-common'></a>1. COMMON
+
+
+#### <a name='1.0-enum-blockchains'></a>1.0 Enum Blockchains 
+
+```
+eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,kusama,heco,okexchain,oktest,matic,hsc,oec,subgame,klaytn
+```
+
 
 #### <a name='1.1-tp.getappinfo'></a>1.1 tp.getAppInfo
 
@@ -280,39 +290,41 @@ tp.getCurrentWallet().then(console.log)
 ```
 
 
-#### <a name='1.7-tp.getwallets-(deprecated)'></a>1.7 tp.getWallets (Deprecated)
+#### <a name='1.7-tp.getwallet'></a>1.7 tp.getWallet
 
-获取用户钱包列表
+获取/切换 用户钱包地址
 
-Get User's Wallet List
+Get / Switch User's Wallet
 
 ```javascript
-tp.getWallets()
+tp.getWallet(params)
 ```
+
+##### Parameters
+
+`params`- `Object`:
+- `walletTypes`: `Array`  ['eth', 'btc'] // Enum  blockchains
+- `switch`: `Boolean` switch current wallet or not
+
 
 ##### Returns
 
 `Object`:
 - `result`: `Boolean`
-- `data`: `Array`
-    - `address`: `String`
+- `data`: `Object`
     - `name`: `String`
-    - `blockchain`: `String`
+    - `address`: `String`
+    - `blockchain`: `String` 
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getWallets().then(console.log)
+tp.getWallet(walletTypes: ['eth', 'bsc', 'dot'], switch: false,).then(console.log)
 
 > {
     result: true,
     data: [
-        {
-            name: 'itokenpocket',
-            address: 'EOSaaaaaaaaabbbbbbbb',
-            blockchain: 'eos'
-        },
         {
             name: 'ethwallet11',
             address: '0x40e5A542087FA4b966209707177b103d158Fd3A4',

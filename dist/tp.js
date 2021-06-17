@@ -891,7 +891,14 @@ var TYPE_MAP = {
     dot: '13',
     kusama: '14',
     heco: '15',
-    okexchain: '16'
+    okexchain: '16',
+    oktest: '17',
+    matic: '18',
+    polygon: '18',
+    hsc: '19',
+    oec: '20',
+    subgame: '21',
+    klaytn: '22'
 };
 
 var BLOCKCHAIN_ID_MAP = {
@@ -910,7 +917,13 @@ var BLOCKCHAIN_ID_MAP = {
     '13': 'dot',
     '14': 'kusama',
     '15': 'heco',
-    '16': 'okexchain'
+    '16': 'okexchain',
+    '17': 'oktest',
+    '18': 'matic',
+    '19': 'hsc',
+    '20': 'oec',
+    '21': 'subgame',
+    '22': 'klaytn'
 }
 
 var _getTypeByStr = function (typeStr) {
@@ -942,7 +955,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.4.2',
+    version: '3.5.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
