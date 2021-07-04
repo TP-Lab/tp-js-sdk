@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/TP-Lab/tp-js-sdk) 
+
 # tp-js-sdk
 
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
