@@ -91,10 +91,8 @@ Browser
         * [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
         * [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
         * [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
-    * [3. ETH](#3.-eth)
+    * [3. ETH/BSC/HECO/MATIC/HSC...](#3.-eth)
         * [3.0 兼容Metamask (Compatible with Metamask)](#3.0-兼容metamask-(compatible-with-metamask))
-        * [3.1 tp.sendEthTransaction](#3.1-tp.sendethtransaction)
-        * [3.2 tp.signEthTransaction](#3.2-tp.signethtransaction)
     * [4.ENU](#4.enu)
         * [4.0 兼容Ironman (Compatible with Ironman)](#4.0-兼容ironman-(compatible-with-ironman))
         * [4.1 tp.enuTokenTransfer](#4.1-tp.enutokentransfer)
@@ -992,88 +990,9 @@ tp.getEosTransactionRecord({
 
 - Demo: https://github.com/metamask/test-dapp 
 
-- Webview 内有注入 `web3` 和 `ethereum` 对象.
-- Webview injected a `web3` and `ethereum` object.
-
-#### <a name='3.1-tp.sendethtransaction'></a>3.1 tp.sendEthTransaction
-```javascript
-tp.sendEthTransaction(params)
-```
-
-##### Parameters
-
-`params`- `Object`:
-- `from`: `String`
-- `to`: `String`
-- `gasPrice`: `String|Number`
-- `gasLimit`: `String|Number`
-- `data`: `String`
-- `value`: `String|Number`- (optional)
-
-##### Returns
-
-`Object`:
-- `result`: `Boolean`
-- `data`: `String`- txhash
-
-##### Example
-
-```javascript
-tp.sendEthTransaction({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
-    gasPrice: 100000000,
-    gasLimit: 60000,
-    data: '0xaawefwefwefwefwefef',
-    value: 1000000000
-}).then(console.log)
-
-> {
-    result: true,
-    data: '0xe1063e225d4365b79c30132077e82777c0966844f545ddecc017965c0b551f7e'
-}
-```
-
-#### <a name='3.2-tp.signethtransaction'></a>3.2 tp.signEthTransaction
-
-```javascript
-tp.signEthTransaction(params)
-```
-
-##### Parameters
-
-`params`- `Object`:
-- `from`: `String`
-- `to`: `String`
-- `gasPrice`: `String|Number`
-- `gasLimit`: `String|Number`
-- `data`: `String`
-- `value`: `String|Number`- (optional)
-
-##### Returns
-
-`Object`:
-- `result`: `Boolean`
-- `data`: `String`- signed data
-
-##### Example
-
-```javascript
-tp.signEthTransaction({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
-    gasPrice: 100000000,
-    gasLimit: 60000,
-    data: '0xaawefwefwefwefwefef',
-    value: 1000000000
-}).then(console.log)
-
-> {
-    result: true,
-    data: '0xf8ef8201598504a817c800830298109490cb7b42a9cb3accbe665e7d6cdde4ab346eca1483030d40b88402ef9b6b0000000000000000'
-}
-```
-
+- Webview 内有注入 `ethereum` 对象.
+- Webview injected an `ethereum` object.
+- 
 
 
 ### <a name='4.enu'></a>4.ENU
