@@ -2,7 +2,8 @@
 
 ![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
 
-## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for TokenPocket Dapp.
+## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for ![image](https://user-images.githubusercontent.com/2173383/132175455-c5bf0258-2e4c-4c48-9637-8562a6c383af.png)
+TokenPocket Dapp.
 
 * TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
 * 这个sdk 只针对移动端 TokenPocket
@@ -318,7 +319,7 @@ tp.getWallet(params)
 ##### Example
 
 ```javascript
-tp.getWallet(walletTypes: ['eth', 'bsc', 'dot'], switch: false,).then(console.log)
+tp.getWallet({walletTypes: ['eth', 'bsc', 'dot'], switch: false}).then(console.log)
 
 > {
     result: true,
