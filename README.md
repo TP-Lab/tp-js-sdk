@@ -4,11 +4,11 @@
 
 ## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for TokenPocket Dapp.
 
-* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
+* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)和 IWallet(IOST) solana 协议。已经支持了Scatter, MetaMask, TronLink, iWallet, Phantom 插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
 * 这个sdk 只针对移动端 TokenPocket
 
 
-* TokenPocket is already compatible with Scatter, Metamask,TronLink and IWallet. You can input your URL in the Dapp browser inside the TP Wallet without any additional development. 
+* TokenPocket is already compatible with Scatter, Metamask,TronLink, Phantom and IWallet. You can input your URL in the Dapp browser inside the TP Wallet without any additional development. 
 * This sdk is only for mobile TokenPocket
 
 
@@ -91,7 +91,7 @@ Browser
         * [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
         * [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
         * [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
-    * [3. ETH/BSC/HECO/MATIC/HSC...](#3.-eth)
+    * [3. ETH](#3.-eth)
         * [3.0 兼容Metamask (Compatible with Metamask)](#3.0-兼容metamask-(compatible-with-metamask))
     * [4.ENU](#4.enu)
         * [4.0 兼容Ironman (Compatible with Ironman)](#4.0-兼容ironman-(compatible-with-ironman))
@@ -118,6 +118,10 @@ Browser
         * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
     * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
     * [12.HECO BSC OKT](#12.heco-bsc-okt)
+    * [13.solana](#13.solana)
+        * [13.1 connect](#13.1-connect)
+        * [13.2 signTransaction](#13.2-signtransaction)
+        * [13.3 signMessage](#13.3-signmessage)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -1753,3 +1757,40 @@ TokenPocket is compatible with metamask, please check the offiacl doc:
 
 - https://docs.metamask.io/guide/ 
 - https://github.com/metamask/test-dapp 
+
+
+### <a name='13.solana'></a>13.solana
+
+Check https://github.com/solana-labs/wallet-adapter for using solana wallets including TokenPocket.
+
+Or you can using the `window.solana` Object directly in the webview.
+
+
+#### <a name='13.1-connect'></a>13.1 connect
+```javascript
+
+await window.solana.connect();
+const publicKey = window.solana.publicKey.toBase58();
+
+```
+
+
+#### <a name='13.2-signtransaction'></a>13.2 signTransaction
+
+```javascript
+
+const network = "<NETWORK_URL>";
+const connection = new Connection(network);
+const transaction = new Transaction();
+const signedTransaction = await window.solana.signTransaction(transaction);
+const signature = await connection.sendRawTransaction(signedTransaction.serialize());
+
+```
+
+#### <a name='13.3-signmessage'></a>13.3 signMessage
+
+```javascript
+const encodedMessage = new TextEncoder().encode('Your message');
+const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
+
+```
