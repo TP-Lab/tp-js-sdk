@@ -82,7 +82,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.7.1',
+    version: '3.7.2',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
     },
@@ -965,6 +965,23 @@ var tp = {
                 }
             }
             _sendTpRequest('getWallet', JSON.stringify(params), tpCallbackFun);
+        });
+    },
+    addDAppToDiscover: function (params) {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('addDAppToDiscover', JSON.stringify(params), tpCallbackFun);
         });
     }
 };
