@@ -70,7 +70,7 @@ Browser
         * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
         * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
         * [1.7 tp.getWallet](#1.7-tp.getwallet)
-        * [1.8 tp.sign](#1.8-tp.sign)
+        * [1.8 tp.sign (Deprecated)](#1.8-tp.sign-(deprecated))
         * [1.9 tp.back](#1.9-tp.back)
         * [1.10 tp.close](#1.10-tp.close)
         * [1.11 tp.fullScreen](#1.11-tp.fullscreen)
@@ -337,7 +337,7 @@ tp.getWallet({walletTypes: ['eth', 'bsc', 'dot'], switch: false}).then(console.l
 }
 ```
 
-#### <a name='1.8-tp.sign'></a>1.8 tp.sign
+#### <a name='1.8-tp.sign-deprecated'></a>1.8 tp.sign (Deprecated)
 
 ```javascript
 tp.sign(params)
