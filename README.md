@@ -25,6 +25,8 @@
 
 * We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK) for interact with TokenPocket 
 
+* You can add Vconsole https://www.npmjs.com/package/vconsole to debug in TokenPocket wallet.
+
 
 ## <a name='installation'></a>Installation
 
