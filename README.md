@@ -72,7 +72,6 @@ Browser
         * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
         * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
         * [1.7 tp.getWallet](#1.7-tp.getwallet)
-        * [1.8 tp.sign (Deprecated)](#1.8-tp.sign-(deprecated))
         * [1.9 tp.back](#1.9-tp.back)
         * [1.10 tp.close](#1.10-tp.close)
         * [1.11 tp.fullScreen](#1.11-tp.fullscreen)
@@ -335,48 +334,6 @@ tp.getWallet({walletTypes: ['eth', 'bsc', 'dot'], switch: false}).then(console.l
             blockchain: 'eth'
         }
     ],
-    msg: 'success'
-}
-```
-
-#### <a name='1.8-tp.sign-deprecated'></a>1.8 tp.sign (Deprecated)
-
-```javascript
-tp.sign(params)
-```
-
-##### Parameters
-
-`params`- `Object`:
-- `appid`: `String`
-
-
-##### Returns
-
-`Object`:
-- `result`: `Boolean`
-- `data`: `Object`
-    - `deviceId` : `Stirng`
-    - `appid` : `String`
-    - `timestamp` : `Number`
-    - `sign` : `String`
-- `msg`: `String`
-
-##### Example
-
-```javascript
-tp.sign({
-    appid: 'swEmwEQ666'
-}).then(console.log)
-
-> {
-    result: true,
-    data: {
-        deviceId: 'EBEFWA-AFEBEf-eeee-aaaaa-eeeeea23d',
-        appid: 'swEmwEQ666',
-        timestamp: 1534735280,
-        sign: '713efewwfegwohvnqooyge38h4n421ll3fwzib9e3q00'
-    },
     msg: 'success'
 }
 ```
