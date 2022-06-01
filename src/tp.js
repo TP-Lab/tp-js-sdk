@@ -317,9 +317,6 @@ var tp = {
             _sendTpRequest('getNodeUrl', JSON.stringify(params), tpCallbackFun);
 
         });
-
-
-
     },
     saveImage: function (params) {
         _sendTpRequest('saveImage', JSON.stringify(params), '');
@@ -332,6 +329,22 @@ var tp = {
     },
     forwardNavigationGesturesEnable: function (params) {
         _sendTpRequest('forwardNavigationGesturesEnable', JSON.stringify(params), '');
+    },
+    isDarkMode: function () {
+        return new Promise(function (resolve, reject) {
+            var tpCallbackFun = _getCallbackName();
+
+            window[tpCallbackFun] = function (result) {
+                result = result.replace(/\r/ig, "").replace(/\n/ig, "");
+                try {
+                    var res = JSON.parse(result);
+                    resolve(res);
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            _sendTpRequest('isDarkMode', '', tpCallbackFun);
+        });
     },
     // eos
     eosTokenTransfer: function (params) {
