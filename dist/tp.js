@@ -1,4 +1,13 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+var tp = require('./src/tp');
+
+// dont override global variable
+if (typeof window !== 'undefined' && typeof window.tp === 'undefined') {
+    window.tp = tp;
+}
+
+module.exports = tp
+},{"./src/tp":12}],2:[function(require,module,exports){
 "use strict";
 
 // rawAsap provides everything we need except exception management.
@@ -66,7 +75,7 @@ RawTask.prototype.call = function () {
     }
 };
 
-},{"./raw":2}],2:[function(require,module,exports){
+},{"./raw":3}],3:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -293,12 +302,12 @@ rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
 // https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib')
 
-},{"./lib":8}],4:[function(require,module,exports){
+},{"./lib":9}],5:[function(require,module,exports){
 'use strict';
 
 var asap = require('asap/raw');
@@ -513,7 +522,7 @@ function doResolve(fn, promise) {
   }
 }
 
-},{"asap/raw":2}],5:[function(require,module,exports){
+},{"asap/raw":3}],6:[function(require,module,exports){
 'use strict';
 
 var Promise = require('./core.js');
@@ -528,7 +537,7 @@ Promise.prototype.done = function (onFulfilled, onRejected) {
   });
 };
 
-},{"./core.js":4}],6:[function(require,module,exports){
+},{"./core.js":5}],7:[function(require,module,exports){
 'use strict';
 
 //This file contains the ES6 extensions to the core Promises/A+ API
@@ -637,7 +646,7 @@ Promise.prototype['catch'] = function (onRejected) {
   return this.then(null, onRejected);
 };
 
-},{"./core.js":4}],7:[function(require,module,exports){
+},{"./core.js":5}],8:[function(require,module,exports){
 'use strict';
 
 var Promise = require('./core.js');
@@ -655,7 +664,7 @@ Promise.prototype.finally = function (f) {
   });
 };
 
-},{"./core.js":4}],8:[function(require,module,exports){
+},{"./core.js":5}],9:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./core.js');
@@ -665,7 +674,7 @@ require('./es6-extensions.js');
 require('./node-extensions.js');
 require('./synchronous.js');
 
-},{"./core.js":4,"./done.js":5,"./es6-extensions.js":6,"./finally.js":7,"./node-extensions.js":9,"./synchronous.js":10}],9:[function(require,module,exports){
+},{"./core.js":5,"./done.js":6,"./es6-extensions.js":7,"./finally.js":8,"./node-extensions.js":10,"./synchronous.js":11}],10:[function(require,module,exports){
 'use strict';
 
 // This file contains then/promise specific extensions that are only useful
@@ -797,7 +806,7 @@ Promise.prototype.nodeify = function (callback, ctx) {
   });
 };
 
-},{"./core.js":4,"asap":1}],10:[function(require,module,exports){
+},{"./core.js":5,"asap":2}],11:[function(require,module,exports){
 'use strict';
 
 var Promise = require('./core.js');
@@ -861,7 +870,7 @@ Promise.disableSynchronous = function() {
   Promise.prototype.getState = undefined;
 };
 
-},{"./core.js":4}],11:[function(require,module,exports){
+},{"./core.js":5}],12:[function(require,module,exports){
 var Promise = require('promise');
 var Buffer = require('buffer');
 
@@ -1865,7 +1874,7 @@ var tp = {
 
 
 module.exports = tp;
-},{"buffer":13,"promise":3}],12:[function(require,module,exports){
+},{"buffer":14,"promise":4}],13:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -2017,7 +2026,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (Buffer){(function (){
 /*!
  * The buffer module from node.js, for the browser.
@@ -3798,7 +3807,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":12,"buffer":13,"ieee754":14}],14:[function(require,module,exports){
+},{"base64-js":13,"buffer":14,"ieee754":15}],15:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -3885,4 +3894,4 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}]},{},[11]);
+},{}]},{},[1]);
