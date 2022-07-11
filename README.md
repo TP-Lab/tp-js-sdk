@@ -77,12 +77,13 @@ Browser
         * [1.11 tp.fullScreen](#1.11-tp.fullscreen)
         * [1.12 tp.importWallet](#1.12-tp.importwallet)
         * [1.13 tp.setMenubar](#1.13-tp.setmenubar)
-        * [1.14 tp.startChat](#1.14-tp.startchat)
+        * [1.14 tp.startChat (Removed）](#1.14-tp.startchat-(removed）)
         * [1.15 tp.saveImage](#1.15-tp.saveimage)
         * [1.16 tp.rollHorizontal](#1.16-tp.rollhorizontal)
         * [1.17 tp.popGestureRecognizerEnable](#1.17-tp.popgesturerecognizerenable)
         * [1.18 tp.forwardNavigationGesturesEnable](#1.18-tp.forwardnavigationgesturesenable)
         * [1.19 tp.getNodeUrl](#1.19-tp.getnodeurl)
+        * [1.20 tp.isDarkMode](#1.20-tp.isdarkmode)
     * [2.EOS](#2.eos)
         * [2.0 兼容Scatter (Compatible with Scatter)](#2.0-兼容scatter-(compatible-with-scatter))
         * [2.1 tp.eosTokenTransfer](#2.1-tp.eostokentransfer)
@@ -443,11 +444,11 @@ tp.setMenubar({
 ```
 
 
-#### <a name='1.14-tp.startchat'></a>1.14 tp.startChat
+#### <a name='1.14-tp.startchat-(removed）'></a>1.14 tp.startChat (Removed）
 
-跳到TP聊天
+跳到TP聊天 (已移除)
 
-Open TP IM
+Open TP IM (Removed)
 
 ```javascript
 tp.startChat(params)
@@ -616,6 +617,35 @@ tp.getNodeUrl({
         nodeUrl: 'https://api.eosbeijing.one/',
         blockchain: 'eos'
     },
+    msg: 'success'
+}
+```
+
+#### <a name='1.20-tp.isdarkmode'></a>1.20 tp.isDarkMode
+
+获取用户是否是暗黑模式
+
+Get whether the user is in dark mode
+
+```javascript
+tp.isDarkMode()
+```
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `Boolean`
+- `msg`: `String`
+
+##### Example
+
+```javascript
+tp.isDarkMode().then(console.log)
+
+> {
+    result: true,
+    data: true,
     msg: 'success'
 }
 ```
