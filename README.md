@@ -116,7 +116,7 @@ Browser
         * [8.3 tp.moacTokenTransfer](#8.3-tp.moactokentransfer)
     * [9.Jingtum](#9.jingtum)
         * [9.1 tp.signJingtumTransaction](#9.1-tp.signjingtumtransaction)
-    * [10.OKExChanin](#10.okexchanin)
+    * [10.OKExChain](#10.okexchain)
         * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
     * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
     * [12.HECO BSC OKT](#12.heco-bsc-okt)
