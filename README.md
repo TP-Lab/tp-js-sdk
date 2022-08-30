@@ -124,6 +124,10 @@ Browser
         * [13.1 connect](#13.1-connect)
         * [13.2 signTransaction](#13.2-signtransaction)
         * [13.3 signMessage](#13.3-signmessage)
+    * [14. btc](#14.-btc)
+        * [14.1 getCurrentBalance](#14.1-getcurrentbalance)
+        * [14.2 btcTokenTransfer](#14.2-btctokentransfer)
+        * [14.3 usdtTokenTransfer](#14.3-usdttokentransfer)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -1782,4 +1786,113 @@ const signature = await connection.sendRawTransaction(signedTransaction.serializ
 const encodedMessage = new TextEncoder().encode('Your message');
 const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
 
+```
+
+### <a name='14.-btc'></a>14. btc
+
+
+#### <a name='14.1-getcurrentbalance'></a>14.1 getCurrentBalance
+```javascript
+tp.getCurrentBalance()
+```
+
+##### <a name='returns'></a>Returns
+`Object`:
+- `result`: `Boolean`
+- `data`: `Object`
+    -`balance`: `String`
+- `msg`: `String` 
+
+##### Example
+
+```javascript
+tp.getCurrentBalance().then(res => console.log)
+
+> {
+    result: true,
+    data: {
+        balance: '0.013'
+    }, 
+    msg: 'success', 
+}
+```
+
+
+
+#### <a name='14.2-btctokentransfer'></a>14.2 btcTokenTransfer
+
+```javascript
+tp.btcTokenTransfer(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `amount`: `String` 
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`
+- `msg`: `String` 
+
+##### Example
+
+```javascript
+tp.btcTokenTransfer({
+    from: '3FYbry1GTFmxxxxxxxxxxx',
+    to: '1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx',
+    amount: '0.0001',
+}).then(res => console.log)
+
+> {
+    result: true,
+    data: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // android
+    msg: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // ios
+}
+```
+
+
+
+#### <a name='14.3-usdttokentransfer'></a>14.3 usdtTokenTransfer
+
+OMNI USDT
+
+```javascript
+tp.usdtTokenTransfer(params)
+```
+
+##### Parameters
+
+`params`- `Object`:
+- `from`: `String`
+- `to`: `String`
+- `amount`: `String` 
+
+
+##### Returns
+
+`Object`:
+- `result`: `Boolean`
+- `data`: `String`
+- `msg`: `String` 
+
+##### Example
+
+```javascript
+tp.usdtTokenTransfer({
+    from: '3FYbry1GTFmxxxxxxxxxxx',
+    to: '1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx',
+    amount: '10.02',
+}).then(res => console.log)
+
+> {
+    result: true,
+    data: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // android
+    msg: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // ios
+}
 ```
