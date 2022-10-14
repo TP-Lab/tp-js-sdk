@@ -116,7 +116,7 @@ Browser
         * [8.3 tp.moacTokenTransfer](#8.3-tp.moactokentransfer)
     * [9.Jingtum](#9.jingtum)
         * [9.1 tp.signJingtumTransaction](#9.1-tp.signjingtumtransaction)
-    * [10.OKExChain](#10.okexchain)
+    * [10.OKExChanin](#10.okexchanin)
         * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
     * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
     * [12.HECO BSC OKT](#12.heco-bsc-okt)
@@ -128,6 +128,15 @@ Browser
         * [14.1 getCurrentBalance](#14.1-getcurrentbalance)
         * [14.2 btcTokenTransfer](#14.2-btctokentransfer)
         * [14.3 usdtTokenTransfer](#14.3-usdttokentransfer)
+    * [15. Aptos](#15.-aptos)
+        * [15.1 aptos.connect](#15.1-aptos.connect)
+        * [15.2 aptos.account](#15.2-aptos.account)
+        * [15.3 aptos.getChainId](#15.3-aptos.getchainid)
+        * [15.4 aptos.getNodeUrl](#15.4-aptos.getnodeurl)
+        * [15.5 aptos.network](#15.5-aptos.network)
+        * [15.6 aptos.signAndSubmitTransaction](#15.6-aptos.signandsubmittransaction)
+        * [15.7 aptos.signTransaction](#15.7-aptos.signtransaction)
+        * [15.8 aptos.signMessage](#15.8-aptos.signmessage)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -1895,4 +1904,105 @@ tp.usdtTokenTransfer({
     data: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // android
     msg: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // ios
 }
+```
+
+
+### <a name='15.-aptos'></a>15. Aptos
+
+`const isTokenPocket = window.aptos && aptos.isTokenPocket`
+
+#### <a name='15.1-aptos.connect'></a>15.1 aptos.connect
+
+```javascript
+aptos.connect().then(console.log)
+// {address: '0x1111...', publicKey: '0x22222...'}
+```
+
+#### <a name='15.2-aptos.account'></a>15.2 aptos.account
+
+```javascript
+aptos.account().then(console.log)
+// {address: '0x1111...', publicKey: '0x22222...'}
+```
+
+#### <a name='15.3-aptos.getchainid'></a>15.3 aptos.getChainId
+```javascript
+aptos.getChainId().then(console.log)
+// 31
+```
+
+#### <a name='15.4-aptos.getnodeurl'></a>15.4 aptos.getNodeUrl
+```javascript
+aptos.getNodeUrl().then(console.log)
+// 'https://testnet.aptoslabs.com'
+```
+
+#### <a name='15.5-aptos.network'></a>15.5 aptos.network
+```javascript
+aptos.network().then(console.log)
+// 'Testnet'
+```
+
+
+#### <a name='15.6-aptos.signandsubmittransaction'></a>15.6 aptos.signAndSubmitTransaction
+
+```javascript
+const transaction = {
+    arguments: ['0x111111...', '112'],
+    function: '0x1::coin::transfer',
+    type: 'entry_function_payload',
+    type_arguments: ['0x1::aptos_coin::TestCoin'],
+};
+const options = { // optional parameter
+  max_gas_amount: '1000',
+  gas_unit_price: '100',
+  expiration_timestamp_secs: '1646793600',
+  sequence_number: '10'
+}
+aptos.signAndSubmitTransaction(transaction, options).then(console.log)
+// { hash: "0x1111...", sender: "0x1111", sequence_number: "10", signature: {public_key: '0x222',signature: '0x333', type: 'ed25519_signature'}, payload: {}, max_gas_amount: '1009', gas_unit_price: '100', expiration_timestamp_secs: '1665721856' }
+```
+
+#### <a name='15.7-aptos.signtransaction'></a>15.7 aptos.signTransaction
+
+```javascript
+const transaction = {
+    arguments: ['0x111111...', '112'],
+    function: '0x1::coin::transfer',
+    type: 'entry_function_payload',
+    type_arguments: ['0x1::aptos_coin::TestCoin'],
+};
+const options = { // optional parameter
+  max_gas_amount: '1000',
+  gas_unit_price: '100',
+  expiration_timestamp_secs: '1646793600',
+  sequence_number: '10'
+}
+aptos.signTransaction(transaction, options).then(console.log)
+// { "0": 156, "1": 177, "2": 187, "3": 244, "4": 44, ...}
+```
+
+#### <a name='15.8-aptos.signmessage'></a>15.8 aptos.signMessage
+
+```javascript 
+
+aptos.signMessage({
+    address?: boolean, // Should we include the address of the account in the message
+    application?: boolean, // Should we include the domain of the dapp
+    chainId?: boolean, // Should we include the current chain id the wallet is connected to  
+    message: 'hello world', // The message to be signed and displayed to the user
+    nonce: '1113' // A nonce the dapp should generate
+}).then(console.log)
+
+// return
+// {
+//     address: string,
+//     application: string,
+//     chainId: number,
+//     fullMessage: string, // The message that was generated to sign
+//     message: string, // The message passed in by the user
+//     nonce: string,
+//     prefix: string, // Should always be APTOS
+//     signature: string // The signed full message
+// }
 ```
