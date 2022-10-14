@@ -1,6 +1,6 @@
 # tp-js-sdk
 
-![TokenPocket](http://tokenpocket.gz.bcebos.com/TokenPocket-logo-h-300.png)
+![TokenPocket](https://tp-statics.tokenpocket.pro/logo/tokenpocket-w-black.png)
 
 ## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for TokenPocket Dapp.
 
