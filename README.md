@@ -233,7 +233,6 @@ tp.shareNewsToSNS(params)
 - `title`: `String`
 - `desc`: `String`
 - `url`: `String`
-- `previewImage`: `String`
 
 ##### Example
 
@@ -241,8 +240,7 @@ tp.shareNewsToSNS(params)
 tp.shareNewsToSNS({
     title: 'TokenPocket',
     desc: 'Your Universal Wallet',
-    url: 'https://www.mytokenpocket.vip/',
-    previewImage: 'https://www.mytokenpocket.vip/images/index/logo.png'
+    url: 'https://www.mytokenpocket.vip/'
 })
 
 ```
