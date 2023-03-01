@@ -25,7 +25,27 @@ var TYPE_MAP = {
     hsc: '19',
     oec: '20',
     subgame: '21',
-    klaytn: '22'
+    klaytn: '22',
+    avax: '23',
+    arb: '24',
+    ftm: '25',
+    op: '26',
+    solana: '27',
+    gnosis: '28',
+    wax: '29',
+    moonbeam: '31',
+    aurora: '32',
+    harmony: '33',
+    kcc: '35',
+    cfxevm: '36',
+    planton: '37',
+    bttc: '38',
+    gt: '39',
+    halo: '40',
+    etc: '41',
+    arbnova: '42'
+
+
 };
 
 var BLOCKCHAIN_ID_MAP = {
@@ -50,7 +70,25 @@ var BLOCKCHAIN_ID_MAP = {
     '19': 'hsc',
     '20': 'oec',
     '21': 'subgame',
-    '22': 'klaytn'
+    '22': 'klaytn',
+    '23': 'avax',
+    '24': 'arb',
+    '25': 'ftm',
+    '26': 'op',
+    '27': 'solana',
+    '28': 'gnosis',
+    '29': 'wax',
+    '31': 'moonbeam',
+    '32': 'aurora',
+    '33': 'harmony',
+    '35': 'kcc',
+    '36': 'cfxevm',
+    '37': 'planton',
+    '38': 'bttc',
+    '39': 'gt',
+    '40': 'halo',
+    '41': 'etc',
+    '42': 'arbnova'
 }
 
 var _getTypeByStr = function (typeStr) {

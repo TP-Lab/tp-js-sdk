@@ -154,7 +154,11 @@ Browser
 #### <a name='1.0-enum-blockchains'></a>1.0 Enum Blockchains 
 
 ```
-eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,kusama,heco,okexchain,oktest,matic,hsc,oec,subgame,klaytn
+eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,
+kusama,heco,okexchain,oktest,matic,hsc,oec,subgame,klaytn,avax,arb,
+ftm,op,solana,gnosis,wax,moonbeam,aurora,harmony,kcc,cfxevm,planton,
+bttc,gt,halo,etc,arbnova
+
 ```
 
 
