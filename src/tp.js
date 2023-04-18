@@ -122,7 +122,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 var tp = {
     version: '3.7.5',
     isConnected: function () {
-        return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getDeviceId));
+        return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getNodeUrl));
     },
     invokeQRScanner: function () {
         return new Promise(function (resolve, reject) {
