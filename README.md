@@ -137,6 +137,7 @@ Browser
         * [15.6 aptos.signAndSubmitTransaction](#15.6-aptos.signandsubmittransaction)
         * [15.7 aptos.signTransaction](#15.7-aptos.signtransaction)
         * [15.8 aptos.signMessage](#15.8-aptos.signmessage)
+    * [16. SUI](#16.-sui)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -2008,3 +2009,19 @@ aptos.signMessage({
 //     signature: string // The signed full message
 // }
 ```
+
+
+### <a name='16.-sui'></a>16. SUI
+
+TokenPocket's sui API follow the sui wallet standard: 
+
+https://github.com/MystenLabs/sui/tree/main/sdk/wallet-adapter/wallet-standard
+
+
+TokenPocket has implemented all features defined in the standard. 
+
+
+TokenPocket's wallet name in sui standard is: 
+
+`name()`: `TokenPocket Wallet`
+
