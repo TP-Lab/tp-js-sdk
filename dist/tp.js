@@ -982,7 +982,7 @@ var _sendTpRequest = function (methodName, params, callback) {
         window.TPJSBrigeClient.callMessage(methodName, params, callback);
     }
     // ios
-    if (window.webkit) {
+    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers[methodName]) {
         window.webkit.messageHandlers[methodName].postMessage({
             body: {
                 'params': params,
@@ -993,7 +993,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.7.8',
+    version: '3.7.9',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getNodeUrl));
     },
