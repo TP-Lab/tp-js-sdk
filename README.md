@@ -93,7 +93,7 @@ Browser
         * [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
         * [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
         * [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
-    * [3. ETH](#3.-eth)
+    * [3. ETH (EVM)](#3.-eth-(evm))
         * [3.0 兼容Metamask (Compatible with Metamask)](#3.0-兼容metamask-(compatible-with-metamask))
     * [4.ENU](#4.enu)
         * [4.0 兼容Ironman (Compatible with Ironman)](#4.0-兼容ironman-(compatible-with-ironman))
@@ -158,7 +158,8 @@ Browser
 eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,
 kusama,heco,okexchain,oktest,matic,hsc,oec,subgame,klaytn,avax,arb,
 ftm,op,solana,gnosis,wax,moonbeam,aurora,harmony,kcc,cfxevm,planton,
-bttc,gt,halo,etc,arbnova
+bttc,gt,halo,etc,arbnova,aptos,doge,fvm,zksync,eosevm,sui,mantle,
+linea,base,opbnb
 
 ```
 
@@ -988,7 +989,7 @@ tp.getEosTransactionRecord({
 
 
 
-### <a name='3.-eth'></a>3. ETH
+### <a name='3.-eth-(evm)'></a>3. ETH (EVM)
 
 
 #### <a name='3.0-兼容metamask-(compatible-with-metamask)'></a>3.0 兼容Metamask (Compatible with Metamask) 

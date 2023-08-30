@@ -916,9 +916,17 @@ var TYPE_MAP = {
     gt: '39',
     halo: '40',
     etc: '41',
-    arbnova: '42'
-
-
+    arbnova: '42',
+    aptos: '43',
+    doge: '44',
+    fvm: '45',
+    zksync: '46',
+    eosevm: '47',
+    sui: '48',
+    mantle: '49',
+    linea: '50',
+    base: '51',
+    opbnb: '52'
 };
 
 var BLOCKCHAIN_ID_MAP = {
@@ -961,7 +969,17 @@ var BLOCKCHAIN_ID_MAP = {
     '39': 'gt',
     '40': 'halo',
     '41': 'etc',
-    '42': 'arbnova'
+    '42': 'arbnova',
+    '43': 'aptos',
+    '44': 'doge',
+    '45': 'fvm',
+    '46': 'zksync',
+    '47': 'eosevm',
+    '48': 'sui',
+    '49': 'mantle',
+    '50': 'linea',
+    '51': 'base',
+    '52': 'opbnb',
 }
 
 var _getTypeByStr = function (typeStr) {
@@ -993,7 +1011,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.7.9',
+    version: '3.7.10',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getNodeUrl));
     },
