@@ -1803,6 +1803,14 @@ const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
 
 ### <a name='14.-btc'></a>14. btc
 
+TokenPocket is full compatible with unisat API which has `window.unisat` injected in the browser.
+
+You can call `unisat.getAccounts()`, `unisat.signPsbt`, etc. 
+
+Full API documents you can check: [https://docs.unisat.io/dev/unisat-developer-service/unisat-wallet](https://docs.unisat.io/dev/unisat-developer-service/unisat-wallet)
+
+Also you can always use `window.tokenpocket` to detect if it is tokenpocket wallet.
+
 
 #### <a name='14.1-getcurrentbalance'></a>14.1 getCurrentBalance
 ```javascript
