@@ -995,14 +995,13 @@ tp.getEosTransactionRecord({
 #### <a name='3.0-兼容metamask-(compatible-with-metamask)'></a>3.0 兼容Metamask (Compatible with Metamask) 
 
 - TokenPocket is Compatible with Metamask.
-- TokenPocket 兼容基于 Metamask 的应用.
 - About [Metamask](https://metamask.io/)
 
 - Demo: https://github.com/metamask/test-dapp 
 
-- Webview 内有注入 `ethereum` 对象.
-- Webview injected an `ethereum` object.
-- 
+- Webview injected an `window.ethereum` object.
+- You can also using `window.tokenpocket.ethereum`
+- We also supported eip-6963 [https://eips.ethereum.org/EIPS/eip-6963](https://eips.ethereum.org/EIPS/eip-6963)
 
 
 ### <a name='4.enu'></a>4.ENU
@@ -1770,6 +1769,10 @@ TokenPocket is compatible with metamask, please check the offiacl doc:
 Check https://github.com/solana-labs/wallet-adapter for using solana wallets including TokenPocket.
 
 Or you can using the `window.solana` Object directly in the webview.
+
+We also supported the `wallet-standard` protocol: [https://github.com/solana-labs/wallet-standard](https://github.com/solana-labs/wallet-standard) 
+
+
 
 
 #### <a name='13.1-connect'></a>13.1 connect
