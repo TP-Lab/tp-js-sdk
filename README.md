@@ -2037,3 +2037,7 @@ TokenPocket's wallet name in sui standard is:
 
 `name()`: `TokenPocket Wallet`
 
+### 17. Nostr
+
+TokenPocket mobile and extension has supported [NIP-07](https://github.com/nostr-protocol/nips/blob/master/07.md)
+
