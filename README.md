@@ -2027,7 +2027,7 @@ aptos.signMessage({
 
 TokenPocket's sui API follow the sui wallet standard: 
 
-https://github.com/MystenLabs/sui/tree/main/sdk/wallet-adapter/wallet-standard
+[https://docs.sui.io/standards/wallet-standard](https://docs.sui.io/standards/wallet-standard)
 
 
 TokenPocket has implemented all features defined in the standard. 
