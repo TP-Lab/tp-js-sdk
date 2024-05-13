@@ -159,8 +159,8 @@ eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,
 kusama,heco,okexchain,oktest,matic,hsc,oec,subgame,klaytn,avax,arb,
 ftm,op,solana,gnosis,wax,moonbeam,aurora,harmony,kcc,cfxevm,planton,
 bttc,gt,halo,etc,arbnova,aptos,doge,fvm,zksync,eosevm,sui,mantle,
-linea,base,opbnb
-
+linea,base,opbnb,polygonzkevm,core,happ,scroll,zkfair,manta,bevm,
+metis,zeta,kroma,merlin,blast,bitlayer,xlayer
 ```
 
 
