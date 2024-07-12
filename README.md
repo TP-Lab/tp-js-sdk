@@ -202,7 +202,7 @@ tp.getAppInfo().then(console.log)
 #### <a name='1.2-tp.getwalletlist-(deprecated)'></a>1.2 tp.getWalletList (Deprecated)
 
 
-#### <a name='1.3-tp.getdeviceid'></a>1.3 tp.getDeviceId
+#### <a name='1.3-tp.getdeviceid'></a>1.3 tp.getDeviceId (Deprecated)
 
 ```javascript
 tp.getDeviceId()
