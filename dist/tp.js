@@ -931,7 +931,10 @@ var TYPE_MAP = {
     merlin: '64',
     blast: '65',
     bitlayer: '66',
-    xlayer: '67'
+    xlayer: '67',
+    rgbln: '69',
+    mint: '70',
+    ton: '71'
 };
 
 var BLOCKCHAIN_ID_MAP = {
@@ -998,7 +1001,10 @@ var BLOCKCHAIN_ID_MAP = {
     '64': 'merlin',
     '65': 'blast',
     '66': 'bitlayer',
-    '67': 'xlayer'
+    '67': 'xlayer',
+    '69': 'rgbln',
+    '70': 'mint',
+    '71': 'ton'
 }
 
 var _getTypeByStr = function (typeStr) {
@@ -1030,7 +1036,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.7.12',
+    version: '3.7.13',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getNodeUrl));
     },
