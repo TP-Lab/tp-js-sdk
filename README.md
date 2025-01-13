@@ -67,7 +67,7 @@ Browser
         * [1.0 Enum Blockchains](#1.0-enum-blockchains)
         * [1.1 tp.getAppInfo](#1.1-tp.getappinfo)
         * [1.2 tp.getWalletList (Deprecated)](#1.2-tp.getwalletlist-(deprecated))
-        * [1.3 tp.getDeviceId](#1.3-tp.getdeviceid)
+        * [1.3 tp.getDeviceId (Deprecated)](#1.3-tp.getdeviceid-(deprecated))
         * [1.4 tp.shareNewsToSNS](#1.4-tp.sharenewstosns)
         * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
         * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
@@ -120,7 +120,7 @@ Browser
         * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
     * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
     * [12.HECO BSC OKT](#12.heco-bsc-okt)
-    * [13.solana(SVM)](#13.solanasvm)
+    * [13.solana(SVM)](#13.solana(svm))
         * [13.1 connect](#13.1-connect)
         * [13.2 signTransaction](#13.2-signtransaction)
         * [13.3 signMessage](#13.3-signmessage)
@@ -138,6 +138,7 @@ Browser
         * [15.7 aptos.signTransaction](#15.7-aptos.signtransaction)
         * [15.8 aptos.signMessage](#15.8-aptos.signmessage)
     * [16. SUI](#16.-sui)
+    * [17. Nostr](#17.-nostr)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -202,7 +203,7 @@ tp.getAppInfo().then(console.log)
 #### <a name='1.2-tp.getwalletlist-(deprecated)'></a>1.2 tp.getWalletList (Deprecated)
 
 
-#### <a name='1.3-tp.getdeviceid'></a>1.3 tp.getDeviceId (Deprecated)
+#### <a name='1.3-tp.getdeviceid-(deprecated)'></a>1.3 tp.getDeviceId (Deprecated)
 
 ```javascript
 tp.getDeviceId()
@@ -1764,7 +1765,7 @@ TokenPocket is compatible with metamask, please check the offiacl doc:
 - https://github.com/metamask/test-dapp 
 
 
-### <a name='13.solana-svm'></a>13.solana(SVM)
+### <a name='13.solana(svm)'></a>13.solana(SVM)
 
 In TokenPocket mobile wallet, we support all standard SVM chains. You can add your SVM chain through `add custom network` feature in the wallet.
 
@@ -2039,7 +2040,7 @@ TokenPocket's wallet name in sui standard is:
 
 `name()`: `TokenPocket Wallet`
 
-### 17. Nostr
+### <a name='17.-nostr'></a>17. Nostr
 
 TokenPocket mobile and extension has supported [NIP-07](https://github.com/nostr-protocol/nips/blob/master/07.md)
 
