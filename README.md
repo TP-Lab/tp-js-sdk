@@ -120,7 +120,7 @@ Browser
         * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
     * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
     * [12.HECO BSC OKT](#12.heco-bsc-okt)
-    * [13.solana](#13.solana)
+    * [13.solana(SVM)](#13.solanasvm)
         * [13.1 connect](#13.1-connect)
         * [13.2 signTransaction](#13.2-signtransaction)
         * [13.3 signMessage](#13.3-signmessage)
@@ -1764,15 +1764,17 @@ TokenPocket is compatible with metamask, please check the offiacl doc:
 - https://github.com/metamask/test-dapp 
 
 
-### <a name='13.solana'></a>13.solana
+### <a name='13.solana-svm'></a>13.solana(SVM)
 
-Check https://github.com/solana-labs/wallet-adapter for using solana wallets including TokenPocket.
+In TokenPocket mobile wallet, we support all standard SVM chains. You can add your SVM chain through `add custom network` feature in the wallet.
 
-Or you can using the `window.solana` Object directly in the webview.
+For all svm chains you can follow the same develop method below:
 
-We also supported the `wallet-standard` protocol: [https://github.com/solana-labs/wallet-standard](https://github.com/solana-labs/wallet-standard) 
+1. (Recommended) We supported the `wallet-standard` protocol: [https://github.com/solana-labs/wallet-standard](https://github.com/solana-labs/wallet-standard) with the name `TokenPocket`.
 
+2. Checking https://github.com/solana-labs/wallet-adapter old protocol for using solana wallets including TokenPocket.
 
+3. Or you can using the `window.solana` Object directly in the webview. which provide standard  `connect`, `signTransaction`, `signMessage` methods.
 
 
 #### <a name='13.1-connect'></a>13.1 connect
