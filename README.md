@@ -1775,7 +1775,9 @@ For all svm chains you can follow the same develop method below:
 
 2. Checking https://github.com/solana-labs/wallet-adapter old protocol for using solana wallets including TokenPocket.
 
-3. Or you can using the `window.solana` Object directly in the webview. which provide standard  `connect`, `signTransaction`, `signMessage` methods.
+3. Some of our api are compatible with mainstream Solana wallets: Phantom and Backpack.
+
+4. Or you can using the `window.solana` Object directly in the webview. which provide standard  `connect`, `signTransaction`, `signMessage` methods.
 
 
 #### <a name='13.1-connect'></a>13.1 connect
