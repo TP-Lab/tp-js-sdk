@@ -1859,7 +1859,8 @@ tp.btcTokenTransfer(params)
 `params`- `Object`:
 - `from`: `String`
 - `to`: `String`
-- `amount`: `String` 
+- `amount`: `String`
+- `op_return`: `String`
 
 
 ##### Returns
