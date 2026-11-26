@@ -172,7 +172,7 @@ var _sendTpRequest = function (methodName, params, callback) {
 }
 
 var tp = {
-    version: '3.7.13',
+    version: '3.8.0',
     isConnected: function () {
         return !!(window.TPJSBrigeClient || (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.getNodeUrl));
     },
@@ -305,7 +305,7 @@ var tp = {
 
         });
     },
-    getCurrentWallet: function () {
+    getCurrentWallet: function (params) {
         return new Promise(function (resolve, reject) {
             var tpCallbackFun = _getCallbackName();
             // callback
@@ -326,7 +326,7 @@ var tp = {
                     reject(e);
                 }
             }
-            _sendTpRequest('getCurrentWallet', '', tpCallbackFun);
+            _sendTpRequest('getCurrentWallet', params ? JSON.stringify(params) : '', tpCallbackFun);
         });
     },
     sign: function (params) {

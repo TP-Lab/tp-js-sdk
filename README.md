@@ -4,29 +4,25 @@
 
 ## <a name='javascript-sdk-for-tokenpocket-dapp.'></a>Javascript SDK for TokenPocket Dapp.
 
-* TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)、IWallet(IOST)、Phantom(Solana) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet, Phantom 插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
-* 这个sdk 只针对移动端 TokenPocket
+- TokenPocket 已经兼容 Scatter(EOS)、Metamask(ETH)、TronLink(TRON)、IWallet(IOST)、Phantom(Solana) 协议。已经支持了Scatter, MetaMask, TronLink, iWallet, Phantom 插件的Dapp可以直接在钱包内使用Dapp浏览器体验，无需再使用我们这个SDK（有钱包相关的接口如全屏，旋转等需求可另外引用该sdk不冲突）。
+- 这个sdk 只针对移动端 TokenPocket
 
+- TokenPocket is already compatible with Scatter, Metamask,TronLink, Phantom and IWallet. You can input your URL in the Dapp browser inside the TP Wallet without any additional development.
+- This sdk is only for mobile TokenPocket
 
-* TokenPocket is already compatible with Scatter, Metamask,TronLink, Phantom and IWallet. You can input your URL in the Dapp browser inside the TP Wallet without any additional development. 
-* This sdk is only for mobile TokenPocket
+- [Github](https://github.com/TP-Lab/tp-js-sdk)
 
+- [TokenPocket Website](https://www.tokenpocket.pro/)
 
-* [Github](https://github.com/TP-Lab/tp-js-sdk)
+- [提交你的DApp](https://www.tokenpocket.pro/zh/submit/dapp)
 
-* [TokenPocket Website](https://www.tokenpocket.pro/)
+- [Submit your DApp](https://www.tokenpocket.pro/en/submit/dapp)
 
-* [提交你的DApp](https://www.tokenpocket.pro/zh/submit/dapp)
+- 我们还提供了 [Android & iOS SDK](https://github.com/TP-Lab/Mobile-SDK) 可以提供授权登录转账，执行action的操作
 
-* [Submit your DApp](https://www.tokenpocket.pro/en/submit/dapp)
+- We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK) for interact with TokenPocket
 
-
-* 我们还提供了 [Android & iOS SDK](https://github.com/TP-Lab/Mobile-SDK) 可以提供授权登录转账，执行action的操作
-
-* We also have an [Android&iOS SDK](https://github.com/TP-Lab/Mobile-SDK) for interact with TokenPocket 
-
-* You can add vConsole https://www.npmjs.com/package/vconsole to debug in TokenPocket wallet.
-
+- You can add vConsole https://www.npmjs.com/package/vconsole to debug in TokenPocket wallet.
 
 ## <a name='installation'></a>Installation
 
@@ -40,105 +36,106 @@ npm install tp-js-sdk
 
 Open your site in TokenPocket as a Dapp. Develope and test in Discover -> DappBrowser.
 
-
 Npm
+
 ```javascript
-var tp = require('tp-js-sdk')
+var tp = require("tp-js-sdk");
 console.log(tp.isConnected());
 ```
 
 Browser
+
 ```html
 <script src="./dist/tp.js"></script>
 <script>
-    console.log(tp.isConnected());
+  console.log(tp.isConnected());
 </script>
 ```
-
 
 ## <a name='contents'></a>Contents
 
 <!-- vscode-markdown-toc -->
-* [Javascript SDK for TokenPocket Dapp.](#javascript-sdk-for-tokenpocket-dapp.)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Contents](#contents)
-    * [1. COMMON](#1.-common)
-        * [1.0 Enum Blockchains](#1.0-enum-blockchains)
-        * [1.1 tp.getAppInfo](#1.1-tp.getappinfo)
-        * [1.2 tp.getWalletList (Deprecated)](#1.2-tp.getwalletlist-(deprecated))
-        * [1.3 tp.getDeviceId (Deprecated)](#1.3-tp.getdeviceid-(deprecated))
-        * [1.4 tp.shareNewsToSNS](#1.4-tp.sharenewstosns)
-        * [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
-        * [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
-        * [1.7 tp.getWallet](#1.7-tp.getwallet)
-        * [1.9 tp.back](#1.9-tp.back)
-        * [1.10 tp.close](#1.10-tp.close)
-        * [1.11 tp.fullScreen](#1.11-tp.fullscreen)
-        * [1.12 tp.importWallet](#1.12-tp.importwallet)
-        * [1.13 tp.setMenubar](#1.13-tp.setmenubar)
-        * [1.14 tp.startChat (Removed）](#1.14-tp.startchat-(removed）)
-        * [1.15 tp.saveImage](#1.15-tp.saveimage)
-        * [1.16 tp.rollHorizontal](#1.16-tp.rollhorizontal)
-        * [1.17 tp.popGestureRecognizerEnable](#1.17-tp.popgesturerecognizerenable)
-        * [1.18 tp.forwardNavigationGesturesEnable](#1.18-tp.forwardnavigationgesturesenable)
-        * [1.19 tp.getNodeUrl](#1.19-tp.getnodeurl)
-        * [1.20 tp.isDarkMode](#1.20-tp.isdarkmode)
-    * [2.EOS](#2.eos)
-        * [2.0 兼容Scatter (Compatible with Scatter)](#2.0-兼容scatter-(compatible-with-scatter))
-        * [2.1 tp.eosTokenTransfer](#2.1-tp.eostokentransfer)
-        * [2.2 tp.pushEosAction](#2.2-tp.pusheosaction)
-        * [2.3 tp.getEosBalance](#2.3-tp.geteosbalance)
-        * [2.4 tp.getTableRows (Deprecated)](#2.4-tp.gettablerows-(deprecated))
-        * [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
-        * [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
-        * [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
-    * [3. ETH (EVM)](#3.-eth-(evm))
-        * [3.0 兼容Metamask (Compatible with Metamask)](#3.0-兼容metamask-(compatible-with-metamask))
-    * [4.ENU](#4.enu)
-        * [4.0 兼容Ironman (Compatible with Ironman)](#4.0-兼容ironman-(compatible-with-ironman))
-        * [4.1 tp.enuTokenTransfer](#4.1-tp.enutokentransfer)
-        * [4.2 tp.pushEnuAction](#4.2-tp.pushenuaction)
-        * [4.3 tp.getEnuBalance](#4.3-tp.getenubalance)
-        * [4.4 tp.getEnuTableRows](#4.4-tp.getenutablerows)
-        * [4.5 tp.getEnuAccountInfo](#4.5-tp.getenuaccountinfo)
-        * [4.6 tp.getEnuTransactionRecord](#4.6-tp.getenutransactionrecord)
-    * [5.COSMOS](#5.cosmos)
-        * [5.1 tp.signCosmosTransaction](#5.1-tp.signcosmostransaction)
-        * [5.2 tp.cosmosArbitrarySignature](#5.2-tp.cosmosarbitrarysignature)
-    * [6.IOST](#6.iost)
-        * [6.0 兼容IWalletJS (Compatible with IWalletJS)](#6.0-兼容iwalletjs-(compatible-with-iwalletjs))
-    * [7.TRON](#7.tron)
-        * [7.0 兼容TRONLINK (Compatible with TRONLINK)](#7.0-兼容tronlink-(compatible-with-tronlink))
-    * [8.MOAC](#8.moac)
-        * [8.1 tp.sendMoacTransaction](#8.1-tp.sendmoactransaction)
-        * [8.2 tp.signMoacTransaction](#8.2-tp.signmoactransaction)
-        * [8.3 tp.moacTokenTransfer](#8.3-tp.moactokentransfer)
-    * [9.Jingtum](#9.jingtum)
-        * [9.1 tp.signJingtumTransaction](#9.1-tp.signjingtumtransaction)
-    * [10.OKExChanin](#10.okexchanin)
-        * [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
-    * [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
-    * [12.HECO BSC OKT](#12.heco-bsc-okt)
-    * [13.solana(SVM)](#13.solana(svm))
-        * [13.1 connect](#13.1-connect)
-        * [13.2 signTransaction](#13.2-signtransaction)
-        * [13.3 signMessage](#13.3-signmessage)
-    * [14. btc](#14.-btc)
-        * [14.1 getCurrentBalance](#14.1-getcurrentbalance)
-        * [14.2 btcTokenTransfer](#14.2-btctokentransfer)
-        * [14.3 usdtTokenTransfer](#14.3-usdttokentransfer)
-    * [15. Aptos](#15.-aptos)
-        * [15.1 aptos.connect](#15.1-aptos.connect)
-        * [15.2 aptos.account](#15.2-aptos.account)
-        * [15.3 aptos.getChainId](#15.3-aptos.getchainid)
-        * [15.4 aptos.getNodeUrl](#15.4-aptos.getnodeurl)
-        * [15.5 aptos.network](#15.5-aptos.network)
-        * [15.6 aptos.signAndSubmitTransaction](#15.6-aptos.signandsubmittransaction)
-        * [15.7 aptos.signTransaction](#15.7-aptos.signtransaction)
-        * [15.8 aptos.signMessage](#15.8-aptos.signmessage)
-    * [16. SUI](#16.-sui)
-    * [17. Nostr](#17.-nostr)
+
+- [Javascript SDK for TokenPocket Dapp.](#javascript-sdk-for-tokenpocket-dapp.)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contents](#contents)
+  - [1. COMMON](#1.-common)
+    - [1.0 Enum Blockchains](#1.0-enum-blockchains)
+    - [1.1 tp.getAppInfo](#1.1-tp.getappinfo)
+    - [1.2 tp.getWalletList (Deprecated)](<#1.2-tp.getwalletlist-(deprecated)>)
+    - [1.3 tp.getDeviceId (Deprecated)](<#1.3-tp.getdeviceid-(deprecated)>)
+    - [1.4 tp.shareNewsToSNS](#1.4-tp.sharenewstosns)
+    - [1.5 tp.invokeQRScanner](#1.5-tp.invokeqrscanner)
+    - [1.6 tp.getCurrentWallet](#1.6-tp.getcurrentwallet)
+    - [1.7 tp.getWallet](#1.7-tp.getwallet)
+    - [1.9 tp.back](#1.9-tp.back)
+    - [1.10 tp.close](#1.10-tp.close)
+    - [1.11 tp.fullScreen](#1.11-tp.fullscreen)
+    - [1.12 tp.importWallet](#1.12-tp.importwallet)
+    - [1.13 tp.setMenubar](#1.13-tp.setmenubar)
+    - [1.14 tp.startChat (Removed）](#1.14-tp.startchat-(removed）)
+    - [1.15 tp.saveImage](#1.15-tp.saveimage)
+    - [1.16 tp.rollHorizontal](#1.16-tp.rollhorizontal)
+    - [1.17 tp.popGestureRecognizerEnable](#1.17-tp.popgesturerecognizerenable)
+    - [1.18 tp.forwardNavigationGesturesEnable](#1.18-tp.forwardnavigationgesturesenable)
+    - [1.19 tp.getNodeUrl](#1.19-tp.getnodeurl)
+    - [1.20 tp.isDarkMode](#1.20-tp.isdarkmode)
+  - [2.EOS](#2.eos)
+    - [2.0 兼容Scatter (Compatible with Scatter)](<#2.0-兼容scatter-(compatible-with-scatter)>)
+    - [2.1 tp.eosTokenTransfer](#2.1-tp.eostokentransfer)
+    - [2.2 tp.pushEosAction](#2.2-tp.pusheosaction)
+    - [2.3 tp.getEosBalance](#2.3-tp.geteosbalance)
+    - [2.4 tp.getTableRows (Deprecated)](<#2.4-tp.gettablerows-(deprecated)>)
+    - [2.5 tp.getEosTableRows](#2.5-tp.geteostablerows)
+    - [2.6 tp.getEosAccountInfo](#2.6-tp.geteosaccountinfo)
+    - [2.7 tp.getEosTransactionRecord](#2.7-tp.geteostransactionrecord)
+  - [3. ETH (EVM)](<#3.-eth-(evm)>)
+    - [3.0 兼容Metamask (Compatible with Metamask)](<#3.0-兼容metamask-(compatible-with-metamask)>)
+  - [4.ENU](#4.enu)
+    - [4.0 兼容Ironman (Compatible with Ironman)](<#4.0-兼容ironman-(compatible-with-ironman)>)
+    - [4.1 tp.enuTokenTransfer](#4.1-tp.enutokentransfer)
+    - [4.2 tp.pushEnuAction](#4.2-tp.pushenuaction)
+    - [4.3 tp.getEnuBalance](#4.3-tp.getenubalance)
+    - [4.4 tp.getEnuTableRows](#4.4-tp.getenutablerows)
+    - [4.5 tp.getEnuAccountInfo](#4.5-tp.getenuaccountinfo)
+    - [4.6 tp.getEnuTransactionRecord](#4.6-tp.getenutransactionrecord)
+  - [5.COSMOS](#5.cosmos)
+    - [5.1 tp.signCosmosTransaction](#5.1-tp.signcosmostransaction)
+    - [5.2 tp.cosmosArbitrarySignature](#5.2-tp.cosmosarbitrarysignature)
+  - [6.IOST](#6.iost)
+    - [6.0 兼容IWalletJS (Compatible with IWalletJS)](<#6.0-兼容iwalletjs-(compatible-with-iwalletjs)>)
+  - [7.TRON](#7.tron)
+    - [7.0 兼容TRONLINK (Compatible with TRONLINK)](<#7.0-兼容tronlink-(compatible-with-tronlink)>)
+  - [8.MOAC](#8.moac)
+    - [8.1 tp.sendMoacTransaction](#8.1-tp.sendmoactransaction)
+    - [8.2 tp.signMoacTransaction](#8.2-tp.signmoactransaction)
+    - [8.3 tp.moacTokenTransfer](#8.3-tp.moactokentransfer)
+  - [9.Jingtum](#9.jingtum)
+    - [9.1 tp.signJingtumTransaction](#9.1-tp.signjingtumtransaction)
+  - [10.OKExChanin](#10.okexchanin)
+    - [10.1 tp.signOkexchainTransaction](#10.1-tp.signokexchaintransaction)
+  - [11.Polkadot Kusama etc.](#11.polkadot-kusama-etc.)
+  - [12.HECO BSC OKT](#12.heco-bsc-okt)
+  - [13.solana(SVM)](<#13.solana(svm)>)
+    - [13.1 connect](#13.1-connect)
+    - [13.2 signTransaction](#13.2-signtransaction)
+    - [13.3 signMessage](#13.3-signmessage)
+  - [14. btc](#14.-btc)
+    - [14.1 getCurrentBalance](#14.1-getcurrentbalance)
+    - [14.2 btcTokenTransfer](#14.2-btctokentransfer)
+    - [14.3 usdtTokenTransfer](#14.3-usdttokentransfer)
+  - [15. Aptos](#15.-aptos)
+    - [15.1 aptos.connect](#15.1-aptos.connect)
+    - [15.2 aptos.account](#15.2-aptos.account)
+    - [15.3 aptos.getChainId](#15.3-aptos.getchainid)
+    - [15.4 aptos.getNodeUrl](#15.4-aptos.getnodeurl)
+    - [15.5 aptos.network](#15.5-aptos.network)
+    - [15.6 aptos.signAndSubmitTransaction](#15.6-aptos.signandsubmittransaction)
+    - [15.7 aptos.signTransaction](#15.7-aptos.signtransaction)
+    - [15.8 aptos.signMessage](#15.8-aptos.signmessage)
+  - [16. SUI](#16.-sui)
+  - [17. Nostr](#17.-nostr)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -146,14 +143,9 @@ Browser
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-
-
-
-
 ### <a name='1.-common'></a>1. COMMON
 
-
-#### <a name='1.0-enum-blockchains'></a>1.0 Enum Blockchains 
+#### <a name='1.0-enum-blockchains'></a>1.0 Enum Blockchains
 
 ```
 eth,jingtum,moac,eos,enu,bos,iost,cosmos,binance,tron,btc,bsc,dot,
@@ -164,64 +156,61 @@ linea,base,opbnb,polygonzkevm,core,happ,scroll,zkfair,manta,bevm,
 metis,zeta,kroma,merlin,blast,bitlayer,xlayer,mint,ton
 ```
 
-
 #### <a name='1.1-tp.getappinfo'></a>1.1 tp.getAppInfo
 
-
 ```javascript
-tp.getAppInfo()
+tp.getAppInfo();
 ```
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `name`: `String`
-    - `system`: `String`
-    - `version`: `String`
-    - `sys_version`: `String`
+  - `name`: `String`
+  - `system`: `String`
+  - `version`: `String`
+  - `sys_version`: `String`
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getAppInfo().then(console.log)
-
-> {
+tp.getAppInfo().then(console.log) >
+  {
     result: true,
     data: {
-        name: 'TokenPocket',
-        system: 'android',
-        version: '0.3.4',
-        sys_version: '26'
+      name: "TokenPocket",
+      system: "android",
+      version: "0.3.4",
+      sys_version: "26",
     },
-    msg: 'success'
-}
+    msg: "success",
+  };
 ```
 
 #### <a name='1.2-tp.getwalletlist-(deprecated)'></a>1.2 tp.getWalletList (Deprecated)
 
-
 #### <a name='1.3-tp.getdeviceid-(deprecated)'></a>1.3 tp.getDeviceId (Deprecated)
 
 ```javascript
-tp.getDeviceId()
+tp.getDeviceId();
 ```
 
 ##### Returns
 
 `Object`:
+
 - `device_id`: `String`
 
 ##### Example
 
 ```javascript
-tp.getDeviceId().then(console.log)
-
-> {
-    device_id: 'dexa23333'
-}
+tp.getDeviceId().then(console.log) >
+  {
+    device_id: "dexa23333",
+  };
 ```
 
 #### <a name='1.4-tp.sharenewstosns'></a>1.4 tp.shareNewsToSNS
@@ -231,12 +220,13 @@ tp.getDeviceId().then(console.log)
 Share to SNS
 
 ```javascript
-tp.shareNewsToSNS(params)
+tp.shareNewsToSNS(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `title`: `String`
 - `desc`: `String`
 - `url`: `String`
@@ -245,13 +235,11 @@ tp.shareNewsToSNS(params)
 
 ```javascript
 tp.shareNewsToSNS({
-    title: 'TokenPocket',
-    desc: 'Your Universal Wallet',
-    url: 'https://www.mytokenpocket.vip/'
-})
-
+  title: "TokenPocket",
+  desc: "Your Universal Wallet",
+  url: "https://www.mytokenpocket.vip/",
+});
 ```
-
 
 #### <a name='1.5-tp.invokeqrscanner'></a>1.5 tp.invokeQRScanner
 
@@ -260,7 +248,7 @@ tp.shareNewsToSNS({
 Scan QRcode
 
 ```javascript
-tp.invokeQRScanner()
+tp.invokeQRScanner();
 ```
 
 ##### Returns
@@ -270,9 +258,7 @@ tp.invokeQRScanner()
 ##### Example
 
 ```javascript
-tp.invokeQRScanner().then(console.log)
-
-> "abcdefg"
+tp.invokeQRScanner().then(console.log) > "abcdefg";
 ```
 
 #### <a name='1.6-tp.getcurrentwallet'></a>1.6 tp.getCurrentWallet
@@ -282,35 +268,40 @@ tp.invokeQRScanner().then(console.log)
 Get user's current wallet info
 
 ```javascript
-tp.getCurrentWallet()
+tp.getCurrentWallet(params);
 ```
+
+##### Parameters
+
+`params`- `Object`:
+
+- `ns`: `String` // ethereum | solana option for all chain wallet
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `name`: `String`
-    - `address`: `String`
-    - `blockchain`: `String` 
+  - `name`: `String`
+  - `address`: `String`
+  - `blockchain`: `String`
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getCurrentWallet().then(console.log)
-
-> {
+tp.getCurrentWallet().then(console.log) >
+  {
     result: true,
     data: {
-        name: 'itokenpocket',
-        address: 'EOSaaaaaaaaabbbbbbbb',
-        blockchain: 'eos'
+      name: "itokenpocket",
+      address: "EOSaaaaaaaaabbbbbbbb",
+      blockchain: "eos",
     },
-    msg: 'success'
-}
+    msg: "success",
+  };
 ```
-
 
 #### <a name='1.7-tp.getwallet'></a>1.7 tp.getWallet
 
@@ -319,56 +310,56 @@ tp.getCurrentWallet().then(console.log)
 Get / Switch User's Wallet
 
 ```javascript
-tp.getWallet(params)
+tp.getWallet(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `walletTypes`: `Array`  ['eth', 'btc'] // Enum  blockchains
-- `switch`: `Boolean` switch current wallet or not
 
+- `walletTypes`: `Array` ['eth', 'btc'] // Enum blockchains
+- `switch`: `Boolean` switch current wallet or not
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `name`: `String`
-    - `address`: `String`
-    - `blockchain`: `String` 
+  - `name`: `String`
+  - `address`: `String`
+  - `blockchain`: `String`
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getWallet({walletTypes: ['eth', 'bsc', 'dot'], switch: false}).then(console.log)
-
-> {
+tp
+  .getWallet({ walletTypes: ["eth", "bsc", "dot"], switch: false })
+  .then(console.log) >
+  {
     result: true,
     data: [
-        {
-            name: 'ethwallet11',
-            address: '0x40e5A542087FA4b966209707177b103d158Fd3A4',
-            blockchain: 'eth'
-        }
+      {
+        name: "ethwallet11",
+        address: "0x40e5A542087FA4b966209707177b103d158Fd3A4",
+        blockchain: "eth",
+      },
     ],
-    msg: 'success'
-}
+    msg: "success",
+  };
 ```
-
 
 #### <a name='1.9-tp.back'></a>1.9 tp.back
 
 ```javascript
-tp.back()
+tp.back();
 ```
 
 ##### Example
 
 ```javascript
-tp.back()
-
+tp.back();
 ```
 
 #### <a name='1.10-tp.close'></a>1.10 tp.close
@@ -378,16 +369,14 @@ tp.back()
 Close the page
 
 ```javascript
-tp.close()
+tp.close();
 ```
 
 ##### Example
 
 ```javascript
-tp.close()
-
+tp.close();
 ```
-
 
 #### <a name='1.11-tp.fullscreen'></a>1.11 tp.fullScreen
 
@@ -396,45 +385,42 @@ tp.close()
 Fullscreen the page.
 
 ```javascript
-tp.fullScreen(params)
+tp.fullScreen(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `fullScreen`: `Number` 1 - fullScreen,  0 - cancel
 
+- `fullScreen`: `Number` 1 - fullScreen, 0 - cancel
 
 ##### Example
 
 ```javascript
 tp.fullScreen({
-    fullScreen: 0
-})
+  fullScreen: 0,
+});
 ```
-
 
 #### <a name='1.12-tp.importwallet'></a>1.12 tp.importWallet
 
-钱包导入界面 
+钱包导入界面
 
 Invoke the wallet importing window
 
 ```javascript
-tp.importWallet(blockchain)
+tp.importWallet(blockchain);
 ```
 
 ##### Parameters
 
 `blockchain`- `String`: 'eos' | 'eth' | 'enu' | 'moac'
 
-
 ##### Example
 
 ```javascript
-tp.importWallet('eos');
+tp.importWallet("eos");
 ```
-
 
 #### <a name='1.13-tp.setmenubar'></a>1.13 tp.setMenubar
 
@@ -443,24 +429,22 @@ tp.importWallet('eos');
 When the `fullscreen` is on, set the dapp browser's navbar visiblity
 
 ```javascript
-tp.setMenubar(params)
+tp.setMenubar(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `flag`: `Number` 1 - open,  0 - close(default)
 
-
+- `flag`: `Number` 1 - open, 0 - close(default)
 
 ##### Example
 
 ```javascript
 tp.setMenubar({
-    flag: 1
+  flag: 1,
 });
 ```
-
 
 #### <a name='1.14-tp.startchat-(removed）'></a>1.14 tp.startChat (Removed）
 
@@ -469,14 +453,14 @@ tp.setMenubar({
 Open TP IM (Removed)
 
 ```javascript
-tp.startChat(params)
+tp.startChat(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
 
-- `sessionType`: `Number` 私聊是0  群聊是1
+- `sessionType`: `Number` 私聊是0 群聊是1
 - `account`: `String` 私聊是目标用户的账号(eos,iost等)或地址(eth,moac等)， 群聊是群的id
 - `blockchain`: `Number` 只有私聊需要填， 私聊时目标用户的底层 eth|jingtum|moac|eos|enu|bos|iost
 
@@ -484,12 +468,11 @@ tp.startChat(params)
 
 ```javascript
 tp.startChat({
-    account: 'itokenpocket',
-    sessionType: 0,
-    blockchain: 'eos'
+  account: "itokenpocket",
+  sessionType: 0,
+  blockchain: "eos",
 });
 ```
-
 
 #### <a name='1.15-tp.saveimage'></a>1.15 tp.saveImage
 
@@ -498,24 +481,23 @@ tp.startChat({
 Save image
 
 ```javascript
-tp.saveImage(params)
+tp.saveImage(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
-- `url`: `String` image's url
 
+- `url`: `String` image's url
 
 ##### Example
 
 ```javascript
 tp.saveImage({
-    url: 'https://dapp.mytokenpocket.vip/tokenpocket_logo.png'
+  url: "https://dapp.mytokenpocket.vip/tokenpocket_logo.png",
 });
-
-
 ```
+
 #### <a name='1.16-tp.rollhorizontal'></a>1.16 tp.rollHorizontal
 
 横屏
@@ -523,25 +505,22 @@ tp.saveImage({
 rotate the screen horizontal
 
 ```javascript
-tp.rollHorizontal(params)
+tp.rollHorizontal(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `horizontal`: `Boolean`
-
-
 
 ##### Example
 
 ```javascript
 tp.rollHorizontal({
-    horizontal: true
+  horizontal: true,
 });
 ```
-
-
 
 #### <a name='1.17-tp.popgesturerecognizerenable'></a>1.17 tp.popGestureRecognizerEnable
 
@@ -549,23 +528,21 @@ tp.rollHorizontal({
 
 Disable iOS's left-sliding gesture to return. There is no effect on Android
 
-
 ```javascript
-tp.popGestureRecognizerEnable(params)
+tp.popGestureRecognizerEnable(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `enable`: `Boolean` - default: `true`
-
-
 
 ##### Example
 
 ```javascript
 tp.popGestureRecognizerEnable({
-    enable: false
+  enable: false,
 });
 ```
 
@@ -576,24 +553,22 @@ tp.popGestureRecognizerEnable({
 Disable the left sliding gesture by WebView to trigger goback
 
 ```javascript
-tp.forwardNavigationGesturesEnable(params)
+tp.forwardNavigationGesturesEnable(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `enable`: `Boolean` - default: `true`
-
-
 
 ##### Example
 
 ```javascript
 tp.forwardNavigationGesturesEnable({
-    enable: false
+  enable: false,
 });
 ```
-
 
 #### <a name='1.19-tp.getnodeurl'></a>1.19 tp.getNodeUrl
 
@@ -602,12 +577,13 @@ tp.forwardNavigationGesturesEnable({
 Get information about the node selected by the user
 
 ```javascript
-tp.getNodeUrl(params)
+tp.getNodeUrl(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `blockchain`: `String` - `eos` | `eth` | `iost` | ...
 
 ##### Returns
@@ -617,26 +593,27 @@ tp.getNodeUrl(params)
 - `result`: `Boolean`
 
 - `data`: `Object`
-    - `nodeUrl` : `Stirng`
-    - `blockchain` : `String` - `eos` | `eth` | `iost` | ...
+  - `nodeUrl` : `Stirng`
+  - `blockchain` : `String` - `eos` | `eth` | `iost` | ...
 
 - `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getNodeUrl({
-    blockchain: 'eos'
-}).then(console.log)
-
-> {
+tp
+  .getNodeUrl({
+    blockchain: "eos",
+  })
+  .then(console.log) >
+  {
     result: true,
     data: {
-        nodeUrl: 'https://api.eosbeijing.one/',
-        blockchain: 'eos'
+      nodeUrl: "https://api.eosbeijing.one/",
+      blockchain: "eos",
     },
-    msg: 'success'
-}
+    msg: "success",
+  };
 ```
 
 #### <a name='1.20-tp.isdarkmode'></a>1.20 tp.isDarkMode
@@ -646,12 +623,13 @@ tp.getNodeUrl({
 Get whether the user is in dark mode
 
 ```javascript
-tp.isDarkMode()
+tp.isDarkMode();
 ```
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Boolean`
 - `msg`: `String`
@@ -659,15 +637,13 @@ tp.isDarkMode()
 ##### Example
 
 ```javascript
-tp.isDarkMode().then(console.log)
-
-> {
+tp.isDarkMode().then(console.log) >
+  {
     result: true,
     data: true,
-    msg: 'success'
-}
+    msg: "success",
+  };
 ```
-
 
 ### <a name='2.eos'></a>2.EOS
 
@@ -677,22 +653,22 @@ tp.isDarkMode().then(console.log)
 - TokenPocket 兼容基于 Scatter-js 1.0 和 2.0 的应用
 - Scatter API: [Scatter-JS](https://github.com/GetScatter/scatter-js)
 
-- Check Our Scatter-demo: 
+- Check Our Scatter-demo:
 - 可以查看我们的 Scatter demo:
 
 - [scatter-js-demo](https://github.com/TP-Lab/scatter-demo)
 - [scatter-js2-demo](https://github.com/TP-Lab/scatter-demo-eosjs2)
 
-
 #### <a name='2.1-tp.eostokentransfer'></a>2.1 tp.eosTokenTransfer
 
 ```javascript
-tp.eosTokenTransfer(params)
+tp.eosTokenTransfer(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `amount`: `String|Number`
@@ -709,39 +685,39 @@ tp.eosTokenTransfer(params)
 - `result`: `Boolean`
 
 - `data`: `Object`
-    - `transactionId` : `Stirng`
+  - `transactionId` : `Stirng`
 
 ##### Example
 
 ```javascript
-tp.eosTokenTransfer({
-    from: 'abcabcabcabc',
-    to: 'itokenpocket',
-    amount: '0.0100',
-    tokenName: 'EOS',
+tp
+  .eosTokenTransfer({
+    from: "abcabcabcabc",
+    to: "itokenpocket",
+    amount: "0.0100",
+    tokenName: "EOS",
     precision: 4,
-    contract: 'eosio.token',
-    memo: 'test',
-    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa'
-}).then(console.log)
-
-> {
+    contract: "eosio.token",
+    memo: "test",
+    address: "EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa",
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
+    data: { transactionId: "b428357c7xxxxxxxxxxxxxx" },
+  };
 ```
-
-
 
 #### <a name='2.2-tp.pusheosaction'></a>2.2 tp.pushEosAction
 
 ```javascript
-tp.pushEosAction(params)
+tp.pushEosAction(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `actions`: `Array`- Standard eos actions
 - `account`: `String` - current account
 - `address`: `String` - public key for current account
@@ -749,67 +725,71 @@ tp.pushEosAction(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `transactionId` : `Stirng`
+  - `transactionId` : `Stirng`
 
 ##### Example
 
 ```javascript
-tp.pushEosAction({
+tp
+  .pushEosAction({
     actions: [
-        {
-            account: 'eosio.token',
-            name: 'transfer',
-            authorization: [{
-                actor: 'aaaabbbbcccc',
-                permission: 'active'
-            }],
-            data: {
-                from: 'aaaabbbbcccc',
-                to: 'itokenpocket',
-                quantity: '1.3000 EOS',
-                memo: 'something to say'
-            }
-         },
-         {
-            account: "eosio",
-            name: "delegatebw",
-            authorization: [
-                {
-                actor: 'aaaabbbbcccc',
-                permission: "active"
-                }
-            ],
-            data: {
-                from: 'aaaabbbbcccc',
-                receiver: 'itokenpocket',
-                stake_net_quantity: "0.0100 EOS",
-                stake_cpu_quantity: "0.0100 EOS",
-                transfer: 0
-            }
-        }
+      {
+        account: "eosio.token",
+        name: "transfer",
+        authorization: [
+          {
+            actor: "aaaabbbbcccc",
+            permission: "active",
+          },
+        ],
+        data: {
+          from: "aaaabbbbcccc",
+          to: "itokenpocket",
+          quantity: "1.3000 EOS",
+          memo: "something to say",
+        },
+      },
+      {
+        account: "eosio",
+        name: "delegatebw",
+        authorization: [
+          {
+            actor: "aaaabbbbcccc",
+            permission: "active",
+          },
+        ],
+        data: {
+          from: "aaaabbbbcccc",
+          receiver: "itokenpocket",
+          stake_net_quantity: "0.0100 EOS",
+          stake_cpu_quantity: "0.0100 EOS",
+          transfer: 0,
+        },
+      },
     ],
-    address: 'EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa',
-    account: 'aaaabbbbcccc'
-}).then(console.log)
-
-> {
+    address: "EOS7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa",
+    account: "aaaabbbbcccc",
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
+    data: { transactionId: "b428357c7xxxxxxxxxxxxxx" },
+  };
 ```
-
 
 #### <a name='2.3-tp.geteosbalance'></a>2.3 tp.getEosBalance
 
 ```javascript
-tp.getEosBalance(params)
+tp.getEosBalance(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 - `contract`: `String`
 - `symbol`: `String`
@@ -817,12 +797,13 @@ tp.getEosBalance(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `symbol`: `String`
-    - `balance`: `String`
-    - `contract`: `String`
-    - `account`: `String`
+  - `symbol`: `String`
+  - `balance`: `String`
+  - `contract`: `String`
+  - `account`: `String`
 - `msg`: `String`
 
 ##### Example
@@ -848,7 +829,7 @@ tp.getEosBalance({
 获取合约内table数据
 
 ```javascript
-tp.getEosTableRows(params)
+tp.getEosTableRows(params);
 ```
 
 ##### Parameters
@@ -864,13 +845,13 @@ tp.getEosTableRows(params)
 - `upper_bound`: `String`
 - `limit`: `Number`
 
-
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `rows`: `Array`
+  - `rows`: `Array`
 - `msg`: `String`
 
 ##### Example
@@ -895,17 +876,19 @@ tp.getTableRows({
 #### <a name='2.6-tp.geteosaccountinfo'></a>2.6 tp.getEosAccountInfo
 
 ```javascript
-tp.getEosAccountInfo(params)
+tp.getEosAccountInfo(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`- Standard account object
 - `msg`: `String`
@@ -927,22 +910,24 @@ tp.getEosAccountInfo({
 #### <a name='2.7-tp.geteostransactionrecord'></a>2.7 tp.getEosTransactionRecord
 
 ```javascript
-tp.getEosTransactionRecord(params)
+tp.getEosTransactionRecord(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 - `start`: `Number` - default: 0
 - `count`: `Number` - default: 10
-- `sort`: `String` - 'desc | asc'  default: desc
+- `sort`: `String` - 'desc | asc' default: desc
 - `token`: `String` - optional
 - `contract`: `String` - optional
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`- Standard account object
 - `msg`: `String`
@@ -988,22 +973,18 @@ tp.getEosTransactionRecord({
 }
 ```
 
-
-
 ### <a name='3.-eth-(evm)'></a>3. ETH (EVM)
 
-
-#### <a name='3.0-兼容metamask-(compatible-with-metamask)'></a>3.0 兼容Metamask (Compatible with Metamask) 
+#### <a name='3.0-兼容metamask-(compatible-with-metamask)'></a>3.0 兼容Metamask (Compatible with Metamask)
 
 - TokenPocket is Compatible with Metamask.
 - About [Metamask](https://metamask.io/)
 
-- Demo: https://github.com/metamask/test-dapp 
+- Demo: https://github.com/metamask/test-dapp
 
 - Webview injected an `window.ethereum` object.
 - You can also using `window.tokenpocket.ethereum`
 - We also supported eip-6963 [https://eips.ethereum.org/EIPS/eip-6963](https://eips.ethereum.org/EIPS/eip-6963)
-
 
 ### <a name='4.enu'></a>4.ENU
 
@@ -1014,12 +995,13 @@ tp.getEosTransactionRecord({
 #### <a name='4.1-tp.enutokentransfer'></a>4.1 tp.enuTokenTransfer
 
 ```javascript
-tp.enuTokenTransfer(params)
+tp.enuTokenTransfer(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `amount`: `String|Number`
@@ -1036,39 +1018,39 @@ tp.enuTokenTransfer(params)
 - `result`: `Boolean`
 
 - `data`: `Object`
-    - `transactionId` : `Stirng`
+  - `transactionId` : `Stirng`
 
 ##### Example
 
 ```javascript
-tp.enuTokenTransfer({
-    from: 'abcabcabcabc',
-    to: 'itokenpocket',
-    amount: '0.0100',
-    tokenName: 'ENU',
+tp
+  .enuTokenTransfer({
+    from: "abcabcabcabc",
+    to: "itokenpocket",
+    amount: "0.0100",
+    tokenName: "ENU",
     precision: 4,
-    contract: 'enu.token',
-    memo: 'test',
-    address: 'E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa'
-}).then(console.log)
-
-> {
+    contract: "enu.token",
+    memo: "test",
+    address: "E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa",
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
+    data: { transactionId: "b428357c7xxxxxxxxxxxxxx" },
+  };
 ```
-
-
 
 #### <a name='4.2-tp.pushenuaction'></a>4.2 tp.pushEnuAction
 
 ```javascript
-tp.pushEnuAction(params)
+tp.pushEnuAction(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `actions`: `Array`- Standard enu actions
 - `account`: `String` - current account
 - `address`: `String` - public key for current account
@@ -1076,67 +1058,71 @@ tp.pushEnuAction(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `transactionId` : `Stirng`
+  - `transactionId` : `Stirng`
 
 ##### Example
 
 ```javascript
-tp.pushEnuAction({
+tp
+  .pushEnuAction({
     actions: [
-        {
-            account: 'enu.token',
-            name: 'transfer',
-            authorization: [{
-                actor: 'aaaabbbbcccc',
-                permission: 'active'
-            }],
-            data: {
-                from: 'aaaabbbbcccc',
-                to: 'itokenpocket',
-                quantity: '1.3000 ENU',
-                memo: 'something to say'
-            }
-         },
-         {
-            account: "enumivo",
-            name: "delegatebw",
-            authorization: [
-                {
-                actor: 'aaaabbbbcccc',
-                permission: "active"
-                }
-            ],
-            data: {
-                from: 'aaaabbbbcccc',
-                receiver: 'itokenpocket',
-                stake_net_quantity: "0.0100 ENU",
-                stake_cpu_quantity: "0.0100 ENU",
-                transfer: 0
-            }
-        }
+      {
+        account: "enu.token",
+        name: "transfer",
+        authorization: [
+          {
+            actor: "aaaabbbbcccc",
+            permission: "active",
+          },
+        ],
+        data: {
+          from: "aaaabbbbcccc",
+          to: "itokenpocket",
+          quantity: "1.3000 ENU",
+          memo: "something to say",
+        },
+      },
+      {
+        account: "enumivo",
+        name: "delegatebw",
+        authorization: [
+          {
+            actor: "aaaabbbbcccc",
+            permission: "active",
+          },
+        ],
+        data: {
+          from: "aaaabbbbcccc",
+          receiver: "itokenpocket",
+          stake_net_quantity: "0.0100 ENU",
+          stake_cpu_quantity: "0.0100 ENU",
+          transfer: 0,
+        },
+      },
     ],
-    address: 'E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa',
-    account: 'aaaabbbbcccc'
-}).then(console.log)
-
-> {
+    address: "E7ds9A9FGDsKrdymQ4ynKbMgbCVaaaaaaaaaaa",
+    account: "aaaabbbbcccc",
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
+    data: { transactionId: "b428357c7xxxxxxxxxxxxxx" },
+  };
 ```
-
 
 #### <a name='4.3-tp.getenubalance'></a>4.3 tp.getEnuBalance
 
 ```javascript
-tp.getEnuBalance(params)
+tp.getEnuBalance(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 - `contract`: `String`
 - `symbol`: `String`
@@ -1144,12 +1130,13 @@ tp.getEnuBalance(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `symbol`: `String`
-    - `balance`: `String`
-    - `contract`: `String`
-    - `account`: `String`
+  - `symbol`: `String`
+  - `balance`: `String`
+  - `contract`: `String`
+  - `account`: `String`
 - `msg`: `String`
 
 ##### Example
@@ -1168,13 +1155,12 @@ tp.getEnuBalance({
 }
 ```
 
-
 #### <a name='4.4-tp.getenutablerows'></a>4.4 tp.getEnuTableRows
 
 获取合约内table数据
 
 ```javascript
-tp.getEnuTableRows(params)
+tp.getEnuTableRows(params);
 ```
 
 ##### Parameters
@@ -1190,13 +1176,13 @@ tp.getEnuTableRows(params)
 - `upper_bound`: `String`
 - `limit`: `Number`
 
-
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `rows`: `Array`
+  - `rows`: `Array`
 - `msg`: `String`
 
 ##### Example
@@ -1219,18 +1205,21 @@ tp.getTableRows({
 ```
 
 #### <a name='4.5-tp.getenuaccountinfo'></a>4.5 tp.getEnuAccountInfo
+
 ```javascript
-tp.getEnuAccountInfo(params)
+tp.getEnuAccountInfo(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`- Standard account object
 - `msg`: `String`
@@ -1252,22 +1241,24 @@ tp.getEnuAccountInfo({
 #### <a name='4.6-tp.getenutransactionrecord'></a>4.6 tp.getEnuTransactionRecord
 
 ```javascript
-tp.getEnuTransactionRecord(params)
+tp.getEnuTransactionRecord(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `account`: `String`
 - `start`: `Number` - default: 0
 - `count`: `Number` - default: 10
-- `sort`: `String` - 'desc | asc'  default: desc
+- `sort`: `String` - 'desc | asc' default: desc
 - `token`: `String` - optional
 - `contract`: `String` - optional
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`- Standard account object
 - `msg`: `String`
@@ -1313,18 +1304,18 @@ tp.getEnuTransactionRecord({
 }
 ```
 
-
 ### <a name='5.cosmos'></a>5.COSMOS
 
 #### <a name='5.1-tp.signcosmostransaction'></a>5.1 tp.signCosmosTransaction
 
 ```javascript
-tp.signCosmosTransaction(stdTx)
+tp.signCosmosTransaction(stdTx);
 ```
 
 ##### Parameters
 
 `stdTx`- `Object`:
+
 - `from`: `String`
 - `chain_id`: `String`
 - `account_number`: `String | Number`
@@ -1348,81 +1339,91 @@ tp.signCosmosTransaction(stdTx)
 ##### Example
 
 ```javascript
-tp.signCosmosTransaction({
-	"from": "cosmos1njg8uq4ek9y9yourfromaddress",
-	"chain_id": "cosmoshub-2",
-	"account_number": 1756,
-	"sequence": 3,
-	"fees": {
-		"denom": "uatom",
-		"amount": 500
-	},
-	"gas": 20000,
-	"memo": "",
-	"type": "transfer",
-	"msg": {
-		"to": "cosmos1njg8uq4ek9y9yourfromaddress",
-		"coins": [{
-			"denom": "uatom",
-			"amount": 100000
-		}]
-	}
-}).then(console.log)
-
-> {
-	"result": true,
-	"data": {
-		"tx": {
-			"signatures": [{
-				"pub_key": {
-					"type": "tendermint/PubKeySecp256k1",
-					"value": "AkG3bCO5p9MO8a1ABGYtyS8ed4aZuBKEY+"
-				},
-				"signature": "K7XCuz/ucESBZnQS94uOHZnJCUbFuWH2x659/3O04ihZaZT99cx+aaaaaaaaaaa=="
-			}],
-			"memo": "",
-			"msg": [{
-				"type": "cosmos-sdk/MsgSend",
-				"value": {
-					"amount": [{
-						"amount": "100000",
-						"denom": "uatom"
-					}],
-					"from_address": "cosmos1njg8uq4ek9y9yourfromaddress",
-					"to_address": "cosmos1njg8uq4ek9y9yourtoaddress"
-				}
-			}],
-			"fee": {
-				"amount": [{
-					"denom": "uatom",
-					"amount": "500"
-				}],
-				"gas": "20000"
-			}
-		},
-		"mode": "sync"
-	},
-	"msg": "success"
-}
+tp
+  .signCosmosTransaction({
+    from: "cosmos1njg8uq4ek9y9yourfromaddress",
+    chain_id: "cosmoshub-2",
+    account_number: 1756,
+    sequence: 3,
+    fees: {
+      denom: "uatom",
+      amount: 500,
+    },
+    gas: 20000,
+    memo: "",
+    type: "transfer",
+    msg: {
+      to: "cosmos1njg8uq4ek9y9yourfromaddress",
+      coins: [
+        {
+          denom: "uatom",
+          amount: 100000,
+        },
+      ],
+    },
+  })
+  .then(console.log) >
+  {
+    result: true,
+    data: {
+      tx: {
+        signatures: [
+          {
+            pub_key: {
+              type: "tendermint/PubKeySecp256k1",
+              value: "AkG3bCO5p9MO8a1ABGYtyS8ed4aZuBKEY+",
+            },
+            signature:
+              "K7XCuz/ucESBZnQS94uOHZnJCUbFuWH2x659/3O04ihZaZT99cx+aaaaaaaaaaa==",
+          },
+        ],
+        memo: "",
+        msg: [
+          {
+            type: "cosmos-sdk/MsgSend",
+            value: {
+              amount: [
+                {
+                  amount: "100000",
+                  denom: "uatom",
+                },
+              ],
+              from_address: "cosmos1njg8uq4ek9y9yourfromaddress",
+              to_address: "cosmos1njg8uq4ek9y9yourtoaddress",
+            },
+          },
+        ],
+        fee: {
+          amount: [
+            {
+              denom: "uatom",
+              amount: "500",
+            },
+          ],
+          gas: "20000",
+        },
+      },
+      mode: "sync",
+    },
+    msg: "success",
+  };
 ```
-
-
 
 #### <a name='5.2-tp.cosmosarbitrarysignature'></a>5.2 tp.cosmosArbitrarySignature
 
 ```javascript
-tp.cosmosArbitrarySignature(from, stdTx)
+tp.cosmosArbitrarySignature(from, stdTx);
 ```
 
 ##### Parameters
 
-`from`- `String`:  your address
+`from`- `String`: your address
 `stdTx`- `String`: stdTx string
-
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
 - `msg`: `String`
@@ -1430,41 +1431,54 @@ tp.cosmosArbitrarySignature(from, stdTx)
 ##### Example
 
 ```javascript
-
 var stdTx = {
-	"account_number": "0",
-	"chain_id": "testing",
-	"fee": {
-		"amount": [{
-			"amount": "0",
-			"denom": "stake"
-		}],
-		"gas": "500000"
-	},
-	"memo": "",
-	"msgs": [{
-		"amount": {
-			"amount": "50000000",
-			"denom": "stake"
-		},
-		"from_address": "cosmos1gw8w...l48gl5",
-		"type": "normal"
-	}],
-	"sequence": "0"
-}
+  account_number: "0",
+  chain_id: "testing",
+  fee: {
+    amount: [
+      {
+        amount: "0",
+        denom: "stake",
+      },
+    ],
+    gas: "500000",
+  },
+  memo: "",
+  msgs: [
+    {
+      amount: {
+        amount: "50000000",
+        denom: "stake",
+      },
+      from_address: "cosmos1gw8w...l48gl5",
+      type: "normal",
+    },
+  ],
+  sequence: "0",
+};
 
-tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(console.log)
-
-> {
-	"result": true,
-	"data": {
-		"pub_key": [235, 90, 233, 135, 33, 2, 65, 183, 108, 35, 185, 167, 211, 14, 241, 173, 64, 4, 102, 45, 201, 47, 30, 119, 134, 153, 184, 26, 4, 32, 123, 216, 219, 95, 19, 140, 84, 254],
-		"signature": [19, 225, 27, 122, 188, 73, 69, 101, 136, 152, 100, 35, 2, 205, 66, 220, 20, 237, 160, 171, 36, 178, 195, 45, 161, 14, 86, 41, 21, 143, 222, 27, 40, 139, 233, 48, 48, 117, 251, 105, 144, 119, 187, 181, 124, 113, 167, 138, 15, 201, 98, 71, 116, 184, 114, 98, 240, 140, 224, 4, 251, 93, 60, 15]
-	},
-	"msg": "success"
-}
+tp
+  .cosmosArbitrarySignature("cosmos1gw8w...l48gl5", JSON.stringify(stdTx))
+  .then(console.log) >
+  {
+    result: true,
+    data: {
+      pub_key: [
+        235, 90, 233, 135, 33, 2, 65, 183, 108, 35, 185, 167, 211, 14, 241, 173,
+        64, 4, 102, 45, 201, 47, 30, 119, 134, 153, 184, 26, 4, 32, 123, 216,
+        219, 95, 19, 140, 84, 254,
+      ],
+      signature: [
+        19, 225, 27, 122, 188, 73, 69, 101, 136, 152, 100, 35, 2, 205, 66, 220,
+        20, 237, 160, 171, 36, 178, 195, 45, 161, 14, 86, 41, 21, 143, 222, 27,
+        40, 139, 233, 48, 48, 117, 251, 105, 144, 119, 187, 181, 124, 113, 167,
+        138, 15, 201, 98, 71, 116, 184, 114, 98, 240, 140, 224, 4, 251, 93, 60,
+        15,
+      ],
+    },
+    msg: "success",
+  };
 ```
-
 
 ### <a name='6.iost'></a>6.IOST
 
@@ -1473,7 +1487,6 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 - TokenPocket is Compatible with IWalletJS.
 - TokenPocket 兼容基于 IWalletJS 的应用.
 - IWalletJS API: [IWalletJS](https://github.com/TP-Lab/IOST-JS-API)
-
 
 ### <a name='7.tron'></a>7.TRON
 
@@ -1487,18 +1500,18 @@ tp.cosmosArbitrarySignature('cosmos1gw8w...l48gl5', JSON.stringify(stdTx)).then(
 
 - `tronweb` https://developers.tron.network/docs/tron-web-intro
 
-
-
 ### <a name='8.moac'></a>8.MOAC
 
 #### <a name='8.1-tp.sendmoactransaction'></a>8.1 tp.sendMoacTransaction
+
 ```javascript
-tp.sendMoacTransaction(params)
+tp.sendMoacTransaction(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `gasPrice`: `String|Number`
@@ -1512,39 +1525,42 @@ tp.sendMoacTransaction(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `String`- txhash
 
 ##### Example
 
 ```javascript
-tp.sendMoacTransaction({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
+tp
+  .sendMoacTransaction({
+    from: "0xaaaaaaa",
+    to: "0xaaaaaab",
     gasPrice: 100000000,
     gasLimit: 60000,
-    data: '0xaawefwefwefwefwefef',
+    data: "0xaawefwefwefwefwefef",
     value: 1000000000,
     chainId: 99,
-    via: '',
+    via: "",
     shardingFlag: 0,
-}).then(console.log)
-
-> {
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: '0xe1063e225d4365b79c30132077e82777c0966844f545ddecc017965c0b551f7e'
-}
+    data: "0xe1063e225d4365b79c30132077e82777c0966844f545ddecc017965c0b551f7e",
+  };
 ```
 
 #### <a name='8.2-tp.signmoactransaction'></a>8.2 tp.signMoacTransaction
 
 ```javascript
-tp.signMoacTransaction(params)
+tp.signMoacTransaction(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `gasPrice`: `String|Number`
@@ -1558,40 +1574,42 @@ tp.signMoacTransaction(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `String`- signed data
 
 ##### Example
 
 ```javascript
-tp.signMoacTransaction({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
+tp
+  .signMoacTransaction({
+    from: "0xaaaaaaa",
+    to: "0xaaaaaab",
     gasPrice: 100000000,
     gasLimit: 60000,
-    data: '0xaawefwefwefwefwefef',
+    data: "0xaawefwefwefwefwefef",
     value: 1000000000,
     chainId: 99,
-    via: '',
+    via: "",
     shardingFlag: 0,
-}).then(console.log)
-
-> {
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: '0xf8ef8201598504a817c800830298109490cb7b42a9cb3accbe665e7d6cdde4ab346eca1483030d40b88402ef9b6b0000000000000000'
-}
+    data: "0xf8ef8201598504a817c800830298109490cb7b42a9cb3accbe665e7d6cdde4ab346eca1483030d40b88402ef9b6b0000000000000000",
+  };
 ```
-
 
 #### <a name='8.3-tp.moactokentransfer'></a>8.3 tp.moacTokenTransfer
 
 ```javascript
-tp.moacTokenTransfer(params)
+tp.moacTokenTransfer(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `amount`: `String|Number`
@@ -1603,43 +1621,45 @@ tp.moacTokenTransfer(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `Object`
-    - `transactionId` : `Stirng`
+  - `transactionId` : `Stirng`
 
 ##### Example
 
 ```javascript
-tp.moacTokenTransfer({
-    from: '0xaaaaaaa',
-    to: '0xaaaaaab',
-    amount: '100',
+tp
+  .moacTokenTransfer({
+    from: "0xaaaaaaa",
+    to: "0xaaaaaab",
+    amount: "100",
     gasLimit: 60000,
-    tokenName: 'MOAC',
+    tokenName: "MOAC",
     decimal: 18,
-    contract: ''
-}).then(console.log)
-
-> {
+    contract: "",
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: {transactionId: 'b428357c7xxxxxxxxxxxxxx'}
-}
+    data: { transactionId: "b428357c7xxxxxxxxxxxxxx" },
+  };
 ```
-
-
 
 ### <a name='9.jingtum'></a>9.Jingtum
 
 #### <a name='9.1-tp.signjingtumtransaction'></a>9.1 tp.signJingtumTransaction
+
 ```javascript
-tp.signJingtumTransaction(params)
+tp.signJingtumTransaction(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`: tx object
+
 - `Account`: `String`
-- `Fee`: `Float` 
+- `Fee`: `Float`
 - `TakerGets`: `String|Object`
 - `TakerPays`: `String|Object`
 - `TransactionType`: `String`
@@ -1651,6 +1671,7 @@ tp.signJingtumTransaction(params)
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `String`- signedData
 - `msg`: `String`
@@ -1658,40 +1679,40 @@ tp.signJingtumTransaction(params)
 ##### Example
 
 ```javascript
-tp.signJingtumTransaction({
-    "Account":"j47J1UriYXXXXXXXXXXXX",
-    "Fee": 0.00001,
-    "Flags": 524288,
-    "TakerGets":"111",
-    "TakerPays":{
-        "currency":"CNY",
-        "issuer":"jGa9J9TkqtBcUoHe2zqhVFFbgUVED6o9or",
-        "value":"1.2321"
-        },
-    "TransactionType":"OfferCreate",
-    "Sequence":4368
-}).then(console.log)
-
-> {
+tp
+  .signJingtumTransaction({
+    Account: "j47J1UriYXXXXXXXXXXXX",
+    Fee: 0.00001,
+    Flags: 524288,
+    TakerGets: "111",
+    TakerPays: {
+      currency: "CNY",
+      issuer: "jGa9J9TkqtBcUoHe2zqhVFFbgUVED6o9or",
+      value: "1.2321",
+    },
+    TransactionType: "OfferCreate",
+    Sequence: 4368,
+  })
+  .then(console.log) >
+  {
     result: true,
-    data: 'e1063e225d43650000000111...',
-    msg: ''
-
-}
+    data: "e1063e225d43650000000111...",
+    msg: "",
+  };
 ```
-
 
 ### <a name='10.okexchanin'></a>10.OKExChanin
 
 #### <a name='10.1-tp.signokexchaintransaction'></a>10.1 tp.signOkexchainTransaction
 
 ```javascript
-tp.signOkexchainTransaction(tx, address)
+tp.signOkexchainTransaction(tx, address);
 ```
 
 ##### Parameters
 
 `tx`- `Object`:
+
 - `chain_id`: `String`
 - `account_number`: `String | Number`
 - `sequence`: `String | Number`
@@ -1714,56 +1735,61 @@ tp.signOkexchainTransaction(tx, address)
 ##### Example
 
 ```javascript
-tp.signOkexchainTransaction({
-    "account_number":"222",
-    "chain_id":"okexchain-65",
-    "fee": {"amount": [{"amount":"0.020000000000000000","denom":"okt"}],"gas":"200000"},
-    "memo":"ahah",
-    "msgs":[
+tp
+  .signOkexchainTransaction(
+    {
+      account_number: "222",
+      chain_id: "okexchain-65",
+      fee: {
+        amount: [{ amount: "0.020000000000000000", denom: "okt" }],
+        gas: "200000",
+      },
+      memo: "ahah",
+      msgs: [
         {
-            "type": "okexchain/token/MsgTransfer",
-            "value": {
-                "amount": [{"amount":"1.000000000000000000","denom":"okt"}],
-                "from_address":  "okexchainxxxxxxxxfrom",
-                "to_address": "okexchainxxxxxxxxto"
-            }
-        }
-    ],
-    "sequence":"15"
-}, 'okexchainxxxxxxxxfrom').then(console.log)
-
-> {
-	"result": true,
-	"data": {
-        "signatures": [{
-            "pub_key": {
-                "type": "tendermint/PubKeySecp256k1",
-                "value": [buffer]
-            },
-            "signature": [buffer]
-        }],
-	},
-	"msg": "success"
-}
+          type: "okexchain/token/MsgTransfer",
+          value: {
+            amount: [{ amount: "1.000000000000000000", denom: "okt" }],
+            from_address: "okexchainxxxxxxxxfrom",
+            to_address: "okexchainxxxxxxxxto",
+          },
+        },
+      ],
+      sequence: "15",
+    },
+    "okexchainxxxxxxxxfrom",
+  )
+  .then(console.log) >
+  {
+    result: true,
+    data: {
+      signatures: [
+        {
+          pub_key: {
+            type: "tendermint/PubKeySecp256k1",
+            value: [buffer],
+          },
+          signature: [buffer],
+        },
+      ],
+    },
+    msg: "success",
+  };
 ```
-
-
-
 
 ### <a name='11.polkadot-kusama-etc.'></a>11.Polkadot Kusama etc.
 
-TokenPocket is compatible with Polkadot{.js} extension please check the offical doc: 
-- https://polkadot.js.org/docs/extension/ 
-- https://github.com/polkadot-js/apps 
+TokenPocket is compatible with Polkadot{.js} extension please check the offical doc:
 
+- https://polkadot.js.org/docs/extension/
+- https://github.com/polkadot-js/apps
 
-### <a name='12.heco-bsc-okt'></a>12.HECO BSC OKT 
+### <a name='12.heco-bsc-okt'></a>12.HECO BSC OKT
 
-TokenPocket is compatible with metamask, please check the offiacl doc: 
+TokenPocket is compatible with metamask, please check the offiacl doc:
 
-- https://docs.metamask.io/guide/ 
-- https://github.com/metamask/test-dapp 
-
+- https://docs.metamask.io/guide/
+- https://github.com/metamask/test-dapp
 
 ### <a name='13.solana(svm)'></a>13.solana(SVM)
 
@@ -1777,156 +1803,151 @@ For all svm chains you can follow the same develop method below:
 
 3. Some of our api are compatible with mainstream Solana wallets: Phantom and Backpack.
 
-4. Or you can using the `window.solana` Object directly in the webview. which provide standard  `connect`, `signTransaction`, `signMessage` methods.
-
+4. Or you can using the `window.solana` Object directly in the webview. which provide standard `connect`, `signTransaction`, `signMessage` methods.
 
 #### <a name='13.1-connect'></a>13.1 connect
-```javascript
 
+```javascript
 await window.solana.connect();
 const publicKey = window.solana.publicKey.toBase58();
-
 ```
-
 
 #### <a name='13.2-signtransaction'></a>13.2 signTransaction
 
 ```javascript
-
 const network = "<NETWORK_URL>";
 const connection = new Connection(network);
 const transaction = new Transaction();
 const signedTransaction = await window.solana.signTransaction(transaction);
-const signature = await connection.sendRawTransaction(signedTransaction.serialize());
-
+const signature = await connection.sendRawTransaction(
+  signedTransaction.serialize(),
+);
 ```
 
 #### <a name='13.3-signmessage'></a>13.3 signMessage
 
 ```javascript
-const encodedMessage = new TextEncoder().encode('Your message');
+const encodedMessage = new TextEncoder().encode("Your message");
 const signedMessage = await window.solana.signMessage(encodedMessage, "utf8");
-
 ```
 
 ### <a name='14.-btc'></a>14. btc
 
 TokenPocket is full compatible with unisat API which has `window.unisat` injected in the browser.
 
-You can call `unisat.getAccounts()`, `unisat.signPsbt`, etc. 
+You can call `unisat.getAccounts()`, `unisat.signPsbt`, etc.
 
 Full API documents you can check: [https://docs.unisat.io/dev/unisat-developer-service/unisat-wallet](https://docs.unisat.io/dev/unisat-developer-service/unisat-wallet)
 
 Also you can always use `window.tokenpocket` to detect if it is tokenpocket wallet.
 
-
 #### <a name='14.1-getcurrentbalance'></a>14.1 getCurrentBalance
+
 ```javascript
-tp.getCurrentBalance()
+tp.getCurrentBalance();
 ```
 
 ##### <a name='returns'></a>Returns
+
 `Object`:
+
 - `result`: `Boolean`
-- `data`: `Object`
-    -`balance`: `String`
-- `msg`: `String` 
+- `data`: `Object` -`balance`: `String`
+- `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.getCurrentBalance().then(res => console.log)
-
-> {
+tp.getCurrentBalance().then((res) => console.log) >
+  {
     result: true,
     data: {
-        balance: '0.013'
-    }, 
-    msg: 'success', 
-}
+      balance: "0.013",
+    },
+    msg: "success",
+  };
 ```
-
-
 
 #### <a name='14.2-btctokentransfer'></a>14.2 btcTokenTransfer
 
 ```javascript
-tp.btcTokenTransfer(params)
+tp.btcTokenTransfer(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
 - `amount`: `String`
 - `op_return`: `String`
 
-
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `String`
-- `msg`: `String` 
+- `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.btcTokenTransfer({
-    from: '3FYbry1GTFmxxxxxxxxxxx',
-    to: '1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx',
-    amount: '0.0001',
-}).then(res => console.log)
-
-> {
+tp
+  .btcTokenTransfer({
+    from: "3FYbry1GTFmxxxxxxxxxxx",
+    to: "1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx",
+    amount: "0.0001",
+  })
+  .then((res) => console.log) >
+  {
     result: true,
-    data: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // android
-    msg: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // ios
-}
+    data: "5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx", // android
+    msg: "5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx", // ios
+  };
 ```
-
-
 
 #### <a name='14.3-usdttokentransfer'></a>14.3 usdtTokenTransfer
 
 OMNI USDT
 
 ```javascript
-tp.usdtTokenTransfer(params)
+tp.usdtTokenTransfer(params);
 ```
 
 ##### Parameters
 
 `params`- `Object`:
+
 - `from`: `String`
 - `to`: `String`
-- `amount`: `String` 
-
+- `amount`: `String`
 
 ##### Returns
 
 `Object`:
+
 - `result`: `Boolean`
 - `data`: `String`
-- `msg`: `String` 
+- `msg`: `String`
 
 ##### Example
 
 ```javascript
-tp.usdtTokenTransfer({
-    from: '3FYbry1GTFmxxxxxxxxxxx',
-    to: '1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx',
-    amount: '10.02',
-}).then(res => console.log)
-
-> {
+tp
+  .usdtTokenTransfer({
+    from: "3FYbry1GTFmxxxxxxxxxxx",
+    to: "1NVY7Gdng4Ti3bWm1tiPxxxxxxxxx",
+    amount: "10.02",
+  })
+  .then((res) => console.log) >
+  {
     result: true,
-    data: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // android
-    msg: '5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx', // ios
-}
+    data: "5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx", // android
+    msg: "5420a8f77594e9114c2d97dxxxxxxxxxxxxxxxxxxx", // ios
+  };
 ```
-
 
 ### <a name='15.-aptos'></a>15. Aptos
 
@@ -1935,52 +1956,55 @@ tp.usdtTokenTransfer({
 #### <a name='15.1-aptos.connect'></a>15.1 aptos.connect
 
 ```javascript
-aptos.connect().then(console.log)
+aptos.connect().then(console.log);
 // {address: '0x1111...', publicKey: '0x22222...'}
 ```
 
 #### <a name='15.2-aptos.account'></a>15.2 aptos.account
 
 ```javascript
-aptos.account().then(console.log)
+aptos.account().then(console.log);
 // {address: '0x1111...', publicKey: '0x22222...'}
 ```
 
 #### <a name='15.3-aptos.getchainid'></a>15.3 aptos.getChainId
+
 ```javascript
-aptos.getChainId().then(console.log)
+aptos.getChainId().then(console.log);
 // 31
 ```
 
 #### <a name='15.4-aptos.getnodeurl'></a>15.4 aptos.getNodeUrl
+
 ```javascript
-aptos.getNodeUrl().then(console.log)
+aptos.getNodeUrl().then(console.log);
 // 'https://testnet.aptoslabs.com'
 ```
 
 #### <a name='15.5-aptos.network'></a>15.5 aptos.network
+
 ```javascript
-aptos.network().then(console.log)
+aptos.network().then(console.log);
 // 'Testnet'
 ```
-
 
 #### <a name='15.6-aptos.signandsubmittransaction'></a>15.6 aptos.signAndSubmitTransaction
 
 ```javascript
 const transaction = {
-    arguments: ['0x111111...', '112'],
-    function: '0x1::coin::transfer',
-    type: 'entry_function_payload',
-    type_arguments: ['0x1::aptos_coin::TestCoin'],
+  arguments: ["0x111111...", "112"],
+  function: "0x1::coin::transfer",
+  type: "entry_function_payload",
+  type_arguments: ["0x1::aptos_coin::TestCoin"],
 };
-const options = { // optional parameter
-  max_gas_amount: '1000',
-  gas_unit_price: '100',
-  expiration_timestamp_secs: '1646793600',
-  sequence_number: '10'
-}
-aptos.signAndSubmitTransaction(transaction, options).then(console.log)
+const options = {
+  // optional parameter
+  max_gas_amount: "1000",
+  gas_unit_price: "100",
+  expiration_timestamp_secs: "1646793600",
+  sequence_number: "10",
+};
+aptos.signAndSubmitTransaction(transaction, options).then(console.log);
 // { hash: "0x1111...", sender: "0x1111", sequence_number: "10", signature: {public_key: '0x222',signature: '0x333', type: 'ed25519_signature'}, payload: {}, max_gas_amount: '1009', gas_unit_price: '100', expiration_timestamp_secs: '1665721856' }
 ```
 
@@ -1988,29 +2012,30 @@ aptos.signAndSubmitTransaction(transaction, options).then(console.log)
 
 ```javascript
 const transaction = {
-    arguments: ['0x111111...', '112'],
-    function: '0x1::coin::transfer',
-    type: 'entry_function_payload',
-    type_arguments: ['0x1::aptos_coin::TestCoin'],
+  arguments: ["0x111111...", "112"],
+  function: "0x1::coin::transfer",
+  type: "entry_function_payload",
+  type_arguments: ["0x1::aptos_coin::TestCoin"],
 };
-const options = { // optional parameter
-  max_gas_amount: '1000',
-  gas_unit_price: '100',
-  expiration_timestamp_secs: '1646793600',
-  sequence_number: '10'
-}
-aptos.signTransaction(transaction, options).then(console.log)
+const options = {
+  // optional parameter
+  max_gas_amount: "1000",
+  gas_unit_price: "100",
+  expiration_timestamp_secs: "1646793600",
+  sequence_number: "10",
+};
+aptos.signTransaction(transaction, options).then(console.log);
 // { "0": 156, "1": 177, "2": 187, "3": 244, "4": 44, ...}
 ```
 
 #### <a name='15.8-aptos.signmessage'></a>15.8 aptos.signMessage
 
-```javascript 
+```javascript
 
 aptos.signMessage({
     address?: boolean, // Should we include the address of the account in the message
     application?: boolean, // Should we include the domain of the dapp
-    chainId?: boolean, // Should we include the current chain id the wallet is connected to  
+    chainId?: boolean, // Should we include the current chain id the wallet is connected to
     message: 'hello world', // The message to be signed and displayed to the user
     nonce: '1113' // A nonce the dapp should generate
 }).then(console.log)
@@ -2028,22 +2053,18 @@ aptos.signMessage({
 // }
 ```
 
-
 ### <a name='16.-sui'></a>16. SUI
 
-TokenPocket's sui API follow the sui wallet standard: 
+TokenPocket's sui API follow the sui wallet standard:
 
 [https://docs.sui.io/standards/wallet-standard](https://docs.sui.io/standards/wallet-standard)
 
+TokenPocket has implemented all features defined in the standard.
 
-TokenPocket has implemented all features defined in the standard. 
-
-
-TokenPocket's wallet name in sui standard is: 
+TokenPocket's wallet name in sui standard is:
 
 `name()`: `TokenPocket Wallet`
 
 ### <a name='17.-nostr'></a>17. Nostr
 
 TokenPocket mobile and extension has supported [NIP-07](https://github.com/nostr-protocol/nips/blob/master/07.md)
-
